@@ -5,7 +5,7 @@
   <artifactId>Building</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>SpringMVC Maven Webapp</name>
+  <name>Building Maven Webapp</name>
   <url>http://maven.apache.org</url>
     <properties>
         <org.jboss.resteasy.version>3.0.10.Final</org.jboss.resteasy.version>
