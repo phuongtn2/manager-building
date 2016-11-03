@@ -22,8 +22,24 @@
 
     <context:property-placeholder location="/WEB-INF/jdbc.properties" />
     <context:annotation-config />
+    <mybatis:scan base-package="com.building.mapper" />
+    <context:component-scan base-package="com.building">
+        <context:include-filter type="regex"
+                                expression="services.impl.*" />
+        <context:include-filter type="regex"
+                                expression="services.interceptor.*" />
+        <context:include-filter type="regex"
+                                expression="cache.impl.*" />
 
-    <context:component-scan base-package="com.javatpoint"></context:component-scan>
+    </context:component-scan>
+    <bean id="messageSource"
+          class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>rest_messages</value>
+            </list>
+        </property>
+    </bean>
     <!--<mvc:default-servlet-handler/>-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"></property>
@@ -56,7 +72,6 @@
     <!-- MyBatis-Spring(SQLSession) -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <!-- MyBatisの設定ファイルの場所. TypeAliasを使いたいので読み込ませている. -->
         <property name="configLocation" value="classpath:mybatis-config.xml" />
     </bean>
 
