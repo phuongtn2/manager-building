@@ -1,11 +1,11 @@
-package com.javatpoint;
+package com.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class HelloController {
+public class LoginController {
 
 	@RequestMapping("/hello")
 	public ModelAndView mymethod(){
