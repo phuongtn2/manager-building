@@ -7,6 +7,9 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>SpringMVC Maven Webapp</name>
   <url>http://maven.apache.org</url>
+    <properties>
+        <org.jboss.resteasy.version>3.0.10.Final</org.jboss.resteasy.version>
+    </properties>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -91,8 +94,73 @@
           <version>4.1.4.RELEASE</version>
       </dependency>
 
+      <dependency>
+          <groupId>commons-io</groupId>
+          <artifactId>commons-io</artifactId>
+          <version>2.4</version>
+      </dependency>
+      <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <version>1.2.13</version>
+      </dependency>
+
+      <!--<dependency>
+          <groupId>javax.el</groupId>
+          <artifactId>javax.el-api</artifactId>
+          <version>3.0.0</version>
+      </dependency>
+      <dependency>
+          <groupId>javax.servlet</groupId>
+          <artifactId>javax.servlet-api</artifactId>
+          <version>3.1.0</version>
+      </dependency>-->
+
+      <!-- https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->
+      <dependency>
+          <groupId>javax.ws.rs</groupId>
+          <artifactId>javax.ws.rs-api</artifactId>
+          <version>2.0</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.jboss.resteasy</groupId>
+          <artifactId>resteasy-spring</artifactId>
+          <version>${org.jboss.resteasy.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.jboss.resteasy</groupId>
+          <artifactId>resteasy-jackson2-provider</artifactId>
+          <version>${org.jboss.resteasy.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.jboss.resteasy</groupId>
+          <artifactId>resteasy-multipart-provider</artifactId>
+          <version>${org.jboss.resteasy.version}</version>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/com.dropbox.core/dropbox-core-sdk -->
+      <dependency>
+          <groupId>com.dropbox.core</groupId>
+          <artifactId>dropbox-core-sdk</artifactId>
+          <version>2.1.2</version>
+      </dependency>
+
+
+
+
   </dependencies>
   <build>
     <finalName>Building</finalName>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <configuration>
+                  <source>1.8</source>
+                  <target>1.8</target>
+              </configuration>
+          </plugin>
+      </plugins>
   </build>
 </project>

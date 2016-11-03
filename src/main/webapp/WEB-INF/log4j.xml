@@ -4,30 +4,25 @@
 
 	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
 		<!-- <param name="threshold" value="error"/> -->
-		<param name="Target" value="System.out" />
+		<param name="Target" value="System.out"/>
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="[%d{HH:mm:ss,SSS}] %m%n" />
+			<param name="ConversionPattern" value="[%d{HH:mm:ss,SSS}] %m%n"/>
 		</layout>
 	</appender>
 
-	<!-- myBatisのログ -->
-	<logger name="phuongtn2.dao">
-		<level value="debug" />
+	<logger name="com.building.dao">
+		<level value="debug"/>
 	</logger>
-
-	<!-- springのトランザクションログ(開始終了) -->
 	<logger name="org.springframework.transaction.interceptor">
-		<level value="info" />
+		<level value="info"/>
 	</logger>
-
-	<!-- RestEasyのログ -->
 	<logger name="org.jboss.resteasy">
-		<level value="info" />
+		<level value="info"/>
 	</logger>
 
 	<root>
-		<level value="error" />
-		<appender-ref ref="stdout" />
+		<level value="error"/>
+		<appender-ref ref="stdout"/>
 	</root>
 
 </log4j:configuration>
