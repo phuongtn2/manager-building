@@ -1,20 +1,19 @@
 package com.building.services.interceptor;
 
+import com.building.dto.AuthorizedUserInfo;
+import com.building.services.ApiDefs;
+import com.building.services.AuthorizedUserTokenService;
+import com.building.services.Role;
+import com.building.services.annotation.AllowRoles;
+import com.building.services.annotation.ParameterTokenSupport;
+import com.building.services.annotation.PermissionBinding;
+import com.building.util.RestMessageUtil;
+import com.building.util.core.ClassUtil;
 import org.apache.log4j.Logger;
 import org.jboss.resteasy.core.interception.PostMatchContainerRequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Component;
-import phuongtn2.dto.AuthorizedUserInfo;
-import phuongtn2.rest.ApiDefs;
-import phuongtn2.rest.ManualAuthorizedApi;
-import phuongtn2.rest.annotation.AllowRoles;
-import phuongtn2.rest.annotation.ParameterTokenSupport;
-import phuongtn2.rest.annotation.PermissionBinding;
-import phuongtn2.rest.util.RestMessageUtil;
-import phuongtn2.service.AuthorizedUserTokenService;
-import phuongtn2.service.Role;
-import phuongtn2.util.core.ClassUtil;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -27,18 +26,6 @@ import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.util.List;
 
-
-/**
- * REST APIアクセス時にSSOまたはTokenの確認を行うAPI処理前のInterceptor.
- * <p>
- * Intercepterで処理するか、ServletFilterで処理する必要があるかは確認する。
- * 可能であれば\@RoleAllowesアノテーションで権限管理する
- * <p>
- * トークンが存在する場合はトークンをキャッシュから確認する.
- * 存在しない場合SSOからADユーザ名を取得し、認証情報の検索とキャッシュ保存を行う
- *
- * @author masahiro.takahashi
- */
 @Provider
 @PermissionBinding
 @Component
@@ -85,7 +72,7 @@ public class AuthorizedPreProcessFilter implements ContainerRequestFilter, Conta
 	public void filter(ContainerRequestContext req) throws IOException {
 
 		final List<Object> resources = req.getUriInfo().getMatchedResources();
-		if (ClassUtil.findByDescendantClass(resources, ManualAuthorizedApi.class)) {//REST実行対象に手動認証のApiはフィルター対象外
+		if (ClassUtil.findByDescendantClass(resources, AuthorizedUserTokenService.class)) {//REST実行対象に手動認証のApiはフィルター対象外
 			//手動認証をするRESTの部品の場合は前処理なし 実際はフィルター対象外なのでこのコードには入らない
 			log.trace("手動認証処理のため、トークン照合/SSO処理をスキップします");
 			return;//トークン復元や権限確認の必要がないので処理を抜ける

@@ -1,6 +1,7 @@
 package com.building.cache;
 
-import phuongtn2.service.error.ServiceException;
+
+import com.building.services.error.ServiceException;
 
 //エンティティデータを期限付きキャッシュし、１回有効なアクセストークンを発行する。
 public interface ParameterRegisterTokenCache {

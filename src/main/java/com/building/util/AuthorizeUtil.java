@@ -1,9 +1,9 @@
 package com.building.util;
 
-import phuongtn2.dto.AuthorizedUserInfo;
-import phuongtn2.rest.ApiDefs;
-import phuongtn2.service.Role;
-import phuongtn2.service.error.ServiceException;
+import com.building.dto.AuthorizedUserInfo;
+import com.building.services.ApiDefs;
+import com.building.services.Role;
+import com.building.services.error.ServiceException;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,7 +22,7 @@ public class AuthorizeUtil {
 		if (aui == null) {
 			throw new ServiceException("requireAuth");
 		} else {
-			if (! aui.getRoleSet().contains(Role.LOGIN)) {
+			if (! aui.getRoleSet().contains(Role.ADMIN) && ! aui.getRoleSet().contains(Role.MEMBER)) {
 				throw new ServiceException("requireLoginRole", aui.getLoginName(), aui.getUserId());
 			}
 			return aui;

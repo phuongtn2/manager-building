@@ -5,17 +5,15 @@
 
 <configuration>
 	<settings>
-		<!-- 遅延読み込みの状況 -->
 		<setting name="lazyLoadingEnabled" value="false" />
-		<!-- 列名のアンダースコア表記をキャメルケース表記に自動置き換えする -->
 		<!-- <setting name="mapUnderscoreToCamelCase" value="true"/> -->
-		<!-- Log4J利用 -->
 		<setting name="logImpl" value="LOG4J" />
 	</settings>
-	<!-- DTO Class Name Alias MyBatisで使用する結果Bean型は別名を設定してください。 (パラメータ型は@ParamアノテーションでBeanとして扱われるので必須ではありません) -->
 	<typeAliases>
-		<!--<typeAlias alias="sample" type="openhouse.dto.SampleDto" />-->
-		<typeAlias alias="empAuth" type="openhouse.dto.AuthorizedUserInfo" />
+		<typeAlias alias="empAuth" type="com.building.dto.AuthorizedUserInfo" />
+		<typeAlias alias="roleGroup" type="com.building.dto.RoleGroupDto" />
+		<typeAlias alias="userRoleGroup" type="com.building.dto.UserRoleGroupDto" />
+		<!--
 		<typeAlias alias="division" type="openhouse.dto.DivisionDto" />
 		<typeAlias alias="simpleEmp" type="openhouse.dto.SimpleEmployDto" />
 		<typeAlias alias="divisionCustomer" type="openhouse.dto.DivisionIndexCustomerDto" />
@@ -38,8 +36,7 @@
 		<typeAlias alias="jissekiCount" type="openhouse.dto.JissekiCountDTO" />
 		<typeAlias alias="prospectReportData" type="openhouse.dto.ProspectReportDataDto" />
 		<typeAlias alias="himoHistory" type="openhouse.dto.CsResLocEmpRelHistoryDto" />
-		<typeAlias alias="roleGroup" type="openhouse.dto.RoleGroupDto" />
-		<typeAlias alias="userRoleGroup" type="openhouse.dto.UserRoleGroupDto" />
+
 		<typeAlias alias="hpMember" type="openhouse.dto.HpMemberDto" />
 		<typeAlias alias="hpSchedule" type="openhouse.dto.HpScheduleDto" />
 		<typeAlias alias="hpScheduleRef" type="openhouse.dto.HpScheduleRefDto" />
@@ -73,6 +70,6 @@
 		<typeAlias alias="entryResponse" type="openhouse.dto.EntryResponseDto"/>
 		<typeAlias alias="hireHub" type="openhouse.dto.HireHubDto"/>
 		<typeAlias alias="interviewerRemindMail" type="openhouse.dto.InterviewerRemindMailDto"/>
-		<typeAlias alias="responsibleCandidateTreeDto" type="openhouse.dto.ResponsibleCandidateTreeDto" />
+		<typeAlias alias="responsibleCandidateTreeDto" type="openhouse.dto.ResponsibleCandidateTreeDto" />-->
 	</typeAliases>
 </configuration>

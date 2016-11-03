@@ -1,11 +1,11 @@
 package com.building.services.annotation;
 
+import com.building.services.Role;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
-import phuongtn2.service.Role;
 
 /**
  * ロールベースの許可情報の記載用アノテーション.

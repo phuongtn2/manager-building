@@ -1,6 +1,6 @@
 package com.building.services.error;
 
-import phuongtn2.dto.JsonErrorDto;
+import com.building.dto.JsonErrorDto;
 
 public class ServiceException extends Exception {
 	private JsonErrorDto error = null;

@@ -1,8 +1,8 @@
 package com.building.cache.impl;
 
-import phuongtn2.cache.AuthorizedUserTokenCache;
-import phuongtn2.dto.AuthorizedUserInfo;
-import phuongtn2.service.Role;
+import com.building.cache.AuthorizedUserTokenCache;
+import com.building.dto.AuthorizedUserInfo;
+import com.building.services.Role;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -86,7 +86,7 @@ public class AuthorizedUserTokenCacheImpl implements AuthorizedUserTokenCache {
 		synchronized (cacheMap) {
 			final AuthorizedUserInfo aui1 = makeAuthorizedUserInfo(//
 					101, 21, "adUser1", "A1", "0.0.0.0", "dummyMachine1", false, //
-					new Date(), "DUMMY_ROLE_GROUP1", Role.LOGIN, Role.ADMIN);
+					new Date(), "DUMMY_ROLE_GROUP1", Role.MEMBER, Role.ADMIN);
 			registerUserInfoToken(aui1);
 		}
 	}
@@ -94,7 +94,6 @@ public class AuthorizedUserTokenCacheImpl implements AuthorizedUserTokenCache {
 			String ipAddress, String computerName, boolean isNew, Date createAt, String roleGroupName, Role... roles) {
 		final AuthorizedUserInfo aui = new AuthorizedUserInfo();
 		aui.setUserId(userID);
-		aui.setDivisionId(divisionID);
 		aui.setLoginName(adId);
 		aui.setToken(token);
 		aui.setIpAddress(ipAddress);

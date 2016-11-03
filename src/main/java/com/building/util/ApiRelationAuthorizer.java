@@ -1,14 +1,13 @@
 package com.building.util;
 
+import com.building.dto.AuthorizedUserInfo;
+import com.building.services.error.ServiceException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-
-import phuongtn2.dto.AuthorizedUserInfo;
-import phuongtn2.service.error.ServiceException;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ApiRelationAuthorizer {
 	private final Map<String, AuthorizedUserInfo> tokenMap;

@@ -1,25 +1,21 @@
 package com.building.services.impl;
 
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
-import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.jackson2.JacksonFactory;
+import com.building.cache.AuthorizedUserTokenCache;
+import com.building.dto.AuthorizedUserInfo;
+import com.building.mapper.AuthorizedUserTokenMapper;
+import com.building.services.ApiDefs;
+import com.building.services.AuthorizedUserTokenService;
+import com.building.services.Role;
+import com.building.services.error.ServiceException;
+import com.building.util.net.SslSocketFactory;
+import com.building.util.str.NumConverter;
+import com.building.util.str.StringUtil;
+import com.building.util.str.TokenGenerator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import phuongtn2.cache.AuthorizedUserTokenCache;
-import phuongtn2.dao.AuthorizedUserTokenMapper;
-import phuongtn2.dto.AuthorizedUserInfo;
-import phuongtn2.rest.ApiDefs;
-import phuongtn2.service.AuthorizedUserTokenService;
-import phuongtn2.service.Role;
-import phuongtn2.service.error.ServiceException;
-import phuongtn2.util.net.SslSocketFactory;
-import phuongtn2.util.str.NumConverter;
-import phuongtn2.util.str.StringUtil;
-import phuongtn2.util.str.TokenGenerator;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -28,18 +24,15 @@ import javax.naming.NamingException;
 import javax.naming.directory.DirContext;
 import javax.naming.directory.InitialDirContext;
 import javax.ws.rs.core.MultivaluedMap;
-import java.io.IOException;
-import java.security.GeneralSecurityException;
 import java.security.Principal;
-import java.util.*;
+import java.util.Date;
+import java.util.Hashtable;
+import java.util.Properties;
 
 @Service
 public class AuthorizedUserTokenServiceImpl implements
 		AuthorizedUserTokenService {
-	/** ログ出力(認証フィルター用) */
 	private static final Logger log = Logger.getLogger(AuthorizedUserTokenServiceImpl.class);
-
-	/** DIシステム設定Bean */
 	@Resource
 	private Properties setting;
 
@@ -196,12 +189,16 @@ public class AuthorizedUserTokenServiceImpl implements
 	 */
 	public void checkAuthorized(AuthorizedUserInfo aui) throws ServiceException {
 		switch(aui.getUserId()) {
-		case AuthorizedUserInfo.DEPT_NO_LOGIN:
-			throw new ServiceException("noLoginRole");
+		default:
+			throw new ServiceException("Not Login");
 		}
 	}
 
-	@Override
+	public AuthorizedUserInfo doLogin(String userName, String passw) throws ServiceException {
+		return null;
+	}
+
+	/*@Override
 	public AuthorizedUserInfo checkGoogleAuthorizedUserInfo(String accessToken, String token, String remoteAddr, String remoteHost) throws ServiceException {
 		GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(), JacksonFactory.getDefaultInstance())
 				.setAudience(Collections.singletonList(setting.getProperty("authorized.google.client_id")))
@@ -232,7 +229,7 @@ public class AuthorizedUserTokenServiceImpl implements
 			return userInfo;
 		}
 		throw new ServiceException("noGoogleUserData");
-	}
+	}*/
 
 	protected void registerUserInfoUserInfo(AuthorizedUserInfo userInfo)  {
 
@@ -261,8 +258,6 @@ public class AuthorizedUserTokenServiceImpl implements
 	public void storeResponseHeader(MultivaluedMap<String, Object> mm, AuthorizedUserInfo aui) {
 		if (aui.isNew()) {
 			mm.add(ApiDefs.TOKEN_HEADER_NAME, aui.getToken());
-			mm.add(ApiDefs.EMPLOYEE_DIVISION_ID_HEADER_NAME, String.valueOf(aui.getDivisionId()));
-			mm.add(ApiDefs.EMPLOYEE_DIVISION_NAME_HEADER_NAME, StringUtil.base64EncodeString(aui.getDivisionName()));
 			mm.add(ApiDefs.LOGIN_USER_ID_HEADER_NAME, String.valueOf(aui.getUserId()));
 			mm.add(ApiDefs.LOGIN_USER_NAME_HEADER_NAME, StringUtil.base64EncodeString(aui.getFullName()));
 			mm.add(ApiDefs.ROLE_LIST_HEADER_NAME,

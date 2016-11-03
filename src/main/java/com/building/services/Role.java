@@ -1,13 +1,13 @@
 package com.building.services;
 
-import phuongtn2.util.str.StringUtil;
+import com.building.util.str.StringUtil;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public enum Role {
-	LOGIN()
+	MEMBER()
 	, ADMIN();
 
 	private Role() {

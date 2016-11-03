@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- MyBatisのSQL定義 -->
-<mapper namespace="phuongtn2.dao.AuthorizedUserTokenMapper">
+<mapper namespace="com.building.mapper.AuthorizedUserTokenMapper">
 
 	<sql id="empAuthColumns">
 		u.user_id userId

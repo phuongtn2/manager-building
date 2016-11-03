@@ -1,20 +1,15 @@
 package com.building.util.jaxrs;
 
+import com.building.util.core.ClassUtil;
+import com.building.util.str.StringUtil;
+
+import javax.ws.rs.core.MultivaluedMap;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.ws.rs.core.MultivaluedMap;
-
-import phuongtn2.util.core.ClassUtil;
-import phuongtn2.util.str.StringUtil;
+import java.util.*;
 
 /**
  * HTTPのMultivaluedMap<String, String>のデータをBeanに詰め替える.

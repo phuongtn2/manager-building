@@ -1,6 +1,7 @@
 package com.building.cache;
 
-import phuongtn2.dto.AuthorizedUserInfo;
+
+import com.building.dto.AuthorizedUserInfo;
 
 public interface AuthorizedUserTokenCache {
 	// トークンから権限情報を発見する

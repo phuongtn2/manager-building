@@ -1,11 +1,10 @@
 package com.building.services.annotation;
 
+import javax.ws.rs.NameBinding;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
-import javax.ws.rs.NameBinding;
 
 /**
  * AuthorizedPreProcessFilterの処理を行う対象の宣言.

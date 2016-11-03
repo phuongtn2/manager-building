@@ -13,21 +13,17 @@ public class UserDto implements Serializable {
 	private String empCode;
 	private String adId;
 	private byte userStatus;
-	private byte salesFlg;
 	private String fullName;
 	private String lastName;
 	private String firstName;
-	private long divisionId;
 	private String mail;
 	private String tel;
 	private String mobilePhone;
 	private Date startDay;
 	private Date endDay;
-	private byte deleteFlg;
+	private byte hideFlg;
 	private int gender;
 	private Date birthday;
-	private long managerId;
-	private long centerManagerId;
 	private String memo;
 	private Date created;
 	private int createId;
@@ -70,14 +66,6 @@ public class UserDto implements Serializable {
 		this.userStatus = userStatus;
 	}
 
-	public byte getSalesFlg() {
-		return salesFlg;
-	}
-
-	public void setSalesFlg(byte salesFlg) {
-		this.salesFlg = salesFlg;
-	}
-
 	public String getFullName() {
 		return fullName;
 	}
@@ -100,14 +88,6 @@ public class UserDto implements Serializable {
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
-	}
-
-	public long getDivisionId() {
-		return divisionId;
-	}
-
-	public void setDivisionId(long divisionId) {
-		this.divisionId = divisionId;
 	}
 
 	public String getMail() {
@@ -150,12 +130,12 @@ public class UserDto implements Serializable {
 		this.endDay = endDay;
 	}
 
-	public byte getDeleteFlg() {
-		return deleteFlg;
+	public byte getHideFlg() {
+		return hideFlg;
 	}
 
-	public void setDeleteFlg(byte deleteFlg) {
-		this.deleteFlg = deleteFlg;
+	public void setHideFlg(byte hideFlg) {
+		this.hideFlg = hideFlg;
 	}
 
 	public int getGender() {
@@ -172,22 +152,6 @@ public class UserDto implements Serializable {
 
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
-	}
-
-	public long getManagerId() {
-		return managerId;
-	}
-
-	public void setManagerId(long managerId) {
-		this.managerId = managerId;
-	}
-
-	public long getCenterManagerId() {
-		return centerManagerId;
-	}
-
-	public void setCenterManagerId(long centerManagerId) {
-		this.centerManagerId = centerManagerId;
 	}
 
 	public String getMemo() {

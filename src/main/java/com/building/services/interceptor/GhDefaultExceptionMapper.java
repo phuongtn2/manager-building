@@ -1,8 +1,8 @@
 package com.building.services.interceptor;
 
-import phuongtn2.dto.JsonErrorDto;
-import phuongtn2.rest.util.RestMessageUtil;
-import phuongtn2.service.error.ServiceException;
+import com.building.dto.JsonErrorDto;
+import com.building.services.error.ServiceException;
+import com.building.util.RestMessageUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.NoSuchMessageException;

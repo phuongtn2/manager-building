@@ -1,6 +1,6 @@
 package com.building.dto;
 
-import phuongtn2.service.Role;
+import com.building.services.Role;
 
 import java.io.Serializable;
 import java.util.*;
@@ -14,18 +14,11 @@ import java.util.*;
  *
  */
 public class AuthorizedUserInfo implements Serializable {
-
-	public static final int DEPT_NO_LOGIN = -1;
 	public static final int ADMIN = 1;
 	/** 社員ID(T_USER->USER_ID) */
 	private int userId;
 	/** 認証ユーザID（基本的にADID/ローカル認証時はみなしID) */
 	private String loginName;
-	/** 認証者の所属部署(一般社員は基本的に課。上長は課・センター・事業部などもありうる) T_USER->lDivisionID */
-	private int divisionId;
-	/** 認証者の所属部署名 */
-	private String divisionName;
-	/** 認証者の姓名 */
 	private String fullName;
 	/** 認証者のメールアドレス */
 	private String mail;
@@ -90,31 +83,17 @@ public class AuthorizedUserInfo implements Serializable {
 	public void setIpAddress(String ipAddress) {
 		this.ipAddress = ipAddress;
 	}
-
 	public String getLoginName() {
 		return loginName;
 	}
 	public void setLoginName(String loginName) {
 		this.loginName = loginName;
 	}
-	public String getDivisionName() {
-		return divisionName;
-	}
-	public void setDivisionName(String divisionName) {
-		this.divisionName = divisionName;
-	}
 	public String getFullName() {
 		return fullName;
 	}
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
-	}
-
-	public int getDivisionId() {
-		return divisionId;
-	}
-	public void setDivisionId(int divisionId) {
-		this.divisionId = divisionId;
 	}
 	public Date getCreateAt() {
 		return createAt;
@@ -151,7 +130,7 @@ public class AuthorizedUserInfo implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "AuthorizedUserInfo [userId=" + userId + ", loginName=" + loginName + ", divisionId=" + divisionId + ", fullName=" + fullName
+		return "AuthorizedUserInfo [userId=" + userId + ", loginName=" + loginName + ", fullName=" + fullName
 				+ ", mail=" + mail + ", roleGroupName=" + roleGroupName
 				+ ", roleSet=" + roleSet + ", token=" + token + ", createAt=" + createAt + ", isNew=" + isNew + ", computerName=" + computerName + ", ipAddress="
 				+ ipAddress + "]";
@@ -162,7 +141,6 @@ public class AuthorizedUserInfo implements Serializable {
 		int result = 1;
 		result = prime * result + ((computerName == null) ? 0 : computerName.hashCode());
 		result = prime * result + ((createAt == null) ? 0 : createAt.hashCode());
-		result = prime * result + divisionId;
 		result = prime * result + userId;
 		result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
 		result = prime * result + ((ipAddress == null) ? 0 : ipAddress.hashCode());
@@ -192,8 +170,6 @@ public class AuthorizedUserInfo implements Serializable {
 			if (other.createAt != null)
 				return false;
 		} else if (!createAt.equals(other.createAt))
-			return false;
-		if (divisionId != other.divisionId)
 			return false;
 		if (userId != other.userId)
 			return false;
@@ -240,8 +216,6 @@ public class AuthorizedUserInfo implements Serializable {
 		final AuthorizedUserInfo c = new AuthorizedUserInfo();
 		c.setComputerName(this.getComputerName());
 		c.setCreateAt(cloneDate(this.getCreateAt()));
-		c.setDivisionId(this.getDivisionId());
-		c.setDivisionName(this.getDivisionName());
 		c.setUserId(this.getUserId());
 		c.setFullName(this.getFullName());
 		c.setIpAddress(this.getIpAddress());

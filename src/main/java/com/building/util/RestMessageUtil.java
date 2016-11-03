@@ -1,8 +1,8 @@
 package com.building.util;
 
-import phuongtn2.dto.JsonErrorDto;
-import phuongtn2.rest.interceptor.GhDefaultExceptionMapper;
-import phuongtn2.service.error.ServiceException;
+import com.building.dto.JsonErrorDto;
+import com.building.services.error.ServiceException;
+import com.building.services.interceptor.GhDefaultExceptionMapper;
 import org.springframework.context.support.ResourceBundleMessageSource;
 
 import javax.ws.rs.core.Response;

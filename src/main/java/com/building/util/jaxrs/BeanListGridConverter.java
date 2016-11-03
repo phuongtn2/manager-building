@@ -1,12 +1,12 @@
 package com.building.util.jaxrs;
 
+import com.building.dto.GridRowEntry;
+import com.building.util.core.ClassUtil;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import phuongtn2.dto.GridRowEntry;
-import phuongtn2.util.core.ClassUtil;
 
 public class BeanListGridConverter {
 

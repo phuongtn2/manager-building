@@ -1,7 +1,7 @@
 package com.building.services;
 
-import phuongtn2.dto.AuthorizedUserInfo;
-import phuongtn2.service.error.ServiceException;
+import com.building.dto.AuthorizedUserInfo;
+import com.building.services.error.ServiceException;
 
 import javax.ws.rs.core.MultivaluedMap;
 import java.security.Principal;
@@ -25,8 +25,8 @@ public interface AuthorizedUserTokenService {
 	// 認証後のログイン・事業部ロールの確認
 	void checkAuthorized(AuthorizedUserInfo aui) throws ServiceException;
 
-	AuthorizedUserInfo checkGoogleAuthorizedUserInfo(String accessToken, String token,
-													 String remoteAddr, String remoteHost) throws ServiceException;
-
+	//AuthorizedUserInfo checkGoogleAuthorizedUserInfo(String accessToken, String token,
+													 //String remoteAddr, String remoteHost) throws ServiceException;
+	AuthorizedUserInfo doLogin(String userName, String passw) throws ServiceException;
 
 }
