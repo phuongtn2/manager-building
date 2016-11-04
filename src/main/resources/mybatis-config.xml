@@ -13,63 +13,6 @@
 		<typeAlias alias="empAuth" type="com.building.dto.AuthorizedUserInfo" />
 		<typeAlias alias="roleGroup" type="com.building.dto.RoleGroupDto" />
 		<typeAlias alias="userRoleGroup" type="com.building.dto.UserRoleGroupDto" />
-		<!--
-		<typeAlias alias="division" type="openhouse.dto.DivisionDto" />
-		<typeAlias alias="simpleEmp" type="openhouse.dto.SimpleEmployDto" />
-		<typeAlias alias="divisionCustomer" type="openhouse.dto.DivisionIndexCustomerDto" />
-		<typeAlias alias="mailSender" type="openhouse.dto.MailSenderDto" />
-		<typeAlias alias="sendMailPersonal" type="openhouse.dto.SendMailPersonalDto" />
-		<typeAlias alias="checkLibrary" type="openhouse.dto.CheckLibraryDto" />
-		<typeAlias alias="mailLibrary" type="openhouse.dto.MailLibraryDto" />
-		<typeAlias alias="mailLibraryDir" type="openhouse.dto.MailLibraryDirDto" />
-		<typeAlias alias="responseImport" type="openhouse.dto.ResponseImportDto" />
-		<typeAlias alias="direct" type="openhouse.dto.DirectDto" />
-		<typeAlias alias="schedule" type="openhouse.dto.ScheduleDto" />
-		<typeAlias alias="act" type="openhouse.dto.ActDto" />
-		<typeAlias alias="employee" type="openhouse.dto.EmployeeDto" />
-		<typeAlias alias="responseHousingInfo" type="openhouse.dto.ResponseHousingInfoDto" />
-		<typeAlias alias="zipAddress" type="openhouse.dto.ZipAddressDto" />
-		<typeAlias alias="statusCount" type="openhouse.dto.StatusCountDto" />
-		<typeAlias alias="mailQueue" type="openhouse.dto.MailQueueDto" />
-		<typeAlias alias="mailSequence" type="openhouse.dto.MailSequenceDto" />
-		<typeAlias alias="responseType" type="openhouse.dto.ResponseTypeDto" />
-		<typeAlias alias="jissekiCount" type="openhouse.dto.JissekiCountDTO" />
-		<typeAlias alias="prospectReportData" type="openhouse.dto.ProspectReportDataDto" />
-		<typeAlias alias="himoHistory" type="openhouse.dto.CsResLocEmpRelHistoryDto" />
-
-		<typeAlias alias="hpMember" type="openhouse.dto.HpMemberDto" />
-		<typeAlias alias="hpSchedule" type="openhouse.dto.HpScheduleDto" />
-		<typeAlias alias="hpScheduleRef" type="openhouse.dto.HpScheduleRefDto" />
-		<typeAlias alias="hpInformation" type="openhouse.dto.HpInformationDto" />
-		<typeAlias alias="hpInformationRef" type="openhouse.dto.HpInformationRefDto" />
-		<typeAlias alias="hpOtherForm" type="openhouse.dto.HpOtherFormDto" />
-		<typeAlias alias="hpSearchContent" type="openhouse.dto.HpSearchContentDto" />
-		<typeAlias alias="hpLoanSimulation" type="openhouse.dto.HpLoanSimulationDto" />
-		<typeAlias alias="hpFavorite" type="openhouse.dto.HpFavoriteDto" />
-		<typeAlias alias="hpFavoriteRef" type="openhouse.dto.HpFavoriteRefDto" />
-		<typeAlias alias="hpWebHistory" type="openhouse.dto.HpWebHistoryDto" />
-		<typeAlias alias="hpCustomer" type="openhouse.dto.HpCustomerDto" />
-		<typeAlias alias="hpSummarizedHistory" type="openhouse.dto.HpSummarizedHistoryDto" />
-		<typeAlias alias="hpOperationHistory" type="openhouse.dto.HpOperationHistoryDto" />
-		<typeAlias alias="attendeeEvent" type="openhouse.dto.AttendeeGoogleEventDto" />
-		<typeAlias alias="libraryAttachment" type="openhouse.dto.LibraryAttachmentDto" />
-		<typeAlias alias="year" type="openhouse.dto.YearDto" />
-		<typeAlias alias="schoolGroup" type="openhouse.dto.SchoolGroupDto" />
-		<typeAlias alias="school" type="openhouse.dto.SchoolDto" />
-		<typeAlias alias="entry" type="openhouse.dto.EntryDto" />
-		<typeAlias alias="personal" type="openhouse.dto.PersonalDto" />
-		<typeAlias alias="interview" type="openhouse.dto.InterviewDto" />
-		<typeAlias alias="entryTree" type="openhouse.dto.EntryTreeDto" />
-		<typeAlias alias="printQRCode" type="openhouse.dto.PrintQRCodeDto" />
-		<typeAlias alias="entryEventInfo" type="openhouse.dto.EntryEventInfoDto" />
-		<typeAlias alias="event" type="openhouse.dto.EventDto" />
-		<typeAlias alias="fileEntry" type="openhouse.dto.FileEntryDto" />
-		<typeAlias alias="file" type="openhouse.dto.FileDto" />
-		<typeAlias alias="personalGrid" type="openhouse.dto.ResponsePersonalGridDto"/>
-		<typeAlias alias="personalEntry" type="openhouse.dto.PersonalEntryDto"/>
-		<typeAlias alias="entryResponse" type="openhouse.dto.EntryResponseDto"/>
-		<typeAlias alias="hireHub" type="openhouse.dto.HireHubDto"/>
-		<typeAlias alias="interviewerRemindMail" type="openhouse.dto.InterviewerRemindMailDto"/>
-		<typeAlias alias="responsibleCandidateTreeDto" type="openhouse.dto.ResponsibleCandidateTreeDto" />-->
+		<typeAlias alias="building" type="com.building.dto.BuildingDto"/>
 	</typeAliases>
 </configuration>

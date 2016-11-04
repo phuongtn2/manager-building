@@ -26,9 +26,7 @@
 
 <body>
 <div id="wrapper">
-    <%@include file="template/navbar.jsp" %>
-    <%@include file="template/notify.jsp" %>
-    <%--<nav class="navbar-default navbar-static-side" role="navigation">
+    <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
@@ -75,9 +73,9 @@
             </ul>
 
         </div>
-    </nav>--%>
+    </nav>
 
-    <%--<div id="page-wrapper" class="gray-bg dashbard-1">
+    <div id="page-wrapper" class="gray-bg dashbard-1">
         <div class="row border-bottom">
             <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
@@ -88,7 +86,6 @@
                         </div>
                     </form>
                 </div>
-
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
                         <span class="m-r-sm text-muted welcome-message">Chào mừng ${aui.fullName}.</span>
@@ -133,6 +130,8 @@
                             </li>
                         </ul>
                     </li>
+
+
                     <li>
                         <a href="login.html">
                             <i class="fa fa-sign-out"></i> Log out
@@ -142,8 +141,9 @@
 
             </nav>
         </div>
-    </div>--%>
         <!--Content main -->
+
+    </div>
 </div>
 
 <!-- Mainly scripts -->
