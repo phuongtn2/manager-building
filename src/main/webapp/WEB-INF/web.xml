@@ -10,7 +10,7 @@
     </context-param>
     <!--<context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/spring-servlet.xml</param-value>
+        <param-value>/WEB-INF/building-servlet.xml</param-value>
     </context-param>-->
 
     <context-param>
@@ -34,16 +34,27 @@
 
     <servlet>
         <servlet-name>building</servlet-name>
-        <!--<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>-->
-          <!--<init-param>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+          <init-param>
               <param-name>contextConfigLocation</param-name>
-              <param-value>/WEB-INF/spring-servlet.xml</param-value>
-          </init-param>-->
+              <param-value>/WEB-INF/applicationContext.xml</param-value>
+          </init-param>
           <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>building</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    <!-- Khai Bao Taglib -->
+    <jsp-config>
+        <taglib>
+            <taglib-uri>http://java.sun.com/portlet</taglib-uri>
+            <taglib-location>/WEB-INF/tld/liferay-portlet.tld</taglib-location>
+        </taglib>
+        <taglib>
+            <taglib-uri>http://www.springframework.org/tags</taglib-uri>
+            <taglib-location>/WEB-INF/tags/spring.tld</taglib-location>
+        </taglib>
+    </jsp-config>
   
 </web-app>

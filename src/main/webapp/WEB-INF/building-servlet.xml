@@ -43,15 +43,15 @@
     <mvc:annotation-driven />
     <!--<mvc:default-servlet-handler/>-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="cache" value="false"/>
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/jsp/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
-    <!--<mvc:resources mapping="/resources/**" location="/resources/"
-                   cache-period="31556926"/>-->
-
-    <mvc:annotation-driven />
+    <mvc:resources mapping="/css/**" location="/resources/css/"
+                   cache-period="31556926"/>
+    <mvc:resources mapping="/font/**" location="/resources/font-awesome/css/"
+                   cache-period="31556926"/>
+    <mvc:resources mapping="/js/**" location="/resources/js/"
+                   cache-period="31556926"/>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
