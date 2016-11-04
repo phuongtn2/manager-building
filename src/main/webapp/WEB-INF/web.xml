@@ -17,20 +17,7 @@
         <param-name>log4jConfigLocation</param-name>
         <param-value>/WEB-INF/log4j.xml</param-value>
     </context-param>
-    <listener>
-        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-    </listener>
-    <!--<listener>
-        <listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
-    </listener>
-    <listener>
-        <listener-class>org.jboss.resteasy.plugins.spring.SpringContextLoaderListener</listener-class>
-    </listener>-->
 
-
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
 
     <servlet>
         <servlet-name>building</servlet-name>
@@ -45,8 +32,22 @@
         <servlet-name>building</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+    <!--<listener>
+        <listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.jboss.resteasy.plugins.spring.SpringContextLoaderListener</listener-class>
+    </listener>-->
+
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
     <!-- Khai Bao Taglib -->
-    <jsp-config>
+    <!--<jsp-config>
         <taglib>
             <taglib-uri>http://java.sun.com/portlet</taglib-uri>
             <taglib-location>/WEB-INF/tld/liferay-portlet.tld</taglib-location>
@@ -55,6 +56,30 @@
             <taglib-uri>http://www.springframework.org/tags</taglib-uri>
             <taglib-location>/WEB-INF/tags/spring.tld</taglib-location>
         </taglib>
-    </jsp-config>
-  
+    </jsp-config>-->
+    <!-- Spring Security -->
+    <!--<context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/spring-security.xml
+        </param-value>
+    </context-param>
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter>
+        <filter-name>filterChainProxy</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>filterChainProxy</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>-->
+
 </web-app>

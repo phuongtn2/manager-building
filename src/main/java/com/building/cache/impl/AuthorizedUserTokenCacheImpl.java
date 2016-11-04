@@ -96,8 +96,6 @@ public class AuthorizedUserTokenCacheImpl implements AuthorizedUserTokenCache {
 		aui.setUserId(userID);
 		aui.setLoginName(adId);
 		aui.setToken(token);
-		aui.setIpAddress(ipAddress);
-		aui.setComputerName(computerName);
 		aui.setNew(isNew);
 		aui.setCreateAt(createAt);
 		aui.setRoleGroupName(roleGroupName);

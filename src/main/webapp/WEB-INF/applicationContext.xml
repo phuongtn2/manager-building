@@ -23,7 +23,7 @@
     <context:property-placeholder location="/WEB-INF/jdbc.properties" />
     <context:annotation-config />
     <mybatis:scan base-package="com.building.mapper" />
-    <context:component-scan base-package="com.building">
+    <context:component-scan base-package="com.">
         <context:include-filter type="regex"
                                 expression="services.impl.*" />
         <context:include-filter type="regex"
@@ -32,6 +32,7 @@
                                 expression="cache.impl.*" />
 
     </context:component-scan>
+
     <bean id="messageSource"
           class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basenames">
@@ -48,8 +49,8 @@
         <property name="prefix" value="/WEB-INF/jsp/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
-    <!--<mvc:resources mapping="/resources/**" location="/resources/"
-                   cache-period="31556926"/>-->
+    <mvc:resources mapping="/resources/**" location="/resources/"
+                   cache-period="31556926"/>
 
     <mvc:annotation-driven />
 
@@ -77,5 +78,4 @@
         <property name="dataSource" ref="dataSource" />
         <property name="configLocation" value="classpath:mybatis-config.xml" />
     </bean>
-
 </beans>

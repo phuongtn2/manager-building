@@ -44,18 +44,9 @@ public class AuthorizedUserTokenServiceImpl implements
 
 	@Autowired
 	private ApplicationContext applicationContext;
-
-	/** 乱数発生部分の長さ(日時・社員IDに加える) */
 	private int randomTokenLength = 20;
-	/** LDAP認証先URL */
 	private String ldapAuthorizedUrl;
-	/** LDAP認証先ADドメイン名 */
 	private String ldapAdDomainName;
-	
-	
-	/**
-	 * 初期化時に認証関連パラメータの読み込み初期化処理を行う
-	 */
 	@PostConstruct
 	public void initPathPatternList() {
 		randomTokenLength = NumConverter.parseIntProperty(setting, "authorized.token.randomLength", randomTokenLength);
@@ -72,19 +63,12 @@ public class AuthorizedUserTokenServiceImpl implements
 
 	@Override
 	public AuthorizedUserInfo checkAuthorizedUserInfo(String token) {
-		return authCache.findToken(token);//登録済み認証トークン情報（存在しない場合null）
+		return authCache.findToken(token);
 	}
-	
 
-	/**
-	 * AD想定のLDAPsでの直接問い合わせ処理.
-	 * @param userName
-	 * @param password
-	 * @return
-	 */
 	protected boolean ldapLoginCheck(String userName, String password) throws ServiceException {
 		if(StringUtils.isEmpty(ldapAuthorizedUrl)) {
-			throw new ServiceException("notAcceptLDAPAuth");//LDAP認証の構成がOFF
+			throw new ServiceException("notAcceptLDAPAuth");
 		}
 
 		final Hashtable<String, String> env = new Hashtable<>();
@@ -100,20 +84,13 @@ public class AuthorizedUserTokenServiceImpl implements
 		DirContext ctx;
 		try {
 		    ctx = new InitialDirContext(env);
-		    ctx.close();//AD認証成功
+		    ctx.close();
 		    return true;
 		} catch (NamingException ex) {
-		    //"AD認証失敗";
 			ex.printStackTrace();
 		}
 		return false;
 	}
-
-//	/**
-//	 * SSL証明書の取り込み
-//	 * @param keyResource
-//	 * @param keypass
-//	 */
 //	protected void loadKeystore(org.springframework.core.io.Resource keyResource, String keypass) {
 //		try {
 //			char[] storePass = keypass.toCharArray();
@@ -139,63 +116,37 @@ public class AuthorizedUserTokenServiceImpl implements
 //			throw new RuntimeException("Failed to load KeyStore", e);
 //		}
 //	}
-
-	/**
-	 * 社員IDからみなし認証情報を生成する.
-	 * (内部処理用のためトランザクション対象外)
-	 * 通常の認証と異なる部分：
-	 * 		TOKENなし・キャッシュ保存なし、実行時事業部指定なし（ロールで事業部実行許可の確認は可能）
-	 */
 	@Override
 	public AuthorizedUserInfo findAuthorizedUserInfoByEmployeeId(int employeeId) throws ServiceException {
-		//ユーザ情報をDBから検索
 		final AuthorizedUserInfo userInfo = authMapper.findAuthorizedUserInfoByEmployeeId(employeeId);
 		if (userInfo != null) {
-			userInfo.setIpAddress("");
-			userInfo.setComputerName("");
-			log.info("ユーザ認証情報確認:" + employeeId);
-			//共通の認証関連情報処理
 			registerUserInfoUserInfo(userInfo);
 		} else {
-			log.warn("マニュアルログインNG:" + employeeId);
 			throw new ServiceException("noEmpIdUser", employeeId);
 		}
 		return userInfo;
 	}
-
-	/**
-	 * SSOのユーザ情報を取得する.
-	 *
-	 * 現在は暫定的にSSOのユーザが発見されない例外か、固定のみなしユーザを返す。
-	 *
-	 * @param p ユーザプリンシパル
-	 * @return SSOユーザID(SFAのDBに存在するユーザでない場合、あとの処理でエラーになる）
-	 * @throws ServiceException SSOのユーザが発見されない場合
-	 */
 	@Override
 	public String findSsoAuthorizedUserId(Principal p) throws ServiceException {
 		if(p!=null) {
 			return p.getName();
 		}
-		// TODO SSOのユーザ情報発見処理を確認する ADFS? OAuthなど
-		// 処理方法によっては別サーバや別の処理系が必要になる
 		throw new ServiceException("noSSOUser");
 	}
-
-	/**
-	 * 事業部の評価結果が実行できないものの場合例外を発行する
-	 * @param aui
-	 * @throws ServiceException
-	 */
 	public void checkAuthorized(AuthorizedUserInfo aui) throws ServiceException {
-		switch(aui.getUserId()) {
-		default:
+		if(StringUtil.isEmpty(aui.getFullName())) {
 			throw new ServiceException("Not Login");
 		}
 	}
 
-	public AuthorizedUserInfo doLogin(String userName, String passw) throws ServiceException {
-		return null;
+	public AuthorizedUserInfo doLogin(String adId, String password) throws ServiceException {
+		AuthorizedUserInfo userInfo = authMapper.findAuthorizedUserInfoByAuth(
+				adId, password);
+		if (userInfo != null) {
+			log.info("adId:" + adId);
+			registerUserInfoUserInfo(userInfo);
+		}
+		return userInfo;
 	}
 
 	/*@Override
@@ -245,15 +196,6 @@ public class AuthorizedUserTokenServiceImpl implements
         authCache.registerUserInfoToken(userInfo);
         userInfo.setNew(true);
 	}
-
-	/**
-	 * レスポンスヘッダーに認証情報由来の情報を格納する.
-	 * 認証フィルターがかかっているか、手動ログインのあとにセットする想定（認証が必須でない処理は対象外）
-	 * この処理は有効な認証情報(AuthorizedUserInfo)が存在している必要がある。
-	 *
-	 * @param mm ヘッダー値
-	 * @param aui 認証情報
-	 */
 	@Override
 	public void storeResponseHeader(MultivaluedMap<String, Object> mm, AuthorizedUserInfo aui) {
 		if (aui.isNew()) {
@@ -265,14 +207,10 @@ public class AuthorizedUserTokenServiceImpl implements
 			mm.add(ApiDefs.AUTH_PROP_NAME, aui);
 		}
 	}
-
-	/**
-	 * キャッシュ中のログイントークンを抹消する.
-	 */
 	@Override
 	public String logoutAuthorizedUserInfo(String token) {
 		final AuthorizedUserInfo removed = authCache.removeToken(token);
-		return removed != null ? String.valueOf(removed.getLoginName()) : "未登録";
+		return removed != null ? String.valueOf(removed.getLoginName()) : "PhuongTN2";
 	}
 
 	public void setRandomTokenLength(int len) {

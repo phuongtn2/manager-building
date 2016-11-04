@@ -12,6 +12,7 @@ public class UserDto implements Serializable {
 	private int userId;
 	private String empCode;
 	private String adId;
+	private String pass;
 	private byte userStatus;
 	private String fullName;
 	private String lastName;
@@ -52,6 +53,14 @@ public class UserDto implements Serializable {
 
 	public String getAdId() {
 		return adId;
+	}
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 
 	public void setAdId(String adId) {

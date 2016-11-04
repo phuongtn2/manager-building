@@ -2,33 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- MyBatisのSQL定義 -->
 <mapper namespace="com.building.mapper.AuthorizedUserTokenMapper">
 
 	<sql id="empAuthColumns">
-		u.user_id userId
-		, u.ad_id loginName
-		, u.division_id divisionId
-		, d.division_group_name divisionName
+		u.userId userId
+		, u.adId adId
 		, u.mail mail
-		, u.full_name fullName
-		, rg.role_group_name roleGroupName
+		, u.fullName fullName
+		, rg.roleGroupName roleGroupName
 	</sql>
 	<sql id="empAuthTables">
 		FROM T_USER u
-		LEFT OUTER JOIN T_DIVISION d on
-		(d.division_id=u.division_id)
 		LEFT OUTER JOIN T_USERROLEGROUP urg on
-		(urg.user_id=u.user_id AND NOW() BETWEEN urg.start_day AND urg.end_day)
-		LEFT OUTER JOIN T_ROLEGROUP rg on (rg.role_group_id=urg.role_group_id)
+		(urg.userId=u.userId)
+		LEFT OUTER JOIN T_ROLEGROUP rg on (rg.roleGroupId=urg.roleGroupId)
 	</sql>
 
-	<!-- 指定した社員IDで検索し、認証情報を取得 -->
 	<select id="findAuthorizedUserInfoByAdId" resultType="empAuth">
 		SELECT
 		<include refid="empAuthColumns" />
 		<include refid="empAuthTables" />
-		WHERE u.ad_id=#{loginName}
+		WHERE u.adId=#{loginName}
+	</select>
+
+	<select id="findAuthorizedUserInfoByAuth" resultType="empAuth">
+		SELECT
+		<include refid="empAuthColumns" />
+		<include refid="empAuthTables" />
+		WHERE u.adId=#{adId} AND u.password=#{password}
+	</select>
+
+	<select id="findUserRoleList" resultType="String">
+		SELECT
+		r.roleName roleName
+		FROM T_USERROLEGROUP urg
+		JOIN T_ROLEGROUP rg ON (rg.roleGroupId=urg.roleGroupId)
+		JOIN T_ROLEGROUPROLE rgr ON (rgr.roleGroupId=rg.roleGroupId)
+		JOIN T_ROLE r ON (r.roleId=rgr.roleId)
+		WHERE urg.userId=#{employeeId}
 	</select>
 
 	<select id="findAuthorizedUserInfoByEmail" resultType="empAuth">
@@ -39,14 +50,6 @@
 		LIMIT 1
 	</select>
 
-	<!-- ローカルの認証処理で評価し、認証情報を取得 -->
-	<select id="findAuthorizedUserInfoByAuth" resultType="empAuth">
-		SELECT
-		<include refid="empAuthColumns" />
-		<include refid="empAuthTables" />
-		WHERE u.ad_id=#{loginName} AND u.passWord=#{password}
-	</select>
-
 	<!-- 指定した社員IDで検索し、認証情報を取得 -->
 	<select id="findAuthorizedUserInfoByEmployeeId" resultType="empAuth">
 		SELECT
@@ -55,17 +58,7 @@
 		WHERE u.user_id=#{employeeId}
 	</select>
 
-	<!-- 指定社員IDの現在のロール情報の取得 -->
-	<select id="findUserRoleList" resultType="String">
-		SELECT
-		r.role_name roleName
-		FROM T_USERROLEGROUP urg
-		JOIN T_ROLEGROUP rg ON (rg.role_group_id=urg.role_group_id)
-		JOIN T_ROLEGROUPROLE rgr ON (rgr.role_group_id=rg.role_group_id)
-		JOIN T_ROLE r ON (r.role_id=rgr.role_id)
-		WHERE NOW() BETWEEN urg.start_day AND
-		urg.end_day AND urg.user_id=#{employeeId}
-	</select>
+
 
 	<!-- 指定社員の管理組織 -->
 	<select id="findManageDivisionIdList" resultType="Integer">

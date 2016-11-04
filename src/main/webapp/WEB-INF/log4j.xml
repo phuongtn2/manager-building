@@ -10,7 +10,7 @@
 		</layout>
 	</appender>
 
-	<logger name="com.building.dao">
+	<logger name="com.building.mapper">
 		<level value="debug"/>
 	</logger>
 	<logger name="org.springframework.transaction.interceptor">
