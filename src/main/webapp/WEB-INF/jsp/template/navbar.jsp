@@ -29,7 +29,7 @@
                 <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Yêu cầu </br> (Request/Booking)</span> <span class="fa arrow"></span></a>
             </li>
             <li>
-                <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Tòa nhà </br> (Building)</span> <span class="fa arrow"></span></a>
+                <a href="building"><i class="fa fa-th-large"></i> <span class="nav-label">Tòa nhà </br> (Building)</span> <span class="fa arrow"></span></a>
             </li>
             <li>
                 <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Tài sản chung </br> (Asset)</span> <span class="fa arrow"></span></a>
