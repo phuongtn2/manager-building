@@ -1,7 +1,7 @@
 <!DOCTYPE html>
+<%@page language="java" contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
@@ -28,6 +28,12 @@
 <div id="wrapper">
     <%@include file="../template/navbar.jsp" %>
     <%@include file="../template/notify.jsp" %>
+    <div id="page-wrapper" class="gray-bg">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <%@include file="add.jsp" %>
+        </div>
+        <%@include file="../template/footer.jsp" %>
+    </div>
 </div>
 
 <!-- Mainly scripts -->

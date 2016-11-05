@@ -4,6 +4,25 @@
 
 <mapper namespace="com.building.mapper.ManagerBuildingMapper">
 
+	<insert id="insertBuilding" useGeneratedKeys="true" keyProperty="dto.buildingId">
+		INSERT INTO BUILDING(
+		buildingName
+		, memo
+		, created
+		, lastUpdated
+		, createId
+		, updateId
+		)VALUES(
+		#{dto.buildingName}
+		, #{dto.memo}
+		,  NOW()
+		,  NOW()
+		, #{dto.createId}
+		, #{dto.updateId}
+		)
+	</insert>
+
+
 	<sql id="empAuthColumns">
 		u.userId userId
 		, u.adId adId
@@ -74,31 +93,5 @@
 		OR d.lLV5ID IN (SELECT division_id FROM T_DIVISION WHERE
 		manager_id=#{employeeId})
 	</select>
-
-	<!-- ログイン時のログ書き込み -->
-	<insert id="registLogingLog" useGeneratedKeys="true"
-		keyProperty="dto.logId">
-		INSERT INTO LOG_LOGIN(
-		logtime
-		, lLoginUserID
-		, computerName
-		, userAccount
-		, ipAddress
-		, systemName
-		, authorityName
-		, createID
-		, updateID
-		)VALUES(
-		NOW()
-		, #{dto.lLoginUserId}
-		, #{dto.computerName}
-		, #{dto.userAccount}
-		, #{dto.ipAddress}
-		, #{dto.systemName}
-		, #{dto.authorityName}
-		, #{dto.lLoginUserId}
-		, #{dto.lLoginUserId}
-		)
-	</insert>
 
 </mapper>

@@ -1,5 +1,5 @@
-<%@page contentType="text/html;charset=UTF-8"%>
-<div id="page-wrapper" class="gray-bg dashbard-1">
+<%@page language="java" contentType="text/html;charset=UTF-8"%>
+<%--<div id="page-wrapper" class="gray-bg dashbard-1">--%>
     <div class="row border-bottom">
         <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -51,12 +51,18 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="login.html">
+                    <a href="/logout">
                         <i class="fa fa-sign-out"></i> Đăng Xuất
+                    </a>
+                </li>
+                <li>
+                    <a class="right-sidebar-toggle">
+                        <i class="fa fa-tasks"></i>
                     </a>
                 </li>
             </ul>
 
         </nav>
     </div>
-</div>
+<%--
+</div>--%>

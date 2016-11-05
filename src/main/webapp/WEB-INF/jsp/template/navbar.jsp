@@ -1,4 +1,4 @@
-<%@page contentType="text/html;charset=UTF-8"%>
+<%@page language="java" contentType="text/html;charset=UTF-8"%>
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav metismenu" id="side-menu">
@@ -12,7 +12,7 @@
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a href="profile.html">Thông Tin Cá Nhân</a></li>
                         <li class="divider"></li>
-                        <li><a href="login.html">Logout</a></li>
+                        <li><a href="/logout">Logout</a></li>
                     </ul>
                 </div>
                 <div class="logo-element">
