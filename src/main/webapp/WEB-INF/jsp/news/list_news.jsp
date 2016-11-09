@@ -23,14 +23,18 @@
                                     <br/>
                                     <small class="text-navy">2 hour ago</small>
                                 </div>
-                                <div class="col-xs-7 content no-top-border">
-                                    <p class="m-b-xs"><strong>${news.title}</strong></p>
-                                    <p>${news.memo}</p>
-                                </div>
-                                <div class="col-xs-2 content no-top-border">
-                                    <a class="btn btn-success btn-rounded" href="/news/edit/${news.newsId}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
+                                <div class="col-xs-9 content no-top-border">
+                                    <div class="row">
+                                        <div class="col-lg-9">
+                                            <p class="m-b-xs"><strong>${news.title}</strong></p>
+                                            <p>${news.memo}</p>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <a class="btn btn-success btn-rounded" href="/news/edit/${news.newsId}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
 
-                                    <a class="btn btn-danger btn-rounded" href="/news/delete/${news.newsId}">Delete</a>
+                                            <a class="btn btn-danger btn-rounded" href="/news/delete/${news.newsId}">Delete</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
