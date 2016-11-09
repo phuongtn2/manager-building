@@ -40,6 +40,7 @@ public class LoginController {
 	@RequestMapping("/logout")
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
 		authorizedUserTokenService.logoutAuthorizedUserInfo((String) request.getSession().getAttribute("token"));
+		request.getSession().invalidate();
 		return new ModelAndView("login", "aui", null);
 	}
 }
