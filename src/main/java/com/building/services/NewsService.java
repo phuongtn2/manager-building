@@ -11,4 +11,7 @@ import java.util.List;
 public interface NewsService {
     long insertNews(NewsDto newsDto) throws ServerException;
     List<NewsDto> findAll() throws ServerException;
+    NewsDto findById(long id) throws ServerException;
+    void update(NewsDto newsDto) throws ServerException;
+    void deleteById(long id) throws ServerException;
 }

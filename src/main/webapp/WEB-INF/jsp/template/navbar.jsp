@@ -12,7 +12,7 @@
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a href="profile.html">Thông Tin Cá Nhân</a></li>
                         <li class="divider"></li>
-                        <li><a href="/logout.htm">Logout</a></li>
+                        <li><a href="/logout">Logout</a></li>
                     </ul>
                 </div>
                 <div class="logo-element">
@@ -20,28 +20,28 @@
                 </div>
             </li>
             <li class="active">
-                <a href="/news.htm"><i class="fa fa-th-large"></i> <span class="nav-label">Tin nội bộ </br> (News)</span> <span class="fa arrow"></span></a>
+                <a href="/news"><i class="fa fa-th-large"></i> <span class="nav-label">Tin nội bộ </br> (News)</span> <span class="fa arrow"></span></a>
             </li>
             <li>
-                <a href="/complaint.htm"><i class="fa fa-th-large"></i> <span class="nav-label">Phản hồi đánh giá </br> (Complaint)</span> <span class="fa arrow"></span></a>
+                <a href="/complaint"><i class="fa fa-th-large"></i> <span class="nav-label">Phản hồi đánh giá </br> (Complaint)</span> <span class="fa arrow"></span></a>
             </li>
             <li>
-                <a href="/request_bokking.htm"><i class="fa fa-th-large"></i> <span class="nav-label">Yêu cầu </br> (Request/Booking)</span> <span class="fa arrow"></span></a>
+                <a href="/request_bokking"><i class="fa fa-th-large"></i> <span class="nav-label">Yêu cầu </br> (Request/Booking)</span> <span class="fa arrow"></span></a>
             </li>
             <li>
-                <a href="/building.htm"><i class="fa fa-th-large"></i> <span class="nav-label">Tòa nhà </br> (Building)</span> <span class="fa arrow"></span></a>
+                <a href="/building"><i class="fa fa-th-large"></i> <span class="nav-label">Tòa nhà </br> (Building)</span> <span class="fa arrow"></span></a>
             </li>
             <li>
-                <a href="/asset.htm"><i class="fa fa-th-large"></i> <span class="nav-label">Tài sản chung </br> (Asset)</span> <span class="fa arrow"></span></a>
+                <a href="/asset"><i class="fa fa-th-large"></i> <span class="nav-label">Tài sản chung </br> (Asset)</span> <span class="fa arrow"></span></a>
             </li>
             <li>
-                <a href="/history.htm"><i class="fa fa-th-large"></i> <span class="nav-label">Lịch sử căn hộ </br> (History)</span> <span class="fa arrow"></span></a>
+                <a href="/history"><i class="fa fa-th-large"></i> <span class="nav-label">Lịch sử căn hộ </br> (History)</span> <span class="fa arrow"></span></a>
             </li>
             <li>
-                <a href="/member.htm"><i class="fa fa-th-large"></i> <span class="nav-label">Member</span> <span class="fa arrow"></span></a>
+                <a href="/member"><i class="fa fa-th-large"></i> <span class="nav-label">Member</span> <span class="fa arrow"></span></a>
             </li>
             <li>
-                <a href="/services.htm"><i class="fa fa-th-large"></i> <span class="nav-label">Phí dịch vụ </br> (Service)</span> <span class="fa arrow"></span></a>
+                <a href="/services"><i class="fa fa-th-large"></i> <span class="nav-label">Phí dịch vụ </br> (Service)</span> <span class="fa arrow"></span></a>
             </li>
         </ul>
 

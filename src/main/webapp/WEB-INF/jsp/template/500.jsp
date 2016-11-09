@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Building | 404 Error</title>
+    <title>Building | 500 Error</title>
 
     <spring:url value="/resources/css/bootstrap.min.css" var="bootsTrapCss"/>
     <spring:url value="/resources/font-awesome/css/font-awesome.css" var="awesomeFontCss" />

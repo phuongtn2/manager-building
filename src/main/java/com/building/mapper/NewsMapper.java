@@ -1,6 +1,5 @@
 package com.building.mapper;
 
-import com.building.dto.BuildingDto;
 import com.building.dto.NewsDto;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,4 +11,7 @@ import java.util.List;
 public interface NewsMapper {
     long insertNews(@Param("dto") NewsDto newsDto);
     List<NewsDto> findAll();
+    NewsDto findById(@Param("id") long id);
+    void update(@Param("dto") NewsDto newsDto);
+    void deleteById(@Param("id") long id);
 }

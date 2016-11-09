@@ -23,7 +23,22 @@
 	</insert>
 
 	<select id="findAll" resultType="news">
-		SELECT * FROM NEWS
+		SELECT * FROM NEWS ORDER BY created
 	</select>
+
+	<select id="findById" resultType="news">
+		SELECT * FROM NEWS WHERE newsId=#{id}
+	</select>
+	<update id="update">
+		UPDATE NEWS SET
+		title = #{dto.title}
+		,memo = #{dto.memo}
+		,updateId = #{dto.updateId}
+		,lastUpdate= NOW()
+		WHERE newsId= #{dto.newsId}
+	</update>
+	<delete id="deleteById">
+		DELETE FROM NEWS WHERE newsId = #{id}
+	</delete>
 
 </mapper>
