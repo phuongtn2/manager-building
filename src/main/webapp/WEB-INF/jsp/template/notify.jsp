@@ -51,7 +51,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="/logout">
+                    <a href="/logout.htm">
                         <i class="fa fa-sign-out"></i> Đăng Xuất
                     </a>
                 </li>
