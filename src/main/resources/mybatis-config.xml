@@ -14,5 +14,6 @@
 		<typeAlias alias="roleGroup" type="com.building.dto.RoleGroupDto" />
 		<typeAlias alias="userRoleGroup" type="com.building.dto.UserRoleGroupDto" />
 		<typeAlias alias="building" type="com.building.dto.BuildingDto"/>
+		<typeAlias alias="news" type="com.building.dto.NewsDto"/>
 	</typeAliases>
 </configuration>

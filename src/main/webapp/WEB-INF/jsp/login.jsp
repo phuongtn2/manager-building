@@ -28,7 +28,7 @@
         <h3>Welcome to Manager Building </h3>
 
         <p>Đăng Nhập</p>
-        <form:form class="m-t" role="form" action="/login" name="submitForm" method="post">
+        <form:form class="m-t" role="form" action="/login.htm" name="submitForm" method="post">
             <div class="form-group">
                 <input name="userName" type="text" class="form-control" placeholder="Username" required="">
             </div>

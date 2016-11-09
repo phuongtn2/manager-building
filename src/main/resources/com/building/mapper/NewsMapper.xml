@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.building.mapper.NewsMapper">
+
+	<insert id="insertNews" useGeneratedKeys="true" keyProperty="dto.newsId">
+		INSERT INTO NEWS(
+		title
+		, memo
+		, created
+		, lastUpdate
+		, createId
+		, updateId
+		)VALUES(
+		#{dto.title}
+		, #{dto.memo}
+		,  NOW()
+		,  NOW()
+		, #{dto.createId}
+		, #{dto.updateId}
+		)
+	</insert>
+
+	<select id="findAll" resultType="news">
+		SELECT * FROM NEWS
+	</select>
+
+</mapper>

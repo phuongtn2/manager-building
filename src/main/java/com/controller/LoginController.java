@@ -18,7 +18,8 @@ public class LoginController {
 	@Autowired
 	private AuthorizedUserTokenService authorizedUserTokenService;
 
-	@RequestMapping("/login") public ModelAndView login(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServiceException {
+	@RequestMapping("/login.htm")
+	public ModelAndView login(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServiceException {
 		String userName=request.getParameter("userName");
 		String password=request.getParameter("password");
 		String message;
@@ -27,7 +28,7 @@ public class LoginController {
 			if(authenticationInfo != null){
 				session.setAttribute("aui", authenticationInfo);
 				session.setAttribute("token", authenticationInfo.getToken());
-				return new ModelAndView("home", "aui", authenticationInfo);
+				return new ModelAndView("redirect:/news.htm", "aui", authenticationInfo);
 			}else{
 				message = "Chưa có tài khoản.";
 				return new ModelAndView("login", "error", message);
@@ -37,7 +38,7 @@ public class LoginController {
 			return new ModelAndView("login", "error", message);
 		}
 	}
-	@RequestMapping("/logout")
+	@RequestMapping("/logout.htm")
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
 		authorizedUserTokenService.logoutAuthorizedUserInfo((String) request.getSession().getAttribute("token"));
 		request.getSession().invalidate();
