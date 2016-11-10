@@ -14,13 +14,15 @@
     <spring:url value="/resources/css/animate.css" var="animateCss" />
     <spring:url value="/resources/css/style.css" var="styleCss" />
     <spring:url value="/resources/js/plugins/gritter/jquery.gritter.css" var="gritterCss" />
-
+    <spring:url value="/resources/css/plugins/dataTables/datatables.min.css" var="datatablesCss" />
+    <link href="${datatablesCss}" rel="stylesheet" type="text/css"/>
     <link href="${bootsTrapCss}" rel="stylesheet" type="text/css"/>
     <link href="${toastrCss}" rel="stylesheet" type="text/css"/>
     <link href="${awesomeFontCss}" rel="stylesheet" type="text/css"/>
     <link href="${animateCss}" rel="stylesheet" type="text/css"/>
     <link href="${styleCss}" rel="stylesheet" type="text/css"/>
     <link href="${gritterCss}" rel="stylesheet" type="text/css"/>
+
 
 </head>
 
@@ -31,6 +33,7 @@
     <div id="page-wrapper" class="gray-bg">
         <div class="wrapper wrapper-content animated fadeInRight">
             <%@include file="add.jsp" %>
+            <%@include file="list_building.jsp" %>
         </div>
         <%@include file="../template/footer.jsp" %>
     </div>
@@ -92,150 +95,43 @@
 <!-- Toastr -->
 <spring:url value="/resources/js/plugins/toastr/toastr.min.js" var="toastrJs" />
 <script src="${toastrJs}"></script>
+<spring:url value="/resources/js/plugins/jeditable/jquery.jeditable.js" var="jeditableJs" />
+<script src="${jeditableJs}"></script>
+<spring:url value="/resources/js/plugins/dataTables/datatables.min.js" var="datatablesJs" />
+<script src="${datatablesJs}"></script>
+<!-- Page-Level Scripts -->
+<script>
+    $(document).ready(function(){
+        $('.dataTables-example').DataTable({
+            dom: '<"html5buttons"B>lTfgitp',
+            buttons: [
+            ]
+        });
 
-<%--<script>
-    $(document).ready(function() {
-        setTimeout(function() {
-            toastr.options = {
-                closeButton: true,
-                progressBar: true,
-                showMethod: 'slideDown',
-                timeOut: 4000
-            };
-            toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
+        /* Init DataTables */
+        var oTable = $('#editable').DataTable();
 
-        }, 1300);
-
-
-        var data1 = [
-            [0,4],[1,8],[2,5],[3,10],[4,4],[5,16],[6,5],[7,11],[8,6],[9,11],[10,30],[11,10],[12,13],[13,4],[14,3],[15,3],[16,6]
-        ];
-        var data2 = [
-            [0,1],[1,0],[2,2],[3,0],[4,1],[5,3],[6,1],[7,5],[8,2],[9,3],[10,2],[11,1],[12,0],[13,2],[14,8],[15,0],[16,0]
-        ];
-        $("#flot-dashboard-chart").length && $.plot($("#flot-dashboard-chart"), [
-                    data1, data2
-                ],
-                {
-                    series: {
-                        lines: {
-                            show: false,
-                            fill: true
-                        },
-                        splines: {
-                            show: true,
-                            tension: 0.4,
-                            lineWidth: 1,
-                            fill: 0.4
-                        },
-                        points: {
-                            radius: 0,
-                            show: true
-                        },
-                        shadowSize: 2
-                    },
-                    grid: {
-                        hoverable: true,
-                        clickable: true,
-                        tickColor: "#d5d5d5",
-                        borderWidth: 1,
-                        color: '#d5d5d5'
-                    },
-                    colors: ["#1ab394", "#1C84C6"],
-                    xaxis:{
-                    },
-                    yaxis: {
-                        ticks: 4
-                    },
-                    tooltip: false
-                }
-        );
-
-        var doughnutData = [
-            {
-                value: 300,
-                color: "#a3e1d4",
-                highlight: "#1ab394",
-                label: "App"
+        /* Apply the jEditable handlers to the table */
+        oTable.$('td').editable( 'http://localhost:8080/building', {
+            "callback": function( sValue, y ) {
+                var aPos = oTable.fnGetPosition( this );
+                oTable.fnUpdate( sValue, aPos[0], aPos[1] );
             },
-            {
-                value: 50,
-                color: "#dedede",
-                highlight: "#1ab394",
-                label: "Software"
+            "submitdata": function ( value, settings ) {
+                return {
+                    "row_id": this.parentNode.getAttribute('id'),
+                    "column": oTable.fnGetPosition( this )[2]
+                };
             },
-            {
-                value: 100,
-                color: "#A4CEE8",
-                highlight: "#1ab394",
-                label: "Laptop"
-            }
-        ];
 
-        var doughnutOptions = {
-            segmentShowStroke: true,
-            segmentStrokeColor: "#fff",
-            segmentStrokeWidth: 2,
-            percentageInnerCutout: 45, // This is 0 for Pie charts
-            animationSteps: 100,
-            animationEasing: "easeOutBounce",
-            animateRotate: true,
-            animateScale: false
-        };
+            "width": "90%",
+            "height": "100%"
+        } );
 
-        var ctx = document.getElementById("doughnutChart").getContext("2d");
-        var DoughnutChart = new Chart(ctx).Doughnut(doughnutData, doughnutOptions);
-
-        var polarData = [
-            {
-                value: 300,
-                color: "#a3e1d4",
-                highlight: "#1ab394",
-                label: "App"
-            },
-            {
-                value: 140,
-                color: "#dedede",
-                highlight: "#1ab394",
-                label: "Software"
-            },
-            {
-                value: 200,
-                color: "#A4CEE8",
-                highlight: "#1ab394",
-                label: "Laptop"
-            }
-        ];
-
-        var polarOptions = {
-            scaleShowLabelBackdrop: true,
-            scaleBackdropColor: "rgba(255,255,255,0.75)",
-            scaleBeginAtZero: true,
-            scaleBackdropPaddingY: 1,
-            scaleBackdropPaddingX: 1,
-            scaleShowLine: true,
-            segmentShowStroke: true,
-            segmentStrokeColor: "#fff",
-            segmentStrokeWidth: 2,
-            animationSteps: 100,
-            animationEasing: "easeOutBounce",
-            animateRotate: true,
-            animateScale: false
-        };
-        var ctx = document.getElementById("polarChart").getContext("2d");
-        var Polarchart = new Chart(ctx).PolarArea(polarData, polarOptions);
 
     });
-</script>--%>
-<%--<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','../../www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-4625583-2', 'webapplayers.com');
-    ga('send', 'pageview');
+</script>
 
-</script>--%>
 </body>
 </html>
