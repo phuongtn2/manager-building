@@ -9,7 +9,7 @@
 		buildingName
 		, memo
 		, created
-		, lastUpdated
+		, lastUpdate
 		, createId
 		, updateId
 		)VALUES(
