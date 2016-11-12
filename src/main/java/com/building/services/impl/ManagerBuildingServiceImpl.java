@@ -21,7 +21,6 @@ public class ManagerBuildingServiceImpl implements ManagerBuildingService {
     public long insertBuilding(BuildingDto buildingDto) throws ServerException {
         return managerBuildingMapper.insertBuilding(buildingDto);
     }
-
     @Override
     public List<BuildingDto> findAll() throws ServerException {
         return managerBuildingMapper.findAll();
