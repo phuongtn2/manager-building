@@ -10,18 +10,13 @@ import java.util.Map;
 
 @Service
 public class ParameterRegisterTokenCacheImpl implements ParameterRegisterTokenCache {
-	/** 認証情報のキャッシュマップ Token/Cache */
 	private final HashMap<String, Object> cacheMap = new HashMap<String, Object>();
 
 	private final HashMap<String, Long> expireTreeMap = new HashMap<String, Long>();
 
-	/** トークン生成の最大回数 */
 	private int maxRetry = 1000;
-	/** 認証情報のキャッシュ有効期限(ms) 5min */
 	private long expireInterval = 300000L;
-	/*** チェックを行う最小間隔(ms) 1min */
 	private long cleaningMinInterval = 60000L;
-	/** 前回実行時(初回はクラスロード時間を便宜上つめる) */
 	private long previous = System.currentTimeMillis();
 
 	@Override
