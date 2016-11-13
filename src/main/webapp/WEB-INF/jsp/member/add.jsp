@@ -27,11 +27,6 @@
                         <div class="col-lg-8"><input name="fullName"  placeholder="Họ Tên" class="form-control" required=true value="<c:if test="${memberDto.fullName!= null}">${memberDto.fullName}</c:if>"></div>
                         <%--<div class="col-lg-8"><input name="fullName" placeholder="Họ Tên" class="form-control" required=true value="12" ></div>--%>
                     </div>
-                    <%--<div class="form-group"><label class="col-lg-2 control-label">Họ Tên</label>--%>
-                         <%--<input name="memberId" type="hidden" placeholder="Họ Tên" class="form-control" value="<c:if test="${memberDto.memberId!= null}">${memberDto.memberId}</c:if>">--%>
-                            <%--&lt;%&ndash;<div class="col-lg-8"><textarea  name="tel" placeholder="Điện thoại" class="form-control" required=true ><c:if test="${memberDto.tel!= null}">${memberDto.tel}</c:if></textarea></div>&ndash;%&gt;--%>
-                        <%--<div class="col-lg-8"><input name="fullName" placeholder="Họ Tên" class="form-control" required=true ></div>--%>
-                    <%--</div>--%>
                     <div class="form-group"><label class="col-lg-2 control-label">Điện thoại</label>
                         <%--<div class="col-lg-8"><textarea row="1" name="tel" placeholder="Điện thoại" class="form-control" required=true ><c:if test="${memberDto.tel!= null}">${memberDto.tel}</c:if></textarea></div>--%>
                         <div class="col-lg-8"><input name="tel" placeholder="Điện thoại" class="form-control" required=true value="<c:if test="${memberDto.memberId!= null}">${memberDto.tel}</c:if>" ></div>
@@ -40,7 +35,7 @@
                         <div class="col-lg-8"><input name="address" placeholder="Địa chỉ" class="form-control" required=true value="<c:if test="${memberDto.memberId!= null}">${memberDto.address}</c:if>"></div>
                     </div>
                     <div class="form-group"><label class="col-lg-2 control-label">Giới tính</label>
-                        <%--<div class="col-lg-8"><textarea  name="sex" placeholder="Giới tính" class="form-control" required=true ><c:if test="${memberDto.sex!= null}">${memberDto.sex}</c:if></textarea></div>--%>
+                        <%--<div class="col-lg-8"><textare  a  name="sex" placeholder="Giới tính" class="form-control" required=true ><c:if test="${memberDto.sex!= null}">${memberDto.sex}</c:if></textarea></div>--%>
                         <div class="col-lg-8">
                             <%--<input  name="sex" placeholder="Giới tính" class="form-control" required=true >--%>
                             <%--<select>--%>
