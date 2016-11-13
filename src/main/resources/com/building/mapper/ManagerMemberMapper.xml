@@ -6,7 +6,7 @@
 
 	<insert id="insertMember" useGeneratedKeys="true" keyProperty="dto.memberId">
 		INSERT INTO MEMBER(
-		  fullName
+		fullName
 		, tel
 		, address
 		, sex
@@ -18,7 +18,7 @@
 		, createId
 		, updateId
 		)VALUES(
-		  #{dto.fullName}
+		#{dto.fullName}
 		, #{dto.tel}
 		, #{dto.address}
 		, #{dto.sex}
@@ -32,13 +32,13 @@
 		)
 	</insert>
 
-	<!--<select id="findAll" resultType="member">-->
-		<!--SELECT * FROM MEMBER ORDER BY created DESC-->
-	<!--</select>-->
+	<select id="findAll" resultType="member">
+		SELECT * FROM MEMBER ORDER BY created DESC
+	</select>
 
-	<!--<select id="findById" resultType="member">-->
-		<!--SELECT * FROM MEMBER WHERE memberId=#{id}-->
-	<!--</select>-->
+	<select id="findById" resultType="member">
+		SELECT * FROM MEMBER WHERE memberId=#{id}
+	</select>
 
 	<update id="update">
 		UPDATE MEMBER SET
