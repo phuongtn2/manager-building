@@ -8,13 +8,11 @@ import com.dropbox.core.ServerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +22,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping("/building.htm")
+@RequestMapping("/building")
 public class ManagerBuildingController {
 	@Autowired
 	private ManagerBuildingService managerBuildingService;
@@ -44,9 +42,8 @@ public class ManagerBuildingController {
 	}
 
 	@ModelAttribute("buildingDtoList")
-	public List<BuildingDto> populateNewsList() throws ServerException {
-		//return managerBuildingService.;
-		return null;
+	public List<BuildingDto> populateBuildingList() throws ServerException {
+		return managerBuildingService.findAll();
 	}
 	@RequestMapping(method = RequestMethod.POST)
 	public String processSubmit(
@@ -57,43 +54,38 @@ public class ManagerBuildingController {
 
 		if (result.hasErrors()) {
 			//if validator failed
-			return "news/view";
+			return "building/view";
 		} else {
 			status.setComplete();
 			//form success
-			return "news/view";
+			return "building/view";
 		}
 	}
-	/*@RequestMapping(value = "/building", method = RequestMethod.GET)
-	public ModelAndView getListBuilding(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
-		//check login
-		AuthorizedUserInfo aui = (AuthorizedUserInfo) request.getSession().getAttribute("aui");
-		if(aui == null){
-			return new ModelAndView("login", "error", "");
-		}
-		return new ModelAndView("building/list", "error", "");
-	}
-	@RequestMapping(value = "/building/add", method = RequestMethod.POST)
-	public ModelAndView addBuilding(HttpServletRequest request, HttpServletResponse response) throws  ServiceException
-	{
-		//check login
-		AuthorizedUserInfo aui = (AuthorizedUserInfo) request.getSession().getAttribute("aui");
-		if(aui == null){
-			return new ModelAndView("login", "error", "");
-		}
-		String buildingName=request.getParameter("buildingName");
-		String memo=request.getParameter("memo");
-		BuildingDto buildingDto = new BuildingDto();
-		buildingDto.setBuildingName(buildingName);
-		buildingDto.setMemo(memo);
-		buildingDto.setCreateId(aui.getUserId());
-		buildingDto.setUpdateId(aui.getUserId());
-		try {
-			managerBuildingService.insertBuilding(buildingDto);
-		} catch (ServerException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}*/
 
+	@RequestMapping(method = RequestMethod.POST, params = "add")
+	public String addBuilding(@ModelAttribute("buildingDto") BuildingDto buildingDto) throws ServerException {
+		managerBuildingService.insertBuilding(buildingDto);
+		return "redirect:/building";
+	}
+
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String getEdit(@PathVariable long id, Model model, HttpServletRequest request)  throws ServerException{
+		AuthorizedUserInfo aui = (AuthorizedUserInfo) request.getSession().getAttribute("aui");
+		BuildingDto buildingDto = managerBuildingService.findById(id);
+		buildingDto.setUpdateId(aui.getUserId());
+		model.addAttribute("buildingDto",buildingDto);
+		return "building/view";
+	}
+
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+	public String saveEdit(@ModelAttribute("buildingDto") BuildingDto buildingDto, @PathVariable long id) throws ServerException {
+		managerBuildingService.update(buildingDto);
+		return "redirect:/building";
+	}
+
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String delete(@PathVariable long id, Model model, HttpServletRequest request)  throws ServerException{
+		managerBuildingService.deleteById(id);
+		return "redirect:/building";
+	}
 }

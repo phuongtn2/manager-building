@@ -4,39 +4,39 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Building | Home</title>
-    <spring:url value="/resources/css/bootstrap.min.css" var="bootsTrapCss"/>
-    <spring:url value="/resources/css/plugins/toastr/toastr.min.css" var="toastrCss" />
-    <spring:url value="/resources/font-awesome/css/font-awesome.css" var="awesomeFontCss" />
-    <spring:url value="/resources/css/animate.css" var="animateCss" />
-    <spring:url value="/resources/css/style.css" var="styleCss" />
-    <spring:url value="/resources/js/plugins/gritter/jquery.gritter.css" var="gritterCss" />
-    <spring:url value="/resources/css/plugins/dataTables/datatables.min.css" var="datatablesCss" />
-    <link href="${datatablesCss}" rel="stylesheet" type="text/css"/>
-    <link href="${bootsTrapCss}" rel="stylesheet" type="text/css"/>
-    <link href="${toastrCss}" rel="stylesheet" type="text/css"/>
-    <link href="${awesomeFontCss}" rel="stylesheet" type="text/css"/>
-    <link href="${animateCss}" rel="stylesheet" type="text/css"/>
-    <link href="${styleCss}" rel="stylesheet" type="text/css"/>
-    <link href="${gritterCss}" rel="stylesheet" type="text/css"/>
+ <title>Building | Home</title>
+ <spring:url value="/resources/css/bootstrap.min.css" var="bootsTrapCss"/>
+ <spring:url value="/resources/css/plugins/toastr/toastr.min.css" var="toastrCss" />
+ <spring:url value="/resources/font-awesome/css/font-awesome.css" var="awesomeFontCss" />
+ <spring:url value="/resources/css/animate.css" var="animateCss" />
+ <spring:url value="/resources/css/style.css" var="styleCss" />
+ <spring:url value="/resources/js/plugins/gritter/jquery.gritter.css" var="gritterCss" />
+ <spring:url value="/resources/css/plugins/dataTables/datatables.min.css" var="datatablesCss" />
+ <link href="${datatablesCss}" rel="stylesheet" type="text/css"/>
+ <link href="${bootsTrapCss}" rel="stylesheet" type="text/css"/>
+ <link href="${toastrCss}" rel="stylesheet" type="text/css"/>
+ <link href="${awesomeFontCss}" rel="stylesheet" type="text/css"/>
+ <link href="${animateCss}" rel="stylesheet" type="text/css"/>
+ <link href="${styleCss}" rel="stylesheet" type="text/css"/>
+ <link href="${gritterCss}" rel="stylesheet" type="text/css"/>
 
 
 </head>
 
 <body>
 <div id="wrapper">
-    <%@include file="../template/navbar.jsp" %>
-    <%@include file="../template/notify.jsp" %>
-    <div id="page-wrapper" class="gray-bg">
-        <div class="wrapper wrapper-content animated fadeInRight">
-            <%@include file="add.jsp" %>
-            <%@include file="list_building.jsp" %>
-        </div>
-        <%@include file="../template/footer.jsp" %>
-    </div>
+ <%@include file="../template/navbar.jsp" %>
+ <%@include file="../template/notify.jsp" %>
+ <div id="page-wrapper" class="gray-bg">
+  <div class="wrapper wrapper-content animated fadeInRight">
+   <%@include file="add.jsp" %>
+   <%@include file="list_member.jsp" %>
+  </div>
+  <%@include file="../template/footer.jsp" %>
+ </div>
 </div>
 
 <!-- Mainly scripts -->
@@ -100,36 +100,20 @@
 <spring:url value="/resources/js/plugins/dataTables/datatables.min.js" var="datatablesJs" />
 <script src="${datatablesJs}"></script>
 <!-- Page-Level Scripts -->
+<!-- FooTable -->
+
+<spring:url value="/resources/js/plugins/footable/footable.all.min.js" var="footableJs" />
+<script src="${footableJs}"></script>
+
+
+<!-- Page-Level Scripts -->
 <script>
-    $(document).ready(function(){
-        $('.dataTables-example').DataTable({
-            dom: '<"html5buttons"B>lTfgitp',
-            buttons: [
-            ]
-        });
+ $(document).ready(function() {
 
-        /* Init DataTables */
-        var oTable = $('#editable').DataTable();
+  $('.footable').footable();
+  $('.footable2').footable();
 
-        /* Apply the jEditable handlers to the table */
-        oTable.$('td').editable( 'http://localhost:8080/building', {
-            "callback": function( sValue, y ) {
-                var aPos = oTable.fnGetPosition( this );
-                oTable.fnUpdate( sValue, aPos[0], aPos[1] );
-            },
-            "submitdata": function ( value, settings ) {
-                return {
-                    "row_id": this.parentNode.getAttribute('id'),
-                    "column": oTable.fnGetPosition( this )[2]
-                };
-            },
-
-            "width": "90%",
-            "height": "100%"
-        } );
-
-
-    });
+ });
 
 </script>
 

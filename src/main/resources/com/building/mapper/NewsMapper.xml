@@ -29,6 +29,7 @@
 	<select id="findById" resultType="news">
 		SELECT * FROM NEWS WHERE newsId=#{id}
 	</select>
+
 	<update id="update">
 		UPDATE NEWS SET
 		title = #{dto.title}
