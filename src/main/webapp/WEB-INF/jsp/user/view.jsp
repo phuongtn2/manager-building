@@ -117,12 +117,28 @@
 <script>
  $(document).ready(function() {
 
-  //$('.footable').footable();
+  $('.footable').footable();
 
  });
 
 
  $('#birthday').datepicker({
+  todayBtn: "linked",
+  keyboardNavigation: false,
+  forceParse: false,
+  calendarWeeks: true,
+  autoclose: true
+ });
+
+ $('#startDay').datepicker({
+  todayBtn: "linked",
+  keyboardNavigation: false,
+  forceParse: false,
+  calendarWeeks: true,
+  autoclose: true
+ });
+
+ $('#endDay').datepicker({
   todayBtn: "linked",
   keyboardNavigation: false,
   forceParse: false,

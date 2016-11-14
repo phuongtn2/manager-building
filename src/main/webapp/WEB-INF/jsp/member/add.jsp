@@ -12,64 +12,83 @@
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Quản Lý Tòa Nhà</h5>
+                <h5>Thông Tin Thành viên</h5>
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
                     </a>
                 </div>
             </div>
-            <div class="ibox-content">
-                <form:form class="form-horizontal" modelAttribute="MemberDto" method="post">
-                    <p>Thông Tin Thành viên</p>
-                    <div class="form-group"><label class="col-lg-2 control-label">Họ và tên</label>
-                        <input name="memberId" type="hidden" placeholder="Họ Tên" class="form-control" value="<c:if test="${memberDto.memberId!= null}">${memberDto.memberId}</c:if>">
-                        <div class="col-lg-8"><input name="fullName"  placeholder="Họ Tên" class="form-control" required=true value="<c:if test="${memberDto.fullName!= null}">${memberDto.fullName}</c:if>"></div>
-                        <%--<div class="col-lg-8"><input name="fullName" placeholder="Họ Tên" class="form-control" required=true value="12" ></div>--%>
-                    </div>
-                    <%--<div class="form-group"><label class="col-lg-2 control-label">Họ Tên</label>--%>
-                         <%--<input name="memberId" type="hidden" placeholder="Họ Tên" class="form-control" value="<c:if test="${memberDto.memberId!= null}">${memberDto.memberId}</c:if>">--%>
-                            <%--&lt;%&ndash;<div class="col-lg-8"><textarea  name="tel" placeholder="Điện thoại" class="form-control" required=true ><c:if test="${memberDto.tel!= null}">${memberDto.tel}</c:if></textarea></div>&ndash;%&gt;--%>
-                        <%--<div class="col-lg-8"><input name="fullName" placeholder="Họ Tên" class="form-control" required=true ></div>--%>
-                    <%--</div>--%>
-                    <div class="form-group"><label class="col-lg-2 control-label">Điện thoại</label>
-                        <%--<div class="col-lg-8"><textarea row="1" name="tel" placeholder="Điện thoại" class="form-control" required=true ><c:if test="${memberDto.tel!= null}">${memberDto.tel}</c:if></textarea></div>--%>
-                        <div class="col-lg-8"><input name="tel" placeholder="Điện thoại" class="form-control" required=true value="<c:if test="${memberDto.memberId!= null}">${memberDto.tel}</c:if>" ></div>
-                    </div>
-                    <div class="form-group"><label class="col-lg-2 control-label">Địa chỉ</label>
-                        <div class="col-lg-8"><input name="address" placeholder="Địa chỉ" class="form-control" required=true value="<c:if test="${memberDto.memberId!= null}">${memberDto.address}</c:if>"></div>
-                    </div>
-                    <div class="form-group"><label class="col-lg-2 control-label">Giới tính</label>
-                        <%--<div class="col-lg-8"><textarea  name="sex" placeholder="Giới tính" class="form-control" required=true ><c:if test="${memberDto.sex!= null}">${memberDto.sex}</c:if></textarea></div>--%>
-                        <div class="col-lg-8">
-                            <%--<input  name="sex" placeholder="Giới tính" class="form-control" required=true >--%>
-                            <%--<select>--%>
-                                <%--<option name="sex" value="1">Nam</option>--%>
-                                <%--<option name="sex" value="2">Nữ</option>--%>
-                            <%--</select>--%>
-                            <input type="radio" name="sex" value="1">&nbsp;Nam&nbsp;
-                            <input type="radio" name="sex" value="2">&nbsp;Nữ&nbsp;
+            <div class="ibox-content m-b-sm border-bottom">
+            <form:form  modelAttribute="MemberDto" method="post">
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="control-label" for="fullName">Họ Tên</label>
+                                <input name="memberId" type="hidden" placeholder="Họ Tên" class="form-control" value="<c:if test="${memberDto.memberId!= null}">${memberDto.memberId}</c:if>">
+                                <input type="text" id="fullName" name="fullName" value="<c:if test="${memberDto.fullName!= null}">${memberDto.fullName}</c:if>" placeholder="Họ Tên" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="control-label" for="tel">Điện thoại</label>
+                                <input type="text" id="tel" name="tel" value="<c:if test="${memberDto.tel!= 0}">${memberDto.tel}</c:if>" placeholder="Điện thoại" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="control-label" for="address">Địa chỉ</label>
+                                <input type="text" id="address" name="address" value="<c:if test="${memberDto.address!= null}">${memberDto.address}</c:if>" placeholder="Địa chỉ" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="control-label" for="sex">Giới tính</label>
+                                <div class="form-group">
+                                    <input id ="sex" type="radio" name="sex" value="1" <c:if test="${memberDto.sex == 1}">checked="checked"</c:if>> &nbsp;Nam&nbsp;
+                                    <input id ="sex" type="radio" name="sex" value="2" <c:if test="${memberDto.sex == 2}">checked="checked"</c:if>> &nbsp;Nữ&nbsp;
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Ngày Sinh</label>
-                        <div class="col-lg-8"><input name="birthday" placeholder="Ngày Sinh" class="form-control" required=true type="date" value=" <c:if test="${memberDto.memberId!= null}">${memberDto.birthday}</c:if>"></div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="control-label" for="birthday">Ngày sinh</label>
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="birthday" name="birthday" type="text" class="form-control" value="<c:if test="${memberDto.birthday!= null}">${memberDto.birthday}</c:if>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="control-label" for="idCard">Chứng minh nhân dân</label>
+                                <input type="text" id="idCard" name="idCard" value="<c:if test="${memberDto.idCard!= 0}">${memberDto.idCard}</c:if>" placeholder="Chứng minh nhân dân" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="control-label" for="idCard">Email</label>
+                                <input type="text" id="email" name="email" value="<c:if test="${memberDto.email!= null}">${memberDto.email}</c:if>" placeholder="Email" class="form-control">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group"><label class="col-lg-2 control-label">Email</label>
-                        <div class="col-lg-8"><input name="email" placeholder="Email" class="form-control" type="email" required=true value ="<c:if test="${memberDto.memberId!= null}">${memberDto.email}</c:if> "> </div>
-                    </div>
-                    <div class="form-group"><label class="col-lg-2 control-label">Chứng minh nhân dân</label>
-                        <%--<div class="col-lg-8"><textarea  name="idCard" placeholder="Chứng minh nhân dân" class="form-control" required=true ><c:if test="${memberDto.idCard!= null}">${memberDto.idCard}</c:if></textarea></div>--%>
-                        <div class="col-lg-8"><input name="idCard" placeholder="Chứng minh nhân dân" class="form-control" required=true value="<c:if test="${memberDto.memberId!= null}">${memberDto.idCard}</c:if>"></div>
-                    </div>
+                <div class="row">
                     <div class="form-group">
                         <div class="col-lg-offset-2 col-lg-10">
-                            <button name="add" class="btn btn-primary " type="submit"><i class="fa fa-check"></i>&nbsp;Submit</button>
+                            <button name="add" class="btn btn-primary" type="submit"><i class="fa fa-check"></i>&nbsp;Submit</button>
+                            <input name="reset" class="btn btn-primary" type="reset">
                         </div>
                     </div>
-                </form:form>
+                </div>
+            </form:form>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
 

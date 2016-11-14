@@ -26,6 +26,7 @@ public class UserDto implements Serializable {
 	private int gender;
 	private Date birthday;
 	private String memo;
+	private String address;
 	private Date created;
 	private int createId;
 	private Date lastUpdate;
@@ -169,6 +170,14 @@ public class UserDto implements Serializable {
 
 	public void setMemo(String memo) {
 		this.memo = memo;
+	}
+
+	public void setAddress(String address){
+		this.address = address;
+	}
+
+	public String getAddress(){
+		return this.address;
 	}
 
 	public Date getCreated() {

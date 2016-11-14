@@ -27,7 +27,7 @@
                 <input type="text" class="form-control input-sm m-b-xs" id="filter"
                        placeholder="Search in table">
 
-                <table class="footable table table-stripped" data-page-size="8" data-filter=#filter>
+                <table class="footable emp-sales table table-stripped table-bordered table-hover dataTables-example" data-page-size="8" data-filter=#filter>
                     <thead>
                     <tr>
                         <th>Họ Tên</th>
@@ -44,7 +44,8 @@
                     <tbody>
                     <%int count = 0;%>
                     <c:forEach items="${memberDtoList}" var="member">
-                        <tr <c:if test = "${count%2 == 0}"><% count ++;%>class="gradeX"</c:if><c:if test = "${count%2 != 0}"><% count ++;%>class="gradeC"</c:if>   >
+                        <%--<tr <c:if test = "${count%2 == 0}"><% count ++;%>class="gradeC"</c:if><c:if test = "${count%2 != 0}"><% count ++;%>class="gradeX"</c:if>   >--%>
+                        <tr class="gradeC" >
                             <td>${member.fullName}</td>
                             <td>${member.tel}</td>
                             <td data-hide="phone,tablet">${member.address}</td>
@@ -52,32 +53,10 @@
                             <td data-hide="phone,tablet"><fmt:formatDate pattern="yyyy-MM-dd" value="${member.birthday}" /></td>
                             <td data-hide="phone,tablet">${member.email}</td>
                             <td data-hide="phone,tablet">${member.idCard}</td>
-                            <td data-hide="phone,tablet"><a class="btn btn-success btn-rounded" href="/member/edit/${member.memberId}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</a></td>
-                            <td data-hide="phone,tablet"><a class="btn btn-success btn-rounded" href="/member/delete/${member.memberId}" >&nbsp;&nbsp;Delete&nbsp;&nbsp;</a></td>
+                            <td><a class="btn btn-success btn-rounded" href="/member/edit/${member.memberId}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</a></td>
+                            <td><a class="btn btn-danger btn-rounded" href="/member/delete/${member.memberId}" >&nbsp;&nbsp;Delete&nbsp;&nbsp;</a></td>
                         </tr>
                     </c:forEach>
-                    <%--<tr>--%>
-                        <%--<td>Họ Tên</td>--%>
-                        <%--<td>Điện thoại</td>--%>
-                        <%--<td data-hide="phone,tablet">Địa chỉ</td>--%>
-                        <%--<td data-hide="phone,tablet">Giới tính</td>--%>
-                        <%--<td data-hide="phone,tablet">Ngày Sinh</td>--%>
-                        <%--<td data-hide="phone,tablet">Email</td>--%>
-                        <%--<td data-hide="phone,tablet">Chứng minh nhân dân</td>--%>
-                        <%--<td data-hide="phone,tablet">Edit</td>--%>
-                        <%--<td data-hide="phone,tablet">Delete</td>--%>
-                    <%--</tr>--%>
-                    <%--<tr>--%>
-                        <%--<td>Họ Tên</td>--%>
-                        <%--<td>Điện thoại</td>--%>
-                        <%--<td data-hide="phone,tablet">Địa chỉ</td>--%>
-                        <%--<td data-hide="phone,tablet">Giới tính</td>--%>
-                        <%--<td data-hide="phone,tablet">Ngày Sinh</td>--%>
-                        <%--<td data-hide="phone,tablet">Email</td>--%>
-                        <%--<td data-hide="phone,tablet">Chứng minh nhân dân</td>--%>
-                        <%--<td data-hide="phone,tablet">Edit</td>--%>
-                        <%--<td data-hide="phone,tablet">Delete</td>--%>
-                    <%--</tr>--%>
                     </tbody>
                     <tfoot>
                     <tr>

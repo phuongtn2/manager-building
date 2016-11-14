@@ -99,6 +99,8 @@
 <script src="${jeditableJs}"></script>
 <spring:url value="/resources/js/plugins/dataTables/datatables.min.js" var="datatablesJs" />
 <script src="${datatablesJs}"></script>
+<spring:url value="/resources/js/plugins/footable/footable.all.min.js" var="footableJs" />
+<script src="${footableJs}"></script>
 <!-- Page-Level Scripts -->
 <script>
     $(document).ready(function(){
@@ -107,7 +109,7 @@
             buttons: [
             ]
         });
-
+        $('.footable').footable();
         /* Init DataTables */
         var oTable = $('#editable').DataTable();
 

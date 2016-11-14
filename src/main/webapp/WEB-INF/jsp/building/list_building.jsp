@@ -19,13 +19,12 @@
             <div class="ibox-content">
 
                     <div class="table-responsive">
-                           <table class="emp-sales table table-striped table-bordered table-hover dataTables-example" >
+                        <table class="footable emp-sales table table-striped table-bordered table-hover dataTables-example" data-page-size="10">
                             <thead>
                             <tr>
-                                <th>Tên tòa nhà </th>
-                                <th>Mô tả</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th class="text-center">Tên tòa nhà </th>
+                                <th data-hide="phone,tablet" class="text-center">Mô tả</th>
+                                <th data-hide="phone,tablet" class="text-center">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -33,18 +32,23 @@
                             <c:forEach items="${buildingDtoList}" var="building">
                                     <tr <c:if test = "${count%2 == 0}"><% count ++;%>class="gradeX"</c:if><c:if test = "${count%2 != 0}"><% count ++;%>class="gradeC"</c:if>   >
                                         <td class="col-lg-4">${building.buildingName}</td>
-                                        <td class="col-lg-4">${building.memo}</td>
-                                        <td class="col-lg-2"><a class="btn btn-success btn-rounded" href="/building/edit/${building.buildingId}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</a></td>
-                                        <td class="col-lg-2"><a class="btn btn-danger btn-rounded" href="/building/delete/${building.buildingId}">&nbsp;&nbsp;Delete&nbsp;&nbsp;</a></td>
+                                        <td data-hide="phone,tablet" class="col-lg-5">${building.memo}</td>
+                                        <td data-hide="phone,tablet" class="col-lg-3 text-center">
+                                            <div class="btn-group">
+                                                <a class="btn btn-success btn btn-xs" href="/building/edit/${building.buildingId}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
+                                                <a class="btn btn-danger btn btn-xs" href="/building/delete/${building.buildingId}">&nbsp;&nbsp;Delete&nbsp;&nbsp;</a>
+                                            </div>
+                                        </td>
+                                        <%--<td class="col-lg-2"><a class="btn btn-success btn-rounded" href="/building/edit/${building.buildingId}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</a></td>--%>
+                                        <%--<td class="col-lg-2"><a class="btn btn-danger btn-rounded" href="/building/delete/${building.buildingId}">&nbsp;&nbsp;Delete&nbsp;&nbsp;</a></td>--%>
                                     </tr>
                             </c:forEach>
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>Tên tòa nhà </th>
-                                <th>Mô tả</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th class="text-center">Tên tòa nhà </th>
+                                <th data-hide="phone,tablet" class="text-center">Mô tả</th>
+                                <th data-hide="phone,tablet" class="text-center">Action</th>
                             </tr>
                             </tfoot>
                         </table>

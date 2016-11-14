@@ -18,5 +18,6 @@
 		<typeAlias alias="member" type="com.building.dto.MemberDto"/>
 		<typeAlias alias="asset" type="com.building.dto.AssetDto"/>
 		<typeAlias alias="assetComment" type="com.building.dto.AssetCommentReplyDto"/>
+		<typeAlias alias="user" type="com.building.dto.UserDto"/>
 	</typeAliases>
 </configuration>
