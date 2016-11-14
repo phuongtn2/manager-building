@@ -16,5 +16,7 @@
 		<typeAlias alias="building" type="com.building.dto.BuildingDto"/>
 		<typeAlias alias="news" type="com.building.dto.NewsDto"/>
 		<typeAlias alias="member" type="com.building.dto.MemberDto"/>
+		<typeAlias alias="asset" type="com.building.dto.AssetDto"/>
+		<typeAlias alias="assetComment" type="com.building.dto.AssetCommentReplyDto"/>
 	</typeAliases>
 </configuration>
