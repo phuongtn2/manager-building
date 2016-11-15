@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Created by phuongtn2 on 7/11/2016.
  */
-public class UserDto implements Serializable {
+public class UserDto extends DefaultObjectDto implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private int userId;
@@ -15,11 +15,8 @@ public class UserDto implements Serializable {
 	private String pass;
 	private byte userStatus;
 	private String fullName;
-	private String lastName;
-	private String firstName;
 	private String mail;
 	private String tel;
-	private String mobilePhone;
 	private Date startDay;
 	private Date endDay;
 	private byte hideFlg;
@@ -27,10 +24,7 @@ public class UserDto implements Serializable {
 	private Date birthday;
 	private String memo;
 	private String address;
-	private Date created;
-	private int createId;
-	private Date lastUpdate;
-	private int updateId;
+	private String logo;
 
 	public static long getSerialVersionUID() {
 		return serialVersionUID;
@@ -56,16 +50,16 @@ public class UserDto implements Serializable {
 		return adId;
 	}
 
+	public void setAdId(String adId) {
+		this.adId = adId;
+	}
+
 	public String getPass() {
 		return pass;
 	}
 
 	public void setPass(String pass) {
 		this.pass = pass;
-	}
-
-	public void setAdId(String adId) {
-		this.adId = adId;
 	}
 
 	public byte getUserStatus() {
@@ -84,22 +78,6 @@ public class UserDto implements Serializable {
 		this.fullName = fullName;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
 	public String getMail() {
 		return mail;
 	}
@@ -114,14 +92,6 @@ public class UserDto implements Serializable {
 
 	public void setTel(String tel) {
 		this.tel = tel;
-	}
-
-	public String getMobilePhone() {
-		return mobilePhone;
-	}
-
-	public void setMobilePhone(String mobilePhone) {
-		this.mobilePhone = mobilePhone;
 	}
 
 	public Date getStartDay() {
@@ -172,43 +142,19 @@ public class UserDto implements Serializable {
 		this.memo = memo;
 	}
 
-	public void setAddress(String address){
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
 		this.address = address;
 	}
 
-	public String getAddress(){
-		return this.address;
+	public String getLogo() {
+		return logo;
 	}
 
-	public Date getCreated() {
-		return created;
-	}
-
-	public void setCreated(Date created) {
-		this.created = created;
-	}
-
-	public int getCreateId() {
-		return createId;
-	}
-
-	public void setCreateId(int createId) {
-		this.createId = createId;
-	}
-
-	public Date getLastUpdate() {
-		return lastUpdate;
-	}
-
-	public void setLastUpdate(Date lastUpdate) {
-		this.lastUpdate = lastUpdate;
-	}
-
-	public int getUpdateId() {
-		return updateId;
-	}
-
-	public void setUpdateId(int updateId) {
-		this.updateId = updateId;
+	public void setLogo(String logo) {
+		this.logo = logo;
 	}
 }

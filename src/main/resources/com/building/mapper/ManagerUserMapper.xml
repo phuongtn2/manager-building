@@ -6,8 +6,7 @@
 
     <insert id="insertUser" useGeneratedKeys="true" keyProperty="dto.userId">
         INSERT INTO T_USER(
-        userId
-        , empCode
+        empCode
         , adId
         , pass
         , userStatus
@@ -21,13 +20,14 @@
         , gender
         , birthday
         , memo
+        , address
+        , logo
         , created
         , lastUpdate
         , createId
         , updateId
         )VALUES(
-        #{dto.userId}
-        , #{dto.empCode}
+        #{dto.empCode}
         , #{dto.adId}
         , #{dto.pass}
         , #{dto.userStatus}
@@ -40,6 +40,8 @@
         , #{dto.gender}
         , #{dto.birthday}
         , #{dto.memo}
+        , #{dto.address}
+        , #{dto.logo}
         ,NOW()
         ,NOW()
         ,#{dto.createId}
@@ -52,12 +54,11 @@
     </select>
 
     <select id="findById" resultType="user">
-        SELECT * FROM T_USER WHERE memberId=#{id}
+        SELECT * FROM T_USER WHERE userId=#{id}
     </select>
 
     <update id="update">
         UPDATE T_USER SET
-        userId = #{dto.userId}
         , empCode = #{dto.empCode}
         , adId = #{dto.adId}
         , pass = #{dto.pass}
@@ -70,13 +71,15 @@
         , hideFlg = #{dto.hideFlg}
         , gender = #{dto.gender}
         , birthday = #{dto.birthday}
-        , birthday = memo = #{dto.memo}
+        , memo = #{dto.memo}
+        , address = #{dto.address}
+        , logo = #{dto.logo}
         , updateId = #{dto.updateId}
         , lastUpdate= NOW()
-        WHERE memberId= #{dto.memberId}
+        WHERE userId= #{dto.userId}
     </update>
     <delete id="deleteById">
-        DELETE FROM T_USER WHERE memberId = #{id}
+        DELETE FROM T_USER WHERE userId = #{id}
     </delete>
 
 </mapper>

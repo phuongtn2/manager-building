@@ -1,8 +1,8 @@
 package com.controller;
 
-import com.building.dto.AssetDto;
+import com.building.dto.MasterAssetDto;
 import com.building.dto.AuthorizedUserInfo;
-import com.building.services.AssetService;
+import com.building.services.MasterAssetService;
 import com.dropbox.core.ServerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -21,9 +21,9 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/asset")
-public class AssetController {
+public class MasterAssetController {
 	@Autowired
-	private AssetService assetService;
+	private MasterAssetService masterAssetService;
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -32,21 +32,21 @@ public class AssetController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String initForm(ModelMap model) throws ServerException {
-		AssetDto assetDto = new AssetDto();
+		MasterAssetDto masterAssetDto = new MasterAssetDto();
 		//command object
-		model.addAttribute("assetDto", assetDto);
+		model.addAttribute("MasterAssetDto", masterAssetDto);
 		//model.addAttribute("newsDtoList", newsService.findAll());
 		//return form view
 		return "asset/view";
 	}
 
-	@ModelAttribute("assetDtoList")
-	public List<AssetDto> populateNewsList() throws ServerException {
-		return assetService.findAll();
+	@ModelAttribute("MasterAssetDtoList")
+	public List<MasterAssetDto> populateMasterAssetList() throws ServerException {
+		return masterAssetService.findAll();
 	}
 	@RequestMapping(method = RequestMethod.POST)
 	public String processSubmit(
-			@ModelAttribute("assetDto") AssetDto assetDto,
+			@ModelAttribute("masterAssetDto") MasterAssetDto masterAssetDto,
 			BindingResult result, SessionStatus status) {
 		//customerValidator.validate(customer, result);
 		if (result.hasErrors()) {
@@ -59,28 +59,28 @@ public class AssetController {
 		}
 	}
 	@RequestMapping(method = RequestMethod.POST, params = "add")
-	public String addAsset(@ModelAttribute("assetDto") AssetDto assetDto) throws ServerException {
-		assetService.insertAsset(assetDto);
+	public String addAsset(@ModelAttribute("masterAssetDto") MasterAssetDto masterAssetDto) throws ServerException {
+		masterAssetService.insertMasterAsset(masterAssetDto);
 		return "redirect:/asset";
 	}
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String getEdit(@PathVariable long id, Model model, HttpServletRequest request)  throws ServerException{
 		AuthorizedUserInfo aui = (AuthorizedUserInfo) request.getSession().getAttribute("aui");
-		AssetDto assetDto = assetService.findById(id);
-		assetDto.setUpdateId(aui.getUserId());
-		model.addAttribute("assetDto",assetDto);
+		MasterAssetDto masterAssetDto = masterAssetService.findById(id);
+		masterAssetDto.setUpdateId(aui.getUserId());
+		model.addAttribute("masterAssetDto",masterAssetDto);
 		return "asset/view";
 	}
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-	public String saveEdit(@ModelAttribute("assetDto") AssetDto assetDto, @PathVariable long id) throws ServerException {
-		assetService.update(assetDto);
+	public String saveEdit(@ModelAttribute("masterAssetDto") MasterAssetDto masterAssetDto, @PathVariable long id) throws ServerException {
+		masterAssetService.update(masterAssetDto);
 		return "redirect:/asset";
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable long id, Model model, HttpServletRequest request)  throws ServerException{
-		assetService.deleteById(id);
+		masterAssetService.deleteById(id);
 		return "redirect:/asset";
 	}
 }

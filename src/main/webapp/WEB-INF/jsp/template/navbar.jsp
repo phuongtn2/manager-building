@@ -41,7 +41,7 @@
                 <a href="/user"><i class="fa fa-th-large"></i> <span class="nav-label">Member</span> <span class="fa arrow"></span></a>
             </li>
             <li>
-                <a href="/services"><i class="fa fa-th-large"></i> <span class="nav-label">Phí dịch vụ </br> (Service)</span> <span class="fa arrow"></span></a>
+                <a href="/service"><i class="fa fa-th-large"></i> <span class="nav-label">Phí dịch vụ </br> (Service)</span> <span class="fa arrow"></span></a>
             </li>
         </ul>
 

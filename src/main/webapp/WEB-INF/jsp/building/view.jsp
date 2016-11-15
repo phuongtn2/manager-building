@@ -15,6 +15,7 @@
     <spring:url value="/resources/css/style.css" var="styleCss" />
     <spring:url value="/resources/js/plugins/gritter/jquery.gritter.css" var="gritterCss" />
     <spring:url value="/resources/css/plugins/dataTables/datatables.min.css" var="datatablesCss" />
+    <spring:url value="/resources/css/plugins/footable/footable.core.css" var="footableCss" />
     <link href="${datatablesCss}" rel="stylesheet" type="text/css"/>
     <link href="${bootsTrapCss}" rel="stylesheet" type="text/css"/>
     <link href="${toastrCss}" rel="stylesheet" type="text/css"/>
@@ -22,6 +23,7 @@
     <link href="${animateCss}" rel="stylesheet" type="text/css"/>
     <link href="${styleCss}" rel="stylesheet" type="text/css"/>
     <link href="${gritterCss}" rel="stylesheet" type="text/css"/>
+    <link href="${footableCss}" rel="stylesheet" type="text/css"/>
 
 
 </head>

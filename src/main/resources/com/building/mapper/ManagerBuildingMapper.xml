@@ -4,17 +4,21 @@
 
 <mapper namespace="com.building.mapper.ManagerBuildingMapper">
 
-	<insert id="insertBuilding" useGeneratedKeys="true" keyProperty="dto.buildingId">
-		INSERT INTO BUILDING(
+	<insert id="insertBuilding" useGeneratedKeys="true" keyProperty="dto.buildingCode">
+		INSERT INTO M_BUILDING(
 		buildingName
-		, memo
+		, totalFloor
+		, totalRoom
+		, description
 		, created
 		, lastUpdate
 		, createId
 		, updateId
 		)VALUES(
 		#{dto.buildingName}
-		, #{dto.memo}
+		, #{dto.totalFloor}
+		, #{dto.totalRoom}
+		, #{dto.description}
 		,  NOW()
 		,  NOW()
 		, #{dto.createId}
@@ -23,23 +27,25 @@
 	</insert>
 
 	<select id="findAll" resultType="building">
-		SELECT * FROM BUILDING ORDER BY created DESC
+		SELECT * FROM M_BUILDING ORDER BY created DESC
 	</select>
 
 	<select id="findById" resultType="building">
-		SELECT * FROM BUILDING WHERE buildingId=#{id}
+		SELECT * FROM M_BUILDING WHERE buildingCode=#{id}
 	</select>
 
 	<update id="update">
-		UPDATE BUILDING SET
+		UPDATE M_BUILDING SET
 		buildingName = #{dto.buildingName}
-		,memo = #{dto.memo}
+		, totalFloor = #{dto.totalFloor}
+		, totalRoom = #{dto.totalRoom}
+		, description = #{dto.description}
 		,updateId = #{dto.updateId}
 		,lastUpdate= NOW()
-		WHERE buildingId= #{dto.buildingId}
+		WHERE buildingCode= #{dto.buildingCode}
 	</update>
 	<delete id="deleteById">
-		DELETE FROM BUILDING WHERE buildingId = #{id}
+		DELETE FROM M_BUILDING WHERE buildingCode = #{id}
 	</delete>
 
 </mapper>

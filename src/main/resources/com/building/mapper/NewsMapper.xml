@@ -4,17 +4,19 @@
 
 <mapper namespace="com.building.mapper.NewsMapper">
 
-	<insert id="insertNews" useGeneratedKeys="true" keyProperty="dto.newsId">
-		INSERT INTO NEWS(
-		title
-		, memo
+	<insert id="insertNews" useGeneratedKeys="true" keyProperty="dto.newsCode">
+		INSERT INTO M_NEWS(
+		newsType
+		, newHeader
+		, newShorter
 		, created
 		, lastUpdate
 		, createId
 		, updateId
 		)VALUES(
-		#{dto.title}
-		, #{dto.memo}
+		#{dto.newsType}
+		#{dto.newHeader}
+		, #{dto.newShorter}
 		,  NOW()
 		,  NOW()
 		, #{dto.createId}
@@ -23,23 +25,24 @@
 	</insert>
 
 	<select id="findAll" resultType="news">
-		SELECT * FROM NEWS ORDER BY created
+		SELECT * FROM M_NEWS ORDER BY created
 	</select>
 
 	<select id="findById" resultType="news">
-		SELECT * FROM NEWS WHERE newsId=#{id}
+		SELECT * FROM M_NEWS WHERE newsCode=#{id}
 	</select>
 
 	<update id="update">
-		UPDATE NEWS SET
-		title = #{dto.title}
-		,memo = #{dto.memo}
+		UPDATE M_NEWS SET
+		newsType = #{dto.newsType}
+		,newHeader = #{dto.newHeader}
+		,newShorter = #{dto.newShorter}
 		,updateId = #{dto.updateId}
 		,lastUpdate= NOW()
-		WHERE newsId= #{dto.newsId}
+		WHERE newsCode= #{dto.newsCode}
 	</update>
 	<delete id="deleteById">
-		DELETE FROM NEWS WHERE newsId = #{id}
+		DELETE FROM M_NEWS WHERE newsCode = #{id}
 	</delete>
 
 </mapper>

@@ -5,68 +5,41 @@ import java.util.Date;
 /**
  * Created by PhuongTN1 on 11/4/2016.
  */
-public class NewsDto {
-    private long newsId;
-    private String title;
-    private String memo;
-    private Date created;
-    private int createId;
-    private Date lastUpdate;
-    private int updateId;
+public class NewsDto extends DefaultObjectDto {
+    private long newsCode;
+    private byte newsType;
+    private String newHeader;
+    private String newShorter;
 
-    public long getNewsId() {
-        return newsId;
+    public long getNewsCode() {
+        return newsCode;
     }
 
-    public void setNewsId(long newsId) {
-        this.newsId = newsId;
+    public void setNewsCode(long newsCode) {
+        this.newsCode = newsCode;
     }
 
-    public String getTitle() {
-        return title;
+    public byte getNewsType() {
+        return newsType;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setNewsType(byte newsType) {
+        this.newsType = newsType;
     }
 
-    public String getMemo() {
-        return memo;
+    public String getNewHeader() {
+        return newHeader;
     }
 
-    public void setMemo(String memo) {
-        this.memo = memo;
+    public void setNewHeader(String newHeader) {
+        this.newHeader = newHeader;
     }
 
-    public Date getCreated() {
-        return created;
+    public String getNewShorter() {
+        return newShorter;
     }
 
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public int getCreateId() {
-        return createId;
-    }
-
-    public void setCreateId(int createId) {
-        this.createId = createId;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-    public int getUpdateId() {
-        return updateId;
-    }
-
-    public void setUpdateId(int updateId) {
-        this.updateId = updateId;
+    public void setNewShorter(String newShorter) {
+        this.newShorter = newShorter;
     }
 }

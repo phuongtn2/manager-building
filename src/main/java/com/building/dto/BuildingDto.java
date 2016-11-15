@@ -5,22 +5,19 @@ import java.util.Date;
 /**
  * Created by PhuongTN1 on 11/4/2016.
  */
-public class BuildingDto {
-    private long buildingId;
+public class BuildingDto extends DefaultObjectDto{
+    private long buildingCode;
     private String buildingName;
-    private byte hideFlg;
-    private String memo;
-    private Date created;
-    private int createId;
-    private Date lastUpdate;
-    private int updateId;
+    private int totalFloor;
+    private int totalRoom;
+    private String description;
 
-    public long getBuildingId() {
-        return buildingId;
+    public long getBuildingCode() {
+        return buildingCode;
     }
 
-    public void setBuildingId(long buildingId) {
-        this.buildingId = buildingId;
+    public void setBuildingCode(long buildingCode) {
+        this.buildingCode = buildingCode;
     }
 
     public String getBuildingName() {
@@ -31,51 +28,27 @@ public class BuildingDto {
         this.buildingName = buildingName;
     }
 
-    public byte getHideFlg() {
-        return hideFlg;
+    public int getTotalFloor() {
+        return totalFloor;
     }
 
-    public void setHideFlg(byte hideFlg) {
-        this.hideFlg = hideFlg;
+    public void setTotalFloor(int totalFloor) {
+        this.totalFloor = totalFloor;
     }
 
-    public String getMemo() {
-        return memo;
+    public int getTotalRoom() {
+        return totalRoom;
     }
 
-    public void setMemo(String memo) {
-        this.memo = memo;
+    public void setTotalRoom(int totalRoom) {
+        this.totalRoom = totalRoom;
     }
 
-    public Date getCreated() {
-        return created;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public int getCreateId() {
-        return createId;
-    }
-
-    public void setCreateId(int createId) {
-        this.createId = createId;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-    public int getUpdateId() {
-        return updateId;
-    }
-
-    public void setUpdateId(int updateId) {
-        this.updateId = updateId;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
