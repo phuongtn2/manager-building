@@ -43,7 +43,7 @@ public class ManagerUserController {
         return "user/view";
     }
 
-    @ModelAttribute("UserDtoList")
+    @ModelAttribute("userDtoList")
         public List<UserDto> populateUserList() throws ServerException {
         return managerUserService.findAll();
     }
@@ -66,6 +66,7 @@ public class ManagerUserController {
 
     @RequestMapping(method = RequestMethod.POST, params = "add")
     public String addUser(@ModelAttribute("userDto") UserDto userDto) throws ServerException {
+        userDto.setPass("123456");
         managerUserService.insertUser(userDto);
         return "redirect:/user";
     }

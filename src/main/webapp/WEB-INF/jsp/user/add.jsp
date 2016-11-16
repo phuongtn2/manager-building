@@ -20,126 +20,115 @@
                 </div>
             </div>
             <div class="ibox-content m-b-sm border-bottom">
-            <form:form  modelAttribute="UserDto" method="post">
-
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label class="control-label" for="fullName">Họ Tên</label>
-                                <%--<input name="memberId" type="hidden" placeholder="Họ Tên" class="form-control" value="<c:if test="${memberDto.memberId!= null}">${memberDto.memberId}</c:if>">--%>
-                                <%--<input type="text" id="fullName" name="fullName" value="<c:if test="${memberDto.fullName!= null}">${memberDto.fullName}</c:if>" placeholder="Họ Tên" class="form-control">--%>
-                                    <input type="text" id="fullName" name="fullName" value="" placeholder="Họ Tên" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label class="control-label" for="tel">Điện thoại</label>
-                                <%--<input type="text" id="tel" name="tel" value="<c:if test="${memberDto.tel!= 0}">${memberDto.tel}</c:if>" placeholder="Điện thoại" class="form-control">--%>
-                                <input type="text" id="tel" name="tel" value="" placeholder="Điện thoại" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label class="control-label" for="address">Địa chỉ</label>
-                                <%--<input type="text" id="address" name="address" value="<c:if test="${memberDto.address!= null}">${memberDto.address}</c:if>" placeholder="Địa chỉ" class="form-control">--%>
-                                <input type="text" id="adress" name="adress" value="" placeholder="Địa chỉ" class="form-control">
-                            </div>
-                        </div>
-                    </div>
+            <form:form  modelAttribute="userDto" method="post">
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="fullName">Giới tính</label>
-                                <%--<input name="memberId" type="hidden" placeholder="Họ Tên" class="form-control" value="<c:if test="${memberDto.memberId!= null}">${memberDto.memberId}</c:if>">--%>
-                                <%--<input type="text" id="fullName" name="fullName" value="<c:if test="${memberDto.fullName!= null}">${memberDto.fullName}</c:if>" placeholder="Họ Tên" class="form-control">--%>
-                            <div>
-                                <input id ="sex" type="radio" name="sex" value="1" > &nbsp;&nbsp;&nbsp;&nbsp;Nam&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input id ="sex" type="radio" name="sex" value="2" > &nbsp;&nbsp;&nbsp;&nbsp;Nữ&nbsp;&nbsp;&nbsp;&nbsp;
-                            </div>
+                            <label class="control-label" for="fullName">Họ Tên</label>
+                            <input type="text" id="fullName" name="fullName" value="<c:if test="${userDto.fullName!= null}">${userDto.fullName}</c:if>" placeholder="Họ Tên" class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="birthday">Ngày sinh</label>
-                                <%--<input type="text" id="tel" name="tel" value="<c:if test="${memberDto.tel!= 0}">${memberDto.tel}</c:if>" placeholder="Điện thoại" class="form-control">--%>
                             <div class="input-group date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="birthday" name="birthday" type="text" class="form-control" value="03/06/2014">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="birthday" name="birthday" class="form-control" value="<c:if test="${userDto.birthday!= null}">${userDto.birthday}</c:if>">
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="address">idCard</label>
-                                <%--<input type="text" id="address" name="address" value="<c:if test="${memberDto.address!= null}">${memberDto.address}</c:if>" placeholder="Địa chỉ" class="form-control">--%>
-                            <input type="text" id="adress" name="adress" value="" placeholder="Địa chỉ" class="form-control">
+                            <label class="control-label" for="idCard">idCard</label>
+                            <input type="text" id="idCard" name="idCard" value="<c:if test="${userDto.idCard!= 0}">${userDto.idCard}</c:if>" placeholder="Địa chỉ" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="gender">Giới tính</label>
+                                    <div>
+                                        <input id ="gender" type="radio" name="gender" value="1" <c:if test="${userDto.gender == 1}">checked="checked"</c:if> >&nbsp;&nbsp;Nam&nbsp;&nbsp;&nbsp;
+                                        <input id ="gender" type="radio" name="gender" value="2" <c:if test="${userDto.gender == 2}">checked="checked"</c:if> >&nbsp;&nbsp;Nữ&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label class="control-label" for="tel">Điện thoại</label>
+                                    <input type="text" id="tel" name="tel" value="<c:if test="${userDto.tel!= null}">${userDto.tel}</c:if>" placeholder="Điện thoại" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label class="control-label" for="address">Địa chỉ</label>
+                            <input type="text" id="adress" name="address" value="<c:if test="${userDto.address!= null}">${userDto.address}</c:if>" placeholder="Địa chỉ" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="fullName">Trạng thái</label>
-                                <%--<input name="memberId" type="hidden" placeholder="Họ Tên" class="form-control" value="<c:if test="${memberDto.memberId!= null}">${memberDto.memberId}</c:if>">--%>
-                                <%--<input type="text" id="fullName" name="fullName" value="<c:if test="${memberDto.fullName!= null}">${memberDto.fullName}</c:if>" placeholder="Họ Tên" class="form-control">--%>
-                            <input type="text" id="fullName" name="fullName" value="" placeholder="Trạng thái" class="form-control">
+                            <label class="control-label" for="userStatus">Trạng thái</label>
+                            <select class="form-control m-b">
+                                <option name="userStatus" value="1">Active</option>
+                                <option name="userStatus" value="2">Deactive</option>
+                                <option name="userStatus" value="3">Pending</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="tel">adId</label>
-                                <%--<input type="text" id="tel" name="tel" value="<c:if test="${memberDto.tel!= 0}">${memberDto.tel}</c:if>" placeholder="Điện thoại" class="form-control">--%>
-                            <input type="text" id="tel" name="tel" value="" placeholder="adId" class="form-control">
+                            <label class="control-label" for="adId">adId</label>
+                            <input type="text" id="adId" name="adId" value="<c:if test="${userDto.adId!= 0}">${userDto.adId}</c:if>" placeholder="adId" class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="address">Mail</label>
-                                <%--<input type="text" id="address" name="address" value="<c:if test="${memberDto.address!= null}">${memberDto.address}</c:if>" placeholder="Địa chỉ" class="form-control">--%>
-                            <input type="text" id="adress" name="adress" value="" placeholder="Mail" class="form-control">
+                            <label class="control-label" for="mail">Mail</label>
+                            <input type="text" id="mail" name="mail" value="<c:if test="${userDto.mail!= null}">${userDto.mail}</c:if>" placeholder="Mail" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="startDay">Bắt đầu</label>
-                                <%--<input type="text" id="tel" name="tel" value="<c:if test="${memberDto.tel!= 0}">${memberDto.tel}</c:if>" placeholder="Điện thoại" class="form-control">--%>
                             <div class="input-group date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="startDay" name="startDay" type="text" class="form-control" value="03/06/2014">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="startDay" name="startDay" type="text" class="form-control" value="<c:if test="${userDto.startDay!= null}">${userDto.startDay}</c:if>">
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="endDay">Kết thúc</label>
-                                <%--<input type="text" id="address" name="address" value="<c:if test="${memberDto.address!= null}">${memberDto.address}</c:if>" placeholder="Địa chỉ" class="form-control">--%>
                             <div class="input-group date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="endDay" name="endDay" type="text" class="form-control" value="03/06/2014">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="endDay" name="endDay" type="text" class="form-control" var="endDay" value="<c:if test="${userDto.endDay!= null}">${userDto.endDay}</c:if>">
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-2">
                         <div class="form-group">
-                            <label class="control-label" for="address">Role</label>
-                                <%--<input type="text" id="address" name="address" value="<c:if test="${memberDto.address!= null}">${memberDto.address}</c:if>" placeholder="Địa chỉ" class="form-control">--%>
-                            <select class="form-control m-b" name="account">
-                                <option>Admin</option>
-                                <option>Member</option>
+                            <label class="control-label" for="">Role</label>
+                            <select class="form-control m-b">
+                                <option value="1">Admin</option>
+                                <option value="2">Member</option>
                             </select>
 
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-2">
                         <div class="form-group">
-                            <label class="control-label" for="address">Building</label>
-                                <%--<input type="text" id="address" name="address" value="<c:if test="${memberDto.address!= null}">${memberDto.address}</c:if>" placeholder="Địa chỉ" class="form-control">--%>
-                            <select class="form-control m-b" name="account">
-                                <option>Building 1</option>
-                                <option>Building 2</option>
-                                <option>Building 3</option>
-                                <option>Building 4</option>
+                            <label class="control-label" for="">Room</label>
+                            <select class="form-control m-b" >
+                                <option value="1">Room 1</option>
+                                <option value="2">Room 2</option>
+                                <option value="3">Room 3</option>
+                                <option value="4">Room 4</option>
                             </select>
 
                         </div>
@@ -148,16 +137,16 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <label class="control-label" for="fullName">Ghi chú</label>
+                            <label class="control-label" for="memo">Ghi chú</label>
                             <textarea type="text" rows="4" id="memo" name="memo" value="" placeholder="Ghi chú" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group">
-                        <div class="col-lg-offset-2 col-lg-10">
+                        <div class="text-center">
                             <button name="add" class="btn btn-primary" type="submit"><i class="fa fa-check"></i>&nbsp;Submit</button>
-                            <input name="reset" class="btn btn-primary" type="reset">
+                            <input name="reset" class="btn btn-danger" placeholder="Nhập lại" type="reset">
                         </div>
                     </div>
                 </div>

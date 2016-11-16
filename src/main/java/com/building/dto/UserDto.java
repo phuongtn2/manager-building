@@ -24,7 +24,16 @@ public class UserDto extends DefaultObjectDto implements Serializable{
 	private Date birthday;
 	private String memo;
 	private String address;
+	private int idCard;
 	private String logo;
+
+	public int getIdCard() {
+		return idCard;
+	}
+
+	public void setIdCard(int idCard) {
+		this.idCard = idCard;
+	}
 
 	public static long getSerialVersionUID() {
 		return serialVersionUID;

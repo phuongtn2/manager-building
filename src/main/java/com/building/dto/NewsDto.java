@@ -6,25 +6,25 @@ import java.util.Date;
  * Created by PhuongTN1 on 11/4/2016.
  */
 public class NewsDto extends DefaultObjectDto {
-    private long newsCode;
-    private byte newsType;
+    private long newCode;
+    private byte newType;
     private String newHeader;
     private String newShorter;
 
-    public long getNewsCode() {
-        return newsCode;
+    public long getNewCode() {
+        return newCode;
     }
 
-    public void setNewsCode(long newsCode) {
-        this.newsCode = newsCode;
+    public void setNewCode(long newCode) {
+        this.newCode = newCode;
     }
 
-    public byte getNewsType() {
-        return newsType;
+    public byte getNewType() {
+        return newType;
     }
 
-    public void setNewsType(byte newsType) {
-        this.newsType = newsType;
+    public void setNewType(byte newType) {
+        this.newType = newType;
     }
 
     public String getNewHeader() {

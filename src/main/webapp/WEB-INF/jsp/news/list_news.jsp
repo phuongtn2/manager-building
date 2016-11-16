@@ -13,7 +13,7 @@
                 </div>
             </div>
             <c:forEach items="${newsDtoList}" var="news">
-                <div class="ibox-content inspinia-timeline" onclick="edit(${news.newsId})">
+                <div class="ibox-content inspinia-timeline" onclick="edit(${news.newCode})">
                     <div class="timeline-item">
                         <div class="row">
                             <div class="col-xs-3 date">
@@ -25,13 +25,14 @@
                             <div class="col-xs-9 content no-top-border">
                                 <div class="row">
                                     <div class="col-lg-9">
-                                        <p class="m-b-xs" style="word-break: break-all"><strong>${news.title}</strong></p>
-                                        <p style="word-break: break-all">${news.memo}</p>
+                                        <p class="m-b-xs" style="word-break: break-all"><strong>${news.newHeader}</strong></p>
+                                        <p style="word-break: break-all">${news.newShorter}</p>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="btn-group">
-                                            <a class="btn btn-success btn btn-xs" href="/news/edit/${news.newsId}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
-                                            <a class="btn btn-danger btn btn-xs" href="/news/delete/${news.newsId}">&nbsp;&nbsp;Delete&nbsp;&nbsp;</a>
+                                            <a class="btn btn-success btn btn-xs" href="" >&nbsp;&nbsp;View&nbsp;&nbsp;</a>
+                                            <a class="btn btn-success btn btn-xs" href="/news/edit/${news.newCode}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
+                                            <a class="btn btn-danger btn btn-xs" href="/news/delete/${news.newCode}">&nbsp;&nbsp;Delete&nbsp;&nbsp;</a>
                                         </div>
                                     </div>
                                 </div>

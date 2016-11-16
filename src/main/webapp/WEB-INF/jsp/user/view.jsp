@@ -126,7 +126,7 @@
  $('#birthday').datepicker({
   todayBtn: "linked",
   keyboardNavigation: false,
-  forceParse: false,
+  forceParse: true,
   calendarWeeks: true,
   autoclose: true
  });
@@ -134,7 +134,7 @@
  $('#startDay').datepicker({
   todayBtn: "linked",
   keyboardNavigation: false,
-  forceParse: false,
+  forceParse: true,
   calendarWeeks: true,
   autoclose: true
  });
@@ -142,7 +142,7 @@
  $('#endDay').datepicker({
   todayBtn: "linked",
   keyboardNavigation: false,
-  forceParse: false,
+  forceParse: true,
   calendarWeeks: true,
   autoclose: true
  });

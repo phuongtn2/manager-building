@@ -4,9 +4,9 @@
 
 <mapper namespace="com.building.mapper.NewsMapper">
 
-	<insert id="insertNews" useGeneratedKeys="true" keyProperty="dto.newsCode">
+	<insert id="insertNews" useGeneratedKeys="true" keyProperty="dto.newCode">
 		INSERT INTO M_NEWS(
-		newsType
+		newType
 		, newHeader
 		, newShorter
 		, created
@@ -14,8 +14,8 @@
 		, createId
 		, updateId
 		)VALUES(
-		#{dto.newsType}
-		#{dto.newHeader}
+		#{dto.newType}
+		, #{dto.newHeader}
 		, #{dto.newShorter}
 		,  NOW()
 		,  NOW()
@@ -29,20 +29,20 @@
 	</select>
 
 	<select id="findById" resultType="news">
-		SELECT * FROM M_NEWS WHERE newsCode=#{id}
+		SELECT * FROM M_NEWS WHERE newCode=#{id}
 	</select>
 
 	<update id="update">
 		UPDATE M_NEWS SET
-		newsType = #{dto.newsType}
+		newType = #{dto.newType}
 		,newHeader = #{dto.newHeader}
 		,newShorter = #{dto.newShorter}
 		,updateId = #{dto.updateId}
 		,lastUpdate= NOW()
-		WHERE newsCode= #{dto.newsCode}
+		WHERE newCode= #{dto.newCode}
 	</update>
 	<delete id="deleteById">
-		DELETE FROM M_NEWS WHERE newsCode = #{id}
+		DELETE FROM M_NEWS WHERE newCode = #{id}
 	</delete>
 
 </mapper>
