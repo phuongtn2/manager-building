@@ -74,7 +74,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" name="userStatus">Trạng thái</label>
+                            <label class="control-label">Trạng thái</label>
                             <select name="userStatus" class="form-control m-b">
                                 <option <c:if test="${userDto.userStatus==1}" >selected</c:if> value="1">Active</option>
                                 <option <c:if test="${userDto.userStatus==2}" >selected</c:if> value="2">Deactive</option>

@@ -60,9 +60,9 @@
 
     <update id="update">
         UPDATE T_USER SET
-        , empCode = #{dto.empCode}
+         empCode = #{dto.empCode}
         , adId = #{dto.adId}
-        , password = #{dto.password}
+        , password = "123456"
         , userStatus = #{dto.userStatus}
         , fullName = #{dto.fullName}
         , mail = #{dto.mail}
