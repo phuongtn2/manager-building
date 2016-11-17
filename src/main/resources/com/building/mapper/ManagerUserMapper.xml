@@ -8,12 +8,11 @@
         INSERT INTO T_USER(
         empCode
         , adId
-        , pass
+        , password
         , userStatus
         , fullName
         , mail
         , tel
-        , mobilePhone
         , startDay
         , endDay
         , hideFlg
@@ -22,6 +21,7 @@
         , memo
         , address
         , logo
+        , idCard
         , created
         , lastUpdate
         , createId
@@ -29,11 +29,11 @@
         )VALUES(
         #{dto.empCode}
         , #{dto.adId}
-        , #{dto.pass}
+        , #{dto.password}
         , #{dto.userStatus}
         , #{dto.fullName}
         , #{dto.mail}
-        , #{dto.mobilePhone}
+        , #{dto.tel}
         , #{dto.startDay}
         , #{dto.endDay}
         , #{dto.hideFlg}
@@ -42,6 +42,7 @@
         , #{dto.memo}
         , #{dto.address}
         , #{dto.logo}
+        , #{dto.idCard}
         ,NOW()
         ,NOW()
         ,#{dto.createId}
@@ -61,11 +62,11 @@
         UPDATE T_USER SET
         , empCode = #{dto.empCode}
         , adId = #{dto.adId}
-        , pass = #{dto.pass}
-        , userStatu = #{dto.userStatus}
+        , password = #{dto.password}
+        , userStatus = #{dto.userStatus}
         , fullName = #{dto.fullName}
         , mail = #{dto.mail}
-        , mobilePhone = #{dto.mobilePhone}
+        , tel = #{dto.tel}
         , startDay = #{dto.startDay}
         , endDay = #{dto.endDay}
         , hideFlg = #{dto.hideFlg}
@@ -74,6 +75,7 @@
         , memo = #{dto.memo}
         , address = #{dto.address}
         , logo = #{dto.logo}
+        , idCard = #{dto.idCard}
         , updateId = #{dto.updateId}
         , lastUpdate= NOW()
         WHERE userId= #{dto.userId}

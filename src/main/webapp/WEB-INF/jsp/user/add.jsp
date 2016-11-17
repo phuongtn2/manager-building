@@ -25,6 +25,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="fullName">Họ Tên</label>
+                            <input name="userId" type="hidden" class="form-control" value="<c:if test="${userDto.userId!= null}">${userDto.userId}</c:if>">
                             <input type="text" id="fullName" name="fullName" value="<c:if test="${userDto.fullName!= null}">${userDto.fullName}</c:if>" placeholder="Họ Tên" class="form-control">
                         </div>
                     </div>
@@ -32,14 +33,14 @@
                         <div class="form-group">
                             <label class="control-label" for="birthday">Ngày sinh</label>
                             <div class="input-group date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="birthday" name="birthday" class="form-control" value="<c:if test="${userDto.birthday!= null}">${userDto.birthday}</c:if>">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="birthday" name="birthday" placeholder="Ngày sinh" class="form-control" value="<c:if test="${userDto.birthday!= null}"><fmt:formatDate pattern="MM-dd-yyyy" value="${userDto.birthday}" /></c:if>">
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="idCard">idCard</label>
-                            <input type="text" id="idCard" name="idCard" value="<c:if test="${userDto.idCard!= 0}">${userDto.idCard}</c:if>" placeholder="Địa chỉ" class="form-control">
+                            <input type="text" id="idCard" name="idCard" value="<c:if test="${userDto.idCard!= 0}">${userDto.idCard}</c:if>" placeholder="Chứng minh thư" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -73,18 +74,18 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="userStatus">Trạng thái</label>
-                            <select class="form-control m-b">
-                                <option name="userStatus" value="1">Active</option>
-                                <option name="userStatus" value="2">Deactive</option>
-                                <option name="userStatus" value="3">Pending</option>
+                            <label class="control-label" name="userStatus">Trạng thái</label>
+                            <select name="userStatus" class="form-control m-b">
+                                <option <c:if test="${userDto.userStatus==1}" >selected</c:if> value="1">Active</option>
+                                <option <c:if test="${userDto.userStatus==2}" >selected</c:if> value="2">Deactive</option>
+                                <option <c:if test="${userDto.userStatus==3}" >selected</c:if> value="3">Pending</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="adId">adId</label>
-                            <input type="text" id="adId" name="adId" value="<c:if test="${userDto.adId!= 0}">${userDto.adId}</c:if>" placeholder="adId" class="form-control">
+                            <input type="text" id="adId" name="adId" value="<c:if test="${userDto.adId!= null}">${userDto.adId}</c:if>" placeholder="adId" class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -99,7 +100,7 @@
                         <div class="form-group">
                             <label class="control-label" for="startDay">Bắt đầu</label>
                             <div class="input-group date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="startDay" name="startDay" type="text" class="form-control" value="<c:if test="${userDto.startDay!= null}">${userDto.startDay}</c:if>">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="startDay" name="startDay" type="text" class="form-control" value="<c:if test="${userDto.startDay!= null}"><fmt:formatDate pattern="MM-dd-yyyy" value="${userDto.startDay}" /></c:if>">
                             </div>
                         </div>
                     </div>
@@ -107,7 +108,7 @@
                         <div class="form-group">
                             <label class="control-label" for="endDay">Kết thúc</label>
                             <div class="input-group date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="endDay" name="endDay" type="text" class="form-control" var="endDay" value="<c:if test="${userDto.endDay!= null}">${userDto.endDay}</c:if>">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="endDay" name="endDay" type="text" class="form-control" var="endDay" value="<c:if test="${userDto.endDay!= null}"><fmt:formatDate pattern="MM-dd-yyyy" value="${userDto.endDay}" /></c:if>">
                             </div>
                         </div>
                     </div>
@@ -124,7 +125,7 @@
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label class="control-label" for="">Room</label>
-                            <select class="form-control m-b" >
+                            <select  class="form-control m-b" >
                                 <option value="1">Room 1</option>
                                 <option value="2">Room 2</option>
                                 <option value="3">Room 3</option>

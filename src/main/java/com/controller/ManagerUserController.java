@@ -49,7 +49,7 @@ public class ManagerUserController {
     }
     @RequestMapping(method = RequestMethod.POST)
     public String processSubmit(
-            @ModelAttribute("userDtoList") UserDto userDto,
+            @ModelAttribute("userDto") UserDto userDto,
             BindingResult result, SessionStatus status) {
 
         //customerValidator.validate(customer, result);
@@ -66,7 +66,9 @@ public class ManagerUserController {
 
     @RequestMapping(method = RequestMethod.POST, params = "add")
     public String addUser(@ModelAttribute("userDto") UserDto userDto) throws ServerException {
-        userDto.setPass("123456");
+        userDto.setPassword("123456");
+        userDto.setEmpCode("234");
+
         managerUserService.insertUser(userDto);
         return "redirect:/user";
     }

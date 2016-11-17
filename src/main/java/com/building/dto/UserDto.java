@@ -12,7 +12,7 @@ public class UserDto extends DefaultObjectDto implements Serializable{
 	private int userId;
 	private String empCode;
 	private String adId;
-	private String pass;
+	private String password;
 	private byte userStatus;
 	private String fullName;
 	private String mail;
@@ -24,14 +24,22 @@ public class UserDto extends DefaultObjectDto implements Serializable{
 	private Date birthday;
 	private String memo;
 	private String address;
-	private int idCard;
+	private Integer idCard;
 	private String logo;
 
-	public int getIdCard() {
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Integer getIdCard() {
 		return idCard;
 	}
 
-	public void setIdCard(int idCard) {
+	public void setIdCard(Integer idCard) {
 		this.idCard = idCard;
 	}
 
@@ -63,13 +71,7 @@ public class UserDto extends DefaultObjectDto implements Serializable{
 		this.adId = adId;
 	}
 
-	public String getPass() {
-		return pass;
-	}
 
-	public void setPass(String pass) {
-		this.pass = pass;
-	}
 
 	public byte getUserStatus() {
 		return userStatus;
