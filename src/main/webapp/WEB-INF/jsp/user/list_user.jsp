@@ -51,7 +51,7 @@
                                 <c:if test="${user.gender==1}" >Nam</c:if>
                                 <c:if test="${user.gender==2}" >Nữ</c:if>
                             </td>
-                            <td data-hide="phone,tablet"><fmt:formatDate pattern="MM-dd-yyyy" value="${user.birthday}" /></td>
+                            <td data-hide="phone,tablet"><fmt:formatDate pattern="yyyy-MM-dd" value="${user.birthday}" /></td>
                             <td data-hide="phone,tablet">${user.idCard}</td>
                             <td data-hide="phone,tablet">${user.mail}</td>
                             <td data-hide="phone,tablet">${user.tel}</td>

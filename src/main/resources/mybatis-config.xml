@@ -15,7 +15,7 @@
 		<typeAlias alias="userRoleGroup" type="com.building.dto.UserRoleGroupDto" />
 		<typeAlias alias="building" type="com.building.dto.BuildingDto"/>
 		<typeAlias alias="news" type="com.building.dto.NewsDto"/>
-		<typeAlias alias="new_detail" type="com.building.dto.NewsDetailDto"/>
+		<typeAlias alias="news_detail" type="com.building.dto.NewsDetailDto"/>
 		<typeAlias alias="m_asset" type="com.building.dto.MasterAssetDto"/>
 		<typeAlias alias="t_asset" type="com.building.dto.TransferAssetDto"/>
 		<typeAlias alias="user" type="com.building.dto.UserDto"/>

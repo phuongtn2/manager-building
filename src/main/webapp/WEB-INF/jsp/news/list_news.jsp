@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="btn-group">
-                                            <a class="btn btn-success btn btn-xs" href="" >&nbsp;&nbsp;View&nbsp;&nbsp;</a>
+                                            <a class="btn btn-success btn btn-xs" href="/newsdetail" >&nbsp;&nbsp;View&nbsp;&nbsp;</a>
                                             <a class="btn btn-success btn btn-xs" href="/news/edit/${news.newCode}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
                                             <a class="btn btn-danger btn btn-xs" href="/news/delete/${news.newCode}">&nbsp;&nbsp;Delete&nbsp;&nbsp;</a>
                                         </div>

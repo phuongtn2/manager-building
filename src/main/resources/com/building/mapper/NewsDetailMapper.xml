@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.building.mapper.NewsDetailMapper">
+
+    <insert id="insertNewsDetail" >
+        INSERT INTO T_NEW_DETAIL(
+        newCode
+        , refNewCode
+        , newContent
+        )VALUES(
+        #{dto.newCode}
+        , #{dto.refNewCode}
+        , #{dto.newContent}
+        )
+    </insert>
+
+    <select id="findAll" resultType="news_detail">
+        SELECT * FROM T_NEW_DETAIL ORDER BY newCode
+    </select>
+
+    <select id="findById" resultType="news_detail">
+        SELECT * FROM T_NEW_DETAIL WHERE newContent=#{newContent}
+    </select>
+
+    <update id="update">
+        UPDATE T_NEW_DETAIL SET
+        refNewCode = #{dto.refNewCode}
+        ,newContent = #{dto.newContent}
+        WHERE newContent= #{dto.newContent}
+    </update>
+    <delete id="deleteById">
+        DELETE FROM T_NEW_DETAIL WHERE newContent = #{id}
+    </delete>
+
+</mapper>
