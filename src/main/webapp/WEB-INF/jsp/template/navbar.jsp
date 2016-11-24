@@ -1,10 +1,11 @@
 <%@page language="java" contentType="text/html;charset=UTF-8"%>
+<spring:url value="/resources/img/building.jpg" var="building"/>
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xlp1/v/t1.0-1/c70.0.160.160/p160x160/14657399_1503786549647820_9137950906811511318_n.jpg?oh=3a5e308f69e3bf1573b91e19be260b0e&oe=58CD0D70&__gda__=1490129102_bd1551a21cb90318a193a38ea80f481c" />
+                            <img alt="image" class="img-circle" src="${building}" />
                              </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">${aui.fullName}</strong>
@@ -19,28 +20,32 @@
                     B
                 </div>
             </li>
-            <li class="active">
+            <li id="news" class="active">
                 <a href="/news"><i class="fa fa-th-large"></i> <span class="nav-label">Tin nội bộ </br> (News)</span> <span class="fa arrow"></span></a>
             </li>
-            <li>
+            <li id="complaint">
                 <a href="/complaint"><i class="fa fa-th-large"></i> <span class="nav-label">Phản hồi đánh giá </br> (Complaint)</span> <span class="fa arrow"></span></a>
+                <ul id="complaintUL" class="nav nav-second-level collapse">
+                    <li id="complaintLi"><a href="/complaint">Phản hồi đánh giá </br> (Complaint) </a></li>
+                    <li id="complaint_history"><a href="/complaint/history">Lich Su </br> (History) </a></li>
+                </ul>
             </li>
-            <li>
+            <li id="request">
                 <a href="/request_bokking"><i class="fa fa-th-large"></i> <span class="nav-label">Yêu cầu </br> (Request/Booking)</span> <span class="fa arrow"></span></a>
             </li>
-            <li>
+            <li id="building">
                 <a href="/building"><i class="fa fa-th-large"></i> <span class="nav-label">Tòa nhà </br> (Building)</span> <span class="fa arrow"></span></a>
             </li>
-            <li>
+            <li id="asset">
                 <a href="/asset"><i class="fa fa-th-large"></i> <span class="nav-label">Tài sản chung </br> (Asset)</span> <span class="fa arrow"></span></a>
             </li>
-            <li>
+            <li id="history">
                 <a href="/history"><i class="fa fa-th-large"></i> <span class="nav-label">Lịch sử căn hộ </br> (History)</span> <span class="fa arrow"></span></a>
             </li>
-            <li>
+            <li id="user">
                 <a href="/user"><i class="fa fa-th-large"></i> <span class="nav-label">Member</span> <span class="fa arrow"></span></a>
             </li>
-            <li>
+            <li id="service">
                 <a href="/service"><i class="fa fa-th-large"></i> <span class="nav-label">Phí dịch vụ </br> (Service)</span> <span class="fa arrow"></span></a>
             </li>
         </ul>

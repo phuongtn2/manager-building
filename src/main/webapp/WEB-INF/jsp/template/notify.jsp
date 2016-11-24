@@ -1,9 +1,13 @@
 <%@page language="java" contentType="text/html;charset=UTF-8"%>
+<spring:url value="/resources/img/flags/16/United-States.png" var="EN"/>
+<spring:url value="/resources/img/flags/16/Vietnam.png" var="VN"/>
 <%--<div id="page-wrapper" class="gray-bg dashbard-1">--%>
     <div class="row border-bottom">
         <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#">
+                    <i class="fa fa-bars"></i>
+                </a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -56,9 +60,11 @@
                     </a>
                 </li>
                 <li>
-                    <a class="right-sidebar-toggle">
-                        <i class="fa fa-tasks"></i>
-                    </a>
+                    <a class="right-sidebar-toggle fa set_vn active"><img src="${VN}"> VN</a>
+                </li>
+
+                <li>
+                    <a class="right-sidebar-toggle fa set_en"><img src="${EN}"> EN</a>
                 </li>
             </ul>
 

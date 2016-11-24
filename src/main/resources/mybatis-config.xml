@@ -24,5 +24,7 @@
 		<typeAlias alias="complaint" type="com.building.dto.ComplaintDto"/>
 		<typeAlias alias="floor" type="com.building.dto.FloorDto"/>
 		<typeAlias alias="room" type="com.building.dto.RoomDto"/>
+		<typeAlias alias="tComplaint" type="com.building.dto.TransferComplaintDto"/>
+		<typeAlias alias="tReply" type="com.building.dto.TransferReplyDto"/>
 	</typeAliases>
 </configuration>
