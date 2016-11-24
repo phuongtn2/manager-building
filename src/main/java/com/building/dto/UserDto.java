@@ -9,49 +9,33 @@ import java.util.Date;
 public class UserDto extends DefaultObjectDto implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	private int userId;
+	private Integer userId;
 	private String empCode;
 	private String adId;
 	private String password;
-	private byte userStatus;
+	private Byte userStatus;
 	private String fullName;
 	private String mail;
 	private String tel;
 	private Date startDay;
 	private Date endDay;
-	private byte hideFlg;
-	private int gender;
+	private Byte hideFlg;
+	private Integer gender;
 	private Date birthday;
 	private String memo;
 	private String address;
 	private Integer idCard;
 	private String logo;
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Integer getIdCard() {
-		return idCard;
-	}
-
-	public void setIdCard(Integer idCard) {
-		this.idCard = idCard;
-	}
-
 	public static long getSerialVersionUID() {
 		return serialVersionUID;
 	}
 
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 
@@ -71,13 +55,19 @@ public class UserDto extends DefaultObjectDto implements Serializable{
 		this.adId = adId;
 	}
 
+	public String getPassword() {
+		return password;
+	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-	public byte getUserStatus() {
+	public Byte getUserStatus() {
 		return userStatus;
 	}
 
-	public void setUserStatus(byte userStatus) {
+	public void setUserStatus(Byte userStatus) {
 		this.userStatus = userStatus;
 	}
 
@@ -121,19 +111,19 @@ public class UserDto extends DefaultObjectDto implements Serializable{
 		this.endDay = endDay;
 	}
 
-	public byte getHideFlg() {
+	public Byte getHideFlg() {
 		return hideFlg;
 	}
 
-	public void setHideFlg(byte hideFlg) {
+	public void setHideFlg(Byte hideFlg) {
 		this.hideFlg = hideFlg;
 	}
 
-	public int getGender() {
+	public Integer getGender() {
 		return gender;
 	}
 
-	public void setGender(int gender) {
+	public void setGender(Integer gender) {
 		this.gender = gender;
 	}
 
@@ -159,6 +149,14 @@ public class UserDto extends DefaultObjectDto implements Serializable{
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public Integer getIdCard() {
+		return idCard;
+	}
+
+	public void setIdCard(Integer idCard) {
+		this.idCard = idCard;
 	}
 
 	public String getLogo() {

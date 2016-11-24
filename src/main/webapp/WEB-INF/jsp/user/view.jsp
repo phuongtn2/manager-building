@@ -17,7 +17,9 @@
  <spring:url value="/resources/css/plugins/dataTables/datatables.min.css" var="datatablesCss" />
  <spring:url value="/resources/css/plugins/datapicker/datepicker3.css" var="datepicker3Css"/>
  <spring:url value="/resources/css/plugins/footable/footable.core.css" var="footableCss" />
+ <spring:url value="/resources/css/plugins/daterangepicker/daterangepicker-bs3.css" var="daterangepicker3Css"/>
 
+ <link href="${daterangepicker3Css}" rel="stylesheet" type="text/css"/>
  <link href="${datatablesCss}" rel="stylesheet" type="text/css"/>
  <link href="${bootsTrapCss}" rel="stylesheet" type="text/css"/>
  <link href="${toastrCss}" rel="stylesheet" type="text/css"/>
@@ -111,6 +113,9 @@
 
 
 <!-- Data picker -->
+
+<spring:url value="/resources/js/plugins/daterangepicker/daterangepicker.js" var="daterangepickerJs" />
+<script src="${daterangepickerJs}"></script>
 <spring:url value="/resources/js/plugins/datapicker/bootstrap-datepicker.js" var="datepickerJs" />
 <script src="${datepickerJs}"></script>
 
@@ -118,34 +123,36 @@
 <script>
  $(document).ready(function() {
 
-  $('.footable').footable();
+     $('.footable').footable();
 
+     $('#birthday').datepicker({
+         todayBtn: "linked",
+         keyboardNavigation: false,
+         forceParse: true,
+         calendarWeeks: true,
+         autoclose: true
+     });
+
+     $('#startDay').datepicker({
+         todayBtn: "linked",
+         keyboardNavigation: false,
+         forceParse: true,
+         calendarWeeks: true,
+         autoclose: true
+     });
+
+     $('#endDay').daterangepicker({
+         todayBtn: "linked",
+         keyboardNavigation: false,
+         forceParse: true,
+         calendarWeeks: true,
+         format: 'dd/MM/yyyy',
+         autoclose: true
+     });
  });
 
 
- $('#birthday').datepicker({
-  todayBtn: "linked",
-  keyboardNavigation: false,
-  forceParse: true,
-  calendarWeeks: true,
-  autoclose: true
- });
 
- $('#startDay').datepicker({
-  todayBtn: "linked",
-  keyboardNavigation: false,
-  forceParse: true,
-  calendarWeeks: true,
-  autoclose: true
- });
-
- $('#endDay').datepicker({
-  todayBtn: "linked",
-  keyboardNavigation: false,
-  forceParse: true,
-  calendarWeeks: true,
-  autoclose: true
- });
 
 
 </script>

@@ -33,14 +33,14 @@
                         <div class="form-group">
                             <label class="control-label" for="birthday">Ngày sinh</label>
                             <div class="input-group date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="birthday" name="birthday" placeholder="Ngày sinh" class="form-control" value="<c:if test="${userDto.birthday!= null}"><fmt:formatDate pattern="MM-dd-yyyy" value="${userDto.birthday}" /></c:if>">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="birthday" name="birthday" placeholder="Ngày sinh" class="form-control" value="<c:if test="${userDto.birthday!= null}"><fmt:formatDate pattern="MM-dd-yyyy" value="${userDto.birthday}" /></c:if>" >
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="idCard">idCard</label>
-                            <input type="text" id="idCard" name="idCard" value="<c:if test="${userDto.idCard!= 0}">${userDto.idCard}</c:if>" placeholder="Chứng minh thư" class="form-control">
+                            <input  type="text" id="idCard" name="idCard" value="<c:if test="${userDto.idCard!= 0}">${userDto.idCard}</c:if>" placeholder="Chứng minh thư" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="endDay">Kết thúc</label>
-                            <div class="input-group date">
+                            <div class="input-group ">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="endDay" name="endDay" type="text" class="form-control" var="endDay" value="<c:if test="${userDto.endDay!= null}"><fmt:formatDate pattern="MM-dd-yyyy" value="${userDto.endDay}" /></c:if>">
                             </div>
                         </div>
