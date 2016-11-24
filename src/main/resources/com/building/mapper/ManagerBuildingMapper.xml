@@ -47,5 +47,9 @@
 	<delete id="deleteById">
 		DELETE FROM M_BUILDING WHERE buildingCode = #{id}
 	</delete>
-
 </mapper>
+
+
+
+
+

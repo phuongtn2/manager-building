@@ -5,7 +5,7 @@
 <mapper namespace="com.building.mapper.ManagerMasterServicesMapper">
 
     <insert id="insertMasterServices" useGeneratedKeys="true" keyProperty="dto.serviceCode">
-        INSERT FROM * M_SERVICE (
+        INSERT INTO M_SERVICE (
         serviceType
         , serviceName
         , servicePrice
@@ -47,8 +47,11 @@
 		, lastUpdate= NOW()
 		WHERE serviceCode = #{dto.serviceCode}
     </update>
-
-    <delete id="delete">
-        DELETE M_SERVICE WHERE serviceCode = #{dto.serviceCode}
+    <delete id="deleteById">
+        DELETE FROM M_SERVICE WHERE serviceCode = #{id}
     </delete>
 </mapper>
+
+
+
+
