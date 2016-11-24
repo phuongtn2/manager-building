@@ -1,24 +1,33 @@
 package com.controller.bean;
 
-public class LoginBean {
 
-	private String userName;
-	private String password;
+import com.building.dto.AuthorizedUserInfo;
 
-	public String getUserName() {
-		return userName;
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+
+public class LoginBean implements Filter{
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+
+	}
+	@Override
+	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+		HttpServletRequest req = (HttpServletRequest) servletRequest;
+		HttpSession session = req.getSession();
+		AuthorizedUserInfo aui = (AuthorizedUserInfo) session.getAttribute("aui");
+		if (aui == null && !req.getRequestURI().contains("/login")){
+			RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/jsp/login.jsp");
+			rd.forward(servletRequest, servletResponse);
+			return;
+		}
+		filterChain.doFilter(servletRequest, servletResponse);
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+	@Override
+	public void destroy() {
 
-	public String getPassword() {
-		return password;
 	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 }
