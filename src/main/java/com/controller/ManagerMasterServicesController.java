@@ -2,7 +2,7 @@ package com.controller;
 
 import com.building.dto.AuthorizedUserInfo;
 import com.building.dto.MasterServicesDto;
-import com.building.services.ManagerMasterServices;
+import com.building.services.ManagerMasterServicesService;
 import com.dropbox.core.ServerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -27,7 +27,7 @@ import java.util.List;
 public class ManagerMasterServicesController {
 
         @Autowired
-        private ManagerMasterServices managerMasterServices;
+        private ManagerMasterServicesService managerMasterServicesService;
         @InitBinder
         public void initBinder(WebDataBinder binder) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -38,18 +38,18 @@ public class ManagerMasterServicesController {
         public String initForm(ModelMap model){
             MasterServicesDto masterServicesDto = new MasterServicesDto();
             //command object
-            model.addAttribute("masterServicesDto", masterServicesDto);
+            model.addAttribute("masterServiceDto", masterServicesDto);
             //return form view
             return "service/view";
         }
 
         @ModelAttribute("masterServicesDtoList")
         public List<MasterServicesDto> populateMasterServicesList() throws ServerException {
-            return managerMasterServices.findAll();
+            return managerMasterServicesService.findAll();
         }
         @RequestMapping(method = RequestMethod.POST)
         public String processSubmit(
-                @ModelAttribute("managerMasterServicesDtoList") MasterServicesDto masterServicesDto,
+                @ModelAttribute("masterServiceDto") MasterServicesDto masterServicesDto,
                 BindingResult result, SessionStatus status) {
 
             //customerValidator.validate(customer, result);
@@ -65,29 +65,29 @@ public class ManagerMasterServicesController {
         }
 
         @RequestMapping(method = RequestMethod.POST, params = "add")
-        public String addMasterServices(@ModelAttribute("masterServicesDto") MasterServicesDto masterServicesDto) throws ServerException {
-            managerMasterServices.insertMasterServices(masterServicesDto);
+        public String addMasterServices(@ModelAttribute("masterServiceDto") MasterServicesDto masterServicesDto) throws ServerException {
+            managerMasterServicesService.insertMasterServices(masterServicesDto);
             return "redirect:/service";
         }
 
         @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
         public String getEdit(@PathVariable long id, Model model, HttpServletRequest request)  throws ServerException{
             AuthorizedUserInfo aui = (AuthorizedUserInfo) request.getSession().getAttribute("aui");
-            MasterServicesDto masterServicesDto = managerMasterServices.findById(id);
+            MasterServicesDto masterServicesDto = managerMasterServicesService.findById(id);
             masterServicesDto.setUpdateId(aui.getUserId());
-            model.addAttribute("masterServicesDto",masterServicesDto);
+            model.addAttribute("masterServiceDto",masterServicesDto);
             return "service/view";
         }
 
         @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-        public String saveEdit(@ModelAttribute("masterServicesDto") MasterServicesDto masterServicesDto, @PathVariable long id) throws ServerException {
-            managerMasterServices.update(masterServicesDto);
+        public String saveEdit(@ModelAttribute("masterServiceDto") MasterServicesDto masterServicesDto, @PathVariable long id) throws ServerException {
+            managerMasterServicesService.update(masterServicesDto);
             return "redirect:/service";
         }
 
         @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
         public String delete(@PathVariable long id, Model model, HttpServletRequest request)  throws ServerException{
-            managerMasterServices.deleteById(id);
+            managerMasterServicesService.deleteById(id);
             return "redirect:/service";
         }
 
