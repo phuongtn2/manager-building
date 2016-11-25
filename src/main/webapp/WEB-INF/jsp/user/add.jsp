@@ -33,13 +33,14 @@
                         <div class="form-group">
                             <label class="control-label" for="birthday">Ngày sinh</label>
                             <div class="input-group date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="birthday" name="birthday" placeholder="Ngày sinh" class="form-control" value="<c:if test="${userDto.birthday!= null}"><fmt:formatDate pattern="MM-dd-yyyy" value="${userDto.birthday}" /></c:if>" >
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input id="birthday" name="birthday" placeholder="Ngày sinh" class="form-control" value="<c:if test="${userDto.birthday!= null}"><fmt:formatDate pattern="MM-dd-yyyy" value="${userDto.birthday}" /></c:if>" >
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="idCard">idCard</label>
+                            <label class="control-label" for="idCard">Chứng minh nhân dân</label>
                             <input  type="text" id="idCard" name="idCard" value="<c:if test="${userDto.idCard!= 0}">${userDto.idCard}</c:if>" placeholder="Chứng minh thư" class="form-control">
                         </div>
                     </div>
@@ -51,8 +52,8 @@
                                 <div class="form-group">
                                     <label class="control-label" for="gender">Giới tính</label>
                                     <div>
-                                        <input id ="gender" type="radio" name="gender" value="1" <c:if test="${userDto.gender == 1}">checked="checked"</c:if> >&nbsp;&nbsp;Nam&nbsp;&nbsp;&nbsp;
-                                        <input id ="gender" type="radio" name="gender" value="2" <c:if test="${userDto.gender == 2}">checked="checked"</c:if> >&nbsp;&nbsp;Nữ&nbsp;&nbsp;&nbsp;
+                                        <input id ="genderM" type="radio" name="gender" value="1" <c:if test="${userDto.gender == 1}">checked="checked"</c:if> >&nbsp;&nbsp;Nam&nbsp;&nbsp;&nbsp;
+                                        <input id ="genderF" type="radio" name="gender" value="2" <c:if test="${userDto.gender == 2}">checked="checked"</c:if> >&nbsp;&nbsp;Nữ&nbsp;&nbsp;&nbsp;
                                     </div>
                                 </div>
                             </div>
@@ -84,7 +85,7 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="adId">adId</label>
+                            <label class="control-label" for="adId">Tên đăng nhập</label>
                             <input type="text" id="adId" name="adId" value="<c:if test="${userDto.adId!= null}">${userDto.adId}</c:if>" placeholder="adId" class="form-control">
                         </div>
                     </div>
@@ -100,15 +101,17 @@
                         <div class="form-group">
                             <label class="control-label" for="startDay">Bắt đầu</label>
                             <div class="input-group date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="startDay" name="startDay" type="text" class="form-control" value="<c:if test="${userDto.startDay!= null}"><fmt:formatDate pattern="MM-dd-yyyy" value="${userDto.startDay}" /></c:if>">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input id="startDay" name="startDay" type="text" class="form-control" value="<c:if test="${userDto.startDay!= null}"><fmt:formatDate pattern="MM-dd-yyyy" value="${userDto.startDay}" /></c:if>">
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="endDay">Kết thúc</label>
-                            <div class="input-group ">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="endDay" name="endDay" type="text" class="form-control" var="endDay" value="<c:if test="${userDto.endDay!= null}"><fmt:formatDate pattern="MM-dd-yyyy" value="${userDto.endDay}" /></c:if>">
+                            <label class="control-label">Kết thúc</label>
+                            <div class="input-group date">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input id="endDay" name="endDay" type="text" class="form-control" value="<c:if test="${userDto.endDay!= null}"><fmt:formatDate pattern="MM-dd-yyyy" value="${userDto.endDay}" /></c:if>">
                             </div>
                         </div>
                     </div>

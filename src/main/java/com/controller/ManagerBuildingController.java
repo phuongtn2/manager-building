@@ -2,8 +2,8 @@ package com.controller;
 
 import com.building.dto.AuthorizedUserInfo;
 import com.building.dto.BuildingDto;
+import com.building.dto.FloorDto;
 import com.building.services.ManagerBuildingService;
-import com.building.services.error.ServiceException;
 import com.dropbox.core.ServerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -14,9 +14,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -88,4 +87,25 @@ public class ManagerBuildingController {
 		managerBuildingService.deleteById(id);
 		return "redirect:/building";
 	}
+
+	@RequestMapping(value = "/addFloor/{id}", method = RequestMethod.GET)
+	public String addFloor(@PathVariable long id, Model model, HttpServletRequest request)  throws ServerException{
+		List<FloorDto> listFloor = managerBuildingService.findAllFloorByBuildingId(id);
+		model.addAttribute("floorDtoList",listFloor);
+		return "building/floor/view";
+	}
+
+	@RequestMapping(value = "/addFloor/{id}", method = RequestMethod.POST, params = "add")
+	public String addFloor(@PathVariable long id, @ModelAttribute("floorDto") FloorDto floorDto, HttpServletRequest request) throws ServerException {
+		AuthorizedUserInfo aui = (AuthorizedUserInfo) request.getSession().getAttribute("aui");
+		floorDto.setCreateId(aui.getUserId());
+		floorDto.setUpdateId(aui.getUserId());
+		floorDto.setBuildingCode(id);
+		managerBuildingService.insertFloor(floorDto);
+		return "redirect:/building/floor/" + id;
+	}
+	/*@ModelAttribute("floorDtoList")
+	public List<BuildingDto> populateFloorList() throws ServerException {
+		return managerBuildingService.findAllFloorByBuildingId();
+	}*/
 }

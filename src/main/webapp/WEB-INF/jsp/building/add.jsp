@@ -4,7 +4,7 @@
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Quản Lý Tòa Nhà</h5>
+                <h5>Thông Tin Tòa Nhà</h5>
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
@@ -13,7 +13,6 @@
             </div>
             <div class="ibox-content">
                 <form:form modelAttribute="buildingDto" method="post">
-                    <p>Thông Tin Tòa Nhà</p>
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
@@ -44,7 +43,7 @@
                     </div>
                     <div class="form-group">
                         <div class="text-center">
-                            <button name="add" class="btn btn-primary " type="submit"><i class="fa fa-check"></i>&nbsp;Xác nhận</button>
+                            <button name="add" class="btn btn-primary " type="submit"><i class="fa fa-check"></i>&nbsp;Lưu</button>
                             <button name="reset" class="btn btn-danger " type="button"><i class="fa fa-refresh"></i>&nbsp;Nhập lại</button>
                         </div>
                     </div>

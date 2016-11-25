@@ -2,6 +2,7 @@ package com.building.services.impl;
 
 import com.building.dto.BuildingDto;
 
+import com.building.dto.FloorDto;
 import com.building.mapper.ManagerBuildingMapper;
 import com.building.services.ManagerBuildingService;
 import com.dropbox.core.ServerException;
@@ -39,5 +40,15 @@ public class ManagerBuildingServiceImpl implements ManagerBuildingService {
     @Override
     public void deleteById(long id) throws ServerException {
         managerBuildingMapper.deleteById(id);
+    }
+
+    @Override
+    public List<FloorDto> findAllFloorByBuildingId(long buildingId) throws ServerException {
+        return managerBuildingMapper.findAllFloorByBuildingId(buildingId);
+    }
+
+    @Override
+    public long insertFloor(FloorDto floorDto) throws ServerException {
+        return managerBuildingMapper.insertFloor(floorDto);
     }
 }

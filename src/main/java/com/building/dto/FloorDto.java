@@ -3,7 +3,7 @@ package com.building.dto;
 /**
  * Created by Giang.DaoTu on 11/15/2016.
  */
-public class FloorDto {
+public class FloorDto extends DefaultObjectDto{
     private long floorCode;
     private int floorSeq;
     private String floorAlias;
