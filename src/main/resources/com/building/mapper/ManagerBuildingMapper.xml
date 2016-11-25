@@ -47,6 +47,34 @@
 	<delete id="deleteById">
 		DELETE FROM M_BUILDING WHERE buildingCode = #{id}
 	</delete>
+
+	<select id="findAllFloorByBuildingId" resultType="floor">
+		SELECT * FROM M_FLOOR WHERE buildingCode = #{id} ORDER BY floorCode
+	</select>
+
+	<insert id="insertFloor" useGeneratedKeys="true" keyProperty="dto.floorCode">
+		INSERT INTO M_FLOOR(
+			floorSeq
+		, floorAlias
+		, floorType
+		, buildingCode
+		, totalRoom
+		, created
+		, lastUpdate
+		, createId
+		, updateId
+		)VALUES(
+		#{dto.floorSeq}
+		, #{dto.floorAlias}
+		, #{dto.floorType}
+		, #{dto.buildingCode}
+		, #{dto.totalRoom}
+		,  NOW()
+		,  NOW()
+		, #{dto.createId}
+		, #{dto.updateId}
+		)
+	</insert>
 </mapper>
 
 

@@ -46,8 +46,8 @@
                             <div class="form-group">
                                 <label class="control-label" for="sex">Giới tính</label>
                                 <div class="form-group">
-                                    <input id ="sex" type="radio" name="sex" value="1" <c:if test="${memberDto.sex == 1}">checked="checked"</c:if>> &nbsp;Nam&nbsp;
-                                    <input id ="sex" type="radio" name="sex" value="2" <c:if test="${memberDto.sex == 2}">checked="checked"</c:if>> &nbsp;Nữ&nbsp;
+                                    <input id ="sexM" type="radio" name="sex" value="1" <c:if test="${memberDto.sex == 1}">checked="checked"</c:if>> &nbsp;Nam&nbsp;
+                                    <input id ="sexF" type="radio" name="sex" value="2" <c:if test="${memberDto.sex == 2}">checked="checked"</c:if>> &nbsp;Nữ&nbsp;
                                 </div>
                             </div>
                         </div>

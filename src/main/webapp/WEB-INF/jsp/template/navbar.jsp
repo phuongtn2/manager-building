@@ -9,11 +9,13 @@
                              </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">${aui.fullName}</strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                             </span> <span class="text-muted text-xs block">Member <b class="caret"></b></span> </span> </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a href="profile.html">Thông Tin Cá Nhân</a></li>
                         <li class="divider"></li>
-                        <li><a href="/logout">Logout</a></li>
+                        <li><a href="/changepass">Thây Đổi Mật Khẩu</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/logout">Đăng Xuất</a></li>
                     </ul>
                 </div>
                 <div class="logo-element">
