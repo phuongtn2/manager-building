@@ -1,5 +1,6 @@
 package com.building.services.impl;
 
+import com.building.dto.AuthorizedUserInfo;
 import com.building.dto.ComplaintDto;
 import com.building.dto.TransferComplaintDto;
 import com.building.dto.TransferReplyDto;
@@ -47,6 +48,11 @@ public class ComplaintServiceImpl implements ComplaintService {
     @Override
     public ComplaintDto findById(long id) throws ServerException {
         return complaintMapper.findById(id);
+    }
+
+    @Override
+    public List<ComplaintDto> findAllComplaintHistory(AuthorizedUserInfo aui) throws ServerException {
+        return complaintMapper.findAllComplaintHistory(aui);
     }
 
 

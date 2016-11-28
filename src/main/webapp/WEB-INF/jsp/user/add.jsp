@@ -20,28 +20,28 @@
                 </div>
             </div>
             <div class="ibox-content m-b-sm border-bottom">
-            <form:form  modelAttribute="userDto" method="post">
+            <form:form  modelAttribute="userRoleRoomDto" method="post">
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="fullName">Họ Tên</label>
-                            <input name="userId" type="hidden" class="form-control" value="<c:if test="${userDto.userId!= null}">${userDto.userId}</c:if>">
-                            <input type="text" id="fullName" name="fullName" value="<c:if test="${userDto.fullName!= null}">${userDto.fullName}</c:if>" placeholder="Họ Tên" class="form-control">
+                            <input name="userDto.userId" type="hidden" class="form-control" value="<c:if test="${userRoleRoomDto.userDto.userId!= null}">${userRoleRoomDto.userDto.userId}</c:if>">
+                            <input type="text" id="fullName" name="userDto.fullName" value="<c:if test="${userRoleRoomDto.userDto.fullName!= null}">${userRoleRoomDto.userDto.fullName}</c:if>" placeholder="Họ Tên" class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="birthday">Ngày sinh</label>
+                            <label class="control-label" >Ngày sinh</label>
                             <div class="input-group date">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                <input id="birthday" name="birthday" placeholder="Ngày sinh" class="form-control" value="<c:if test="${userDto.birthday!= null}"><fmt:formatDate pattern="MM-dd-yyyy" value="${userDto.birthday}" /></c:if>" >
+                                <input id="birthday" name="userDto.birthday" placeholder="Ngày sinh" class="form-control" value="<c:if test="${userRoleRoomDto.userDto.birthday!= null}"><fmt:formatDate pattern="MM/dd/yyyy" value="${userRoleRoomDto.userDto.birthday}"></fmt:formatDate></c:if>" >
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="idCard">Chứng minh nhân dân</label>
-                            <input  type="text" id="idCard" name="idCard" value="<c:if test="${userDto.idCard!= 0}">${userDto.idCard}</c:if>" placeholder="Chứng minh thư" class="form-control">
+                            <label class="control-label">Chứng minh nhân dân</label>
+                            <input  type="text" id="userDto.idCard" name="userDto.idCard" value="<c:if test="${userRoleRoomDto.userDto.idCard!= 0}">${userRoleRoomDto.userDto.idCard}</c:if>" placeholder="Chứng minh thư" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -50,25 +50,25 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label class="control-label" for="gender">Giới tính</label>
+                                    <label class="control-label">Giới tính</label>
                                     <div>
-                                        <input id ="genderM" type="radio" name="gender" value="1" <c:if test="${userDto.gender == 1}">checked="checked"</c:if> >&nbsp;&nbsp;Nam&nbsp;&nbsp;&nbsp;
-                                        <input id ="genderF" type="radio" name="gender" value="2" <c:if test="${userDto.gender == 2}">checked="checked"</c:if> >&nbsp;&nbsp;Nữ&nbsp;&nbsp;&nbsp;
+                                        <input id ="genderM" type="radio" name="userDto.gender" value="1" <c:if test="${userRoleRoomDto.userDto.gender == 1 || userRoleRoomDto.userDto.gender == null}">checked="checked"</c:if> >&nbsp;&nbsp;Nam&nbsp;&nbsp;&nbsp;
+                                        <input id ="genderF" type="radio" name="userDto.gender" value="2" <c:if test="${userRoleRoomDto.userDto.gender == 2}">checked="checked"</c:if> >&nbsp;&nbsp;Nữ&nbsp;&nbsp;&nbsp;
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-8">
                                 <div class="form-group">
-                                    <label class="control-label" for="tel">Điện thoại</label>
-                                    <input type="text" id="tel" name="tel" value="<c:if test="${userDto.tel!= null}">${userDto.tel}</c:if>" placeholder="Điện thoại" class="form-control">
+                                    <label class="control-label">Điện thoại</label>
+                                    <input type="text" id="tel" name="userDto.tel" value="<c:if test="${userRoleRoomDto.userDto.tel!= null}">${userRoleRoomDto.userDto.tel}</c:if>" placeholder="Điện thoại" class="form-control">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="form-group">
-                            <label class="control-label" for="address">Địa chỉ</label>
-                            <input type="text" id="adress" name="address" value="<c:if test="${userDto.address!= null}">${userDto.address}</c:if>" placeholder="Địa chỉ" class="form-control">
+                            <label class="control-label">Địa chỉ</label>
+                            <input type="text" id="adress" name="userDto.address" value="<c:if test="${userRoleRoomDto.userDto.address!= null}">${userRoleRoomDto.userDto.address}</c:if>" placeholder="Địa chỉ" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -76,33 +76,33 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label">Trạng thái</label>
-                            <select name="userStatus" class="form-control m-b">
-                                <option <c:if test="${userDto.userStatus==1}" >selected</c:if> value="1">Active</option>
-                                <option <c:if test="${userDto.userStatus==2}" >selected</c:if> value="2">Deactive</option>
-                                <option <c:if test="${userDto.userStatus==3}" >selected</c:if> value="3">Pending</option>
+                            <select name="userDto.userStatus" class="form-control m-b">
+                                <option <c:if test="${userRoleRoomDto.userDto.userStatus==1}" >selected</c:if> value="1">Active</option>
+                                <option <c:if test="${userRoleRoomDto.userDto.userStatus==2}" >selected</c:if> value="2">Deactive</option>
+                                <option <c:if test="${userRoleRoomDto.userDto.userStatus==3}" >selected</c:if> value="3">Pending</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="adId">Tên đăng nhập</label>
-                            <input type="text" id="adId" name="adId" value="<c:if test="${userDto.adId!= null}">${userDto.adId}</c:if>" placeholder="adId" class="form-control">
+                            <label class="control-label">Tên đăng nhập</label>
+                            <input type="text" id="adId" name="userDto.adId" value="<c:if test="${userRoleRoomDto.userDto.adId!= null}">${userRoleRoomDto.userDto.adId}</c:if>" placeholder="adId" class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="mail">Mail</label>
-                            <input type="text" id="mail" name="mail" value="<c:if test="${userDto.mail!= null}">${userDto.mail}</c:if>" placeholder="Mail" class="form-control">
+                            <label class="control-label">Mail</label>
+                            <input type="text" id="mail" name="userDto.mail" value="<c:if test="${userRoleRoomDto.userDto.mail!= null}">${userRoleRoomDto.userDto.mail}</c:if>" placeholder="Mail" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="startDay">Bắt đầu</label>
+                            <label class="control-label">Bắt đầu</label>
                             <div class="input-group date">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                <input id="startDay" name="startDay" type="text" class="form-control" value="<c:if test="${userDto.startDay!= null}"><fmt:formatDate pattern="MM-dd-yyyy" value="${userDto.startDay}" /></c:if>">
+                                <input id="startDay" name="userDto.startDay" type="text" class="form-control" value="<c:if test="${userRoleRoomDto.userDto.startDay!= null}"><fmt:formatDate pattern="MM/dd/yyyy" value="${userRoleRoomDto.userDto.startDay}"></fmt:formatDate></c:if>">
                             </div>
                         </div>
                     </div>
@@ -111,24 +111,49 @@
                             <label class="control-label">Kết thúc</label>
                             <div class="input-group date">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                <input id="endDay" name="endDay" type="text" class="form-control" value="<c:if test="${userDto.endDay!= null}"><fmt:formatDate pattern="MM-dd-yyyy" value="${userDto.endDay}" /></c:if>">
+                                <input id="endDay" name="userDto.endDay" type="text" class="form-control" value="<c:if test="${userRoleRoomDto.userDto.endDay!= null}"><fmt:formatDate pattern="MM/dd/yyyy" value="${userRoleRoomDto.userDto.endDay}"></fmt:formatDate></c:if>">
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <label class="control-label" for="">Role</label>
-                            <select class="form-control m-b">
+                            <label class="control-label">Role</label>
+                            <select class="form-control m-b" name="userRoleGroupDto.roleGroupId">
                                 <option value="1">Admin</option>
                                 <option value="2">Member</option>
                             </select>
 
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="control-label">Building</label>
+                            <select  class="form-control m-b" name="userRoomDto.buildingCode">
+                                <option value="1">Building 1</option>
+                                <option value="2">Building 2</option>
+                                <option value="3">Building 3</option>
+                                <option value="4">Building 4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="control-label" for="">Floor</label>
+                            <select  class="form-control m-b" name="userRoomDto.floorCode">
+                                <option value="1">Floor 1</option>
+                                <option value="2">Floor 2</option>
+                                <option value="3">Floor 3</option>
+                                <option value="4">Floor 4</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
                         <div class="form-group">
                             <label class="control-label" for="">Room</label>
-                            <select  class="form-control m-b" >
+                            <select  class="form-control m-b" name="userRoomDto.roomCode">
                                 <option value="1">Room 1</option>
                                 <option value="2">Room 2</option>
                                 <option value="3">Room 3</option>
@@ -141,8 +166,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <label class="control-label" for="memo">Ghi chú</label>
-                            <textarea type="text" rows="4" id="memo" name="memo" value="" placeholder="Ghi chú" class="form-control"></textarea>
+                            <label class="control-label">Ghi chú</label>
+                            <textarea type="text" rows="4" id="memo" name="userDto.memo" value="<c:if test="${userRoleRoomDto.userDto.mail!= null}">${userRoleRoomDto.userDto.mail}</c:if>" placeholder="Ghi chú" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>

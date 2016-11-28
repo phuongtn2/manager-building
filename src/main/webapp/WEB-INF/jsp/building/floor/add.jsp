@@ -17,12 +17,13 @@
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label class="control-label" for="floorSeq">Tầng số</label>
+                                <input type="hidden" id="floorCode" name="floorCode" value="<c:if test="${floorDto.floorCode!= 0}">${floorDto.floorCode}</c:if>"class="form-control">
                                 <input type="text" id="floorSeq" name="floorSeq" value="<c:if test="${floorDto.floorSeq!= 0}">${floorDto.floorSeq}</c:if>" placeholder="Tầng số" class="form-control">
                             </div>
                         </div>
                         <div class="col-sm-2">
                             <div class="form-group">
-                                <label class="control-label" for="totalRoom">Tổng số tầng</label>
+                                <label class="control-label" for="totalRoom">Tổng số phòng</label>
                                 <input type="text" id="totalRoom" name="totalRoom" value="<c:if test="${floorDto.totalRoom!= 0}">${floorDto.totalRoom}</c:if>" placeholder="Tổng số phòng" class="form-control">
                             </div>
                         </div>

@@ -1,7 +1,6 @@
 package com.controller;
 
-import com.building.dto.AuthorizedUserInfo;
-import com.building.dto.UserDto;
+import com.building.dto.*;
 import com.building.services.ManagerUserService;
 import com.dropbox.core.ServerException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,15 +29,15 @@ public class ManagerUserController {
     private ManagerUserService managerUserService;
     @InitBinder
     public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public String initForm(ModelMap model){
-         UserDto userDto = new UserDto();
+         UserRoleRoomDto userRoleRoomDto = new UserRoleRoomDto();
         //command object
-        model.addAttribute("userDto", userDto);
+        model.addAttribute("userRoleRoomDto", userRoleRoomDto);
         //return form view
         return "user/view";
     }
@@ -49,7 +48,7 @@ public class ManagerUserController {
     }
     @RequestMapping(method = RequestMethod.POST)
     public String processSubmit(
-            @ModelAttribute("userDto") UserDto userDto,
+            @ModelAttribute("userRoleRoomDto") UserRoleRoomDto userRoleRoomDto,
             BindingResult result, SessionStatus status) {
 
         //customerValidator.validate(customer, result);
@@ -65,11 +64,24 @@ public class ManagerUserController {
     }
 
     @RequestMapping(method = RequestMethod.POST, params = "add")
-    public String addUser(@ModelAttribute("userDto") UserDto userDto) throws ServerException {
+    public String addUser(@ModelAttribute("userRoleRoomDto") UserRoleRoomDto userRoleRoomDto, HttpServletRequest request) throws ServerException {
+        AuthorizedUserInfo aui = (AuthorizedUserInfo) request.getSession().getAttribute("aui");
+        //get user
+        UserDto userDto = userRoleRoomDto.getUserDto();
+        userDto.setCreateId(aui.getUserId());
+        userDto.setUpdateId(aui.getUserId());
         userDto.setPassword("123456");
-        userDto.setEmpCode("234");
-
         managerUserService.insertUser(userDto);
+        //get role
+        UserRoleGroupDto userRoleGroupDto = userRoleRoomDto.getUserRoleGroupDto();
+        userRoleGroupDto.setUserId(userDto.getUserId());
+        userRoleGroupDto.setCreateId(aui.getUserId());
+        userRoleGroupDto.setUpdateId(aui.getUserId());
+        managerUserService.insertUserRoleGroup(userRoleGroupDto);
+        //get user room
+        UserRoomDto userRoomDto = userRoleRoomDto.getUserRoomDto();
+        userRoomDto.setUserId(userDto.getUserId());
+        managerUserService.insertUserRoom(userRoomDto);
         return "redirect:/user";
     }
 

@@ -1,14 +1,13 @@
 package com.controller;
 
-import com.building.dto.ComplaintDto;
-import com.building.dto.TMComplaintDto;
-import com.building.dto.TransferComplaintDto;
-import com.building.dto.TransferReplyDto;
+import com.building.dto.*;
 import com.building.services.ComplaintService;
+import com.building.services.Role;
 import com.dropbox.core.ServerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,7 +30,7 @@ public class ComplaintController {
 	private ComplaintService complaintService;
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 	}
 
@@ -97,7 +97,9 @@ public class ComplaintController {
 		}
 	}
 	@RequestMapping(method = RequestMethod.POST, params = "add")
-	public String addComplaint(@ModelAttribute("complaintDto") ComplaintDto complaintDto) throws ServerException {
+	public String addComplaint(@ModelAttribute("complaintDto") ComplaintDto complaintDto, HttpServletRequest request) throws ServerException {
+		AuthorizedUserInfo aui = (AuthorizedUserInfo) request.getSession().getAttribute("aui");
+		complaintDto.setCreateId(aui.getUserId());
 		complaintService.insertComplaint(complaintDto);
 		return "redirect:/complaint";
 	}
@@ -124,5 +126,19 @@ public class ComplaintController {
 		complaintService.updateFollowStatus(complaintDto);
 		return "redirect:/complaint";
 		//return "complaint/view";
+	}
+
+	@RequestMapping(value = "/history", method = RequestMethod.GET)
+	public String listComplaintHistory(Model model, HttpServletRequest request) throws ServerException {
+		AuthorizedUserInfo aui = (AuthorizedUserInfo) request.getSession().getAttribute("aui");
+		List<ComplaintDto> listComplaintHistory = complaintService.findAllComplaintHistory(aui);
+		/*if(aui.getRoleSet().contains(Role.ADMIN)){
+			listComplaintHistory = complaintService.findAllComplaint();
+		}else{
+			listComplaintHistory = complaintService.findAllComplaintHistory(aui.getUserId());
+		}*/
+
+		model.addAttribute("listComplaintHistory", listComplaintHistory);
+		return "redirect:/complaint";
 	}
 }

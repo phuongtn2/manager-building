@@ -6,11 +6,9 @@ import java.util.Date;
 /**
  * Created by phuongtn2 on 7/11/2016.
  */
-public class UserDto extends DefaultObjectDto implements Serializable{
-	private static final long serialVersionUID = 1L;
+public class UserDto extends DefaultObjectDto{
 
 	private Integer userId;
-	private String empCode;
 	private String adId;
 	private String password;
 	private Byte userStatus;
@@ -27,24 +25,12 @@ public class UserDto extends DefaultObjectDto implements Serializable{
 	private Integer idCard;
 	private String logo;
 
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
-
 	public Integer getUserId() {
 		return userId;
 	}
 
 	public void setUserId(Integer userId) {
 		this.userId = userId;
-	}
-
-	public String getEmpCode() {
-		return empCode;
-	}
-
-	public void setEmpCode(String empCode) {
-		this.empCode = empCode;
 	}
 
 	public String getAdId() {

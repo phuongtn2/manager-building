@@ -18,10 +18,10 @@
                     <table class="footable emp-sales table table-striped table-bordered table-hover dataTables-example" data-page-size="10">
                         <thead>
                             <tr>
-                                <th class="text-center">Tên tầng </th>
+                                <th class="text-center">Tầng số</th>
+                                <th data-hide="phone,tablet" class="text-center">Tên tầng </th>
                                 <th data-hide="phone,tablet" class="text-center">Tổng số phòng</th>
                                 <th data-hide="phone,tablet" class="text-center">Loại tầng</th>
-                                <th data-hide="phone,tablet" class="text-center">Tầng số</th>
                                 <th data-hide="phone,tablet" class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -30,15 +30,15 @@
                                 <%int count = 0;%>
                                 <c:forEach items="${floorDtoList}" var="floor">
                                     <tr <c:if test = "${count%2 == 0}"><% count ++;%>class="gradeX"</c:if><c:if test = "${count%2 != 0}"><% count ++;%>class="gradeC"</c:if>   >
-                                        <td class="col-sm-4">${floor.floorAlias}</td>
+                                        <td class="col-sm-2">${floor.floorSeq}</td>
+                                        <td data-hide="phone,tablet" class="col-sm-4">${floor.floorAlias}</td>
                                         <td data-hide="phone,tablet" class="col-sm-1">${floor.totalRoom}</td>
                                         <td data-hide="phone,tablet" class="col-sm-1">${floor.floorType}</td>
-                                        <td data-hide="phone,tablet" class="col-sm-2">${floor.floorSeq}</td>
                                         <td data-hide="phone,tablet" class="col-sm-3 text-center">
                                             <div class="btn-group">
-                                                <a class="btn btn-success btn btn-xs" href="/building/edit/${floor.floorCode}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
-                                                <a class="btn btn-danger btn btn-xs" href="/building/delete/${floor.floorCode}">&nbsp;&nbsp;Delete&nbsp;&nbsp;</a>
-                                                <a class="btn btn-warning btn btn-xs" href="/building/addRoom/${floor.floorCode}">&nbsp;&nbsp;Add Room&nbsp;&nbsp;</a>
+                                                <a class="btn btn-success btn btn-xs" href="/building/floor/${floor.buildingCode}/edit/${floor.floorCode}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
+                                                <a class="btn btn-danger btn btn-xs" href="/building/floor/${floor.buildingCode}/delete/${floor.floorCode}">&nbsp;&nbsp;Delete&nbsp;&nbsp;</a>
+                                                <a class="btn btn-warning btn btn-xs" href="/building/floor/room/${floor.floorCode}">&nbsp;&nbsp;Add Room&nbsp;&nbsp;</a>
                                             </div>
                                         </td>
                                     </tr>

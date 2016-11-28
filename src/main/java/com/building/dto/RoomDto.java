@@ -4,17 +4,17 @@ package com.building.dto;
  * Created by Giang.DaoTu on 11/15/2016.
  */
 public class RoomDto extends DefaultObjectDto{
-    private long roomCode;
+    private Long roomCode;
     private String roomAlias;
-    private long floorCode;
-    private int count;
-    private byte status;
+    private Long floorCode;
+    private Integer count;
+    private Byte status;
 
-    public long getRoomCode() {
+    public Long getRoomCode() {
         return roomCode;
     }
 
-    public void setRoomCode(long roomCode) {
+    public void setRoomCode(Long roomCode) {
         this.roomCode = roomCode;
     }
 
@@ -26,27 +26,27 @@ public class RoomDto extends DefaultObjectDto{
         this.roomAlias = roomAlias;
     }
 
-    public long getFloorCode() {
+    public Long getFloorCode() {
         return floorCode;
     }
 
-    public void setFloorCode(long floorCode) {
+    public void setFloorCode(Long floorCode) {
         this.floorCode = floorCode;
     }
 
-    public int getCount() {
+    public Integer getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(Integer count) {
         this.count = count;
     }
 
-    public byte getStatus() {
+    public Byte getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(Byte status) {
         this.status = status;
     }
 }

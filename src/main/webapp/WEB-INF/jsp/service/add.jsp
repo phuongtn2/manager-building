@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Quản Lý Tòa Nhà</h5>
+                <h5>Quản lý dịch vụ</h5>
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
@@ -14,7 +14,6 @@
             </div>
             <div class="ibox-content">
                 <form:form modelAttribute="masterServiceDto" method="post">
-                    <p>Quản lý dịch vụ</p>
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
@@ -45,7 +44,7 @@
                             <div class="form-group">
                                 <label class="control-label" for="serviceStart">Bắt đầu</label>
                                 <div class="input-group date">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="serviceStart" name="serviceStart" type="text" class="form-control" value="<c:if test="${masterServiceDto.serviceStart!= null}"><fmt:formatDate pattern="MM-dd-yyyy" value="${masterServiceDto.serviceStart}" /></c:if>">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="serviceStart" name="serviceStart" type="text" class="form-control" value="<c:if test="${masterServiceDto.serviceStart!= null}"><fmt:formatDate pattern="MM/dd/yyyy" value="${masterServiceDto.serviceStart}" /></c:if>">
                                 </div>
                             </div>
                         </div>
@@ -53,7 +52,7 @@
                             <div class="form-group">
                                 <label class="control-label" for="serviceEnd">Kết thúc</label>
                                 <div class="input-group ">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="serviceEnd" name="serviceEnd" type="text" class="form-control"  value="<c:if test="${masterServiceDto.serviceEnd!= null}"><fmt:formatDate pattern="MM-dd-yyyy" value="${masterServiceDto.serviceEnd}" /></c:if>">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="serviceEnd" name="serviceEnd" type="text" class="form-control"  value="<c:if test="${masterServiceDto.serviceEnd!= null}"><fmt:formatDate pattern="MM/dd/yyyy" value="${masterServiceDto.serviceEnd}" /></c:if>">
                                 </div>
                             </div>
                         </div>

@@ -29,10 +29,22 @@
     <link href="${gritterCss}" rel="stylesheet" type="text/css"/>
     <link href="${datepicker3Css}" rel="stylesheet" type="text/css"/>
     <link href="${footableCss}" rel="stylesheet" type="text/css"/>
-
+    <script>
+        function change(id) {
+            var listId = ["news", "complaint", "request", "building" , "service", "user"
+                , "history", "asset", "complaint_history", "complaintUL", "complaintLi"];
+            for (i = 0; i <=  listId.length; i++) {
+                if(id === listId[i]){
+                    $('#'+listId[i]).addClass( "active" );
+                }else{
+                    $('#'+listId[i]).removeClass( "active" )
+                }
+            }
+        }
+    </script>
 </head>
 
-<body>
+<body onload="change('service')">
 <div id="wrapper">
     <%@include file="../template/navbar.jsp" %>
     <%@include file="../template/notify.jsp" %>
@@ -139,7 +151,6 @@
             keyboardNavigation: false,
             forceParse: true,
             calendarWeeks: true,
-            format: 'dd/MM/yyyy',
             autoclose: true
         });
     });

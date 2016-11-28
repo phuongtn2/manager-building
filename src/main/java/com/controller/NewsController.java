@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.building.dto.AuthorizedUserInfo;
+import com.building.dto.NewsDetailDto;
 import com.building.dto.NewsDto;
 import com.building.services.NewsService;
 import com.dropbox.core.ServerException;
@@ -26,7 +27,7 @@ public class NewsController {
 	private NewsService newsService;
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 	}
 
@@ -82,5 +83,45 @@ public class NewsController {
 	public String delete(@PathVariable long id, Model model, HttpServletRequest request)  throws ServerException{
 		newsService.deleteById(id);
 		return "redirect:/news";
+	}
+
+	// NewsDetail
+	@RequestMapping(value = "/newsdetail/{id}", method = RequestMethod.GET)
+	public String getListNewsDetail(@PathVariable long id, Model model, HttpServletRequest request)  throws ServerException{
+		List<NewsDetailDto> listNewsDetail = newsService.findAllNewsDetailByNewsCode(id);
+		model.addAttribute("newsDetailDto",listNewsDetail);
+		return "news/newsDetail/view";
+	}
+
+	@RequestMapping(value = "/news/newsdetail/{id}", method = RequestMethod.POST, params = "add")
+	public String addNewsDetail(@PathVariable long id, @ModelAttribute("newsDetailDto") NewsDetailDto newsDetailDto, HttpServletRequest request) throws ServerException {
+		AuthorizedUserInfo aui = (AuthorizedUserInfo) request.getSession().getAttribute("aui");
+		newsDetailDto.setCreateId(aui.getUserId());
+		newsDetailDto.setUpdateId(aui.getUserId());
+		newsDetailDto.setNewCode(id);
+		newsService.insertNewsDetail(newsDetailDto);
+		return "redirect:/news/newsdetail/" + id;
+	}
+	@RequestMapping(value = "/newsdetail/{newsId}/edit/{id}", method = RequestMethod.GET)
+	public String getEditNewsDetail(@PathVariable long newsId, @PathVariable long id, Model model, HttpServletRequest request)  throws ServerException{
+		AuthorizedUserInfo aui = (AuthorizedUserInfo) request.getSession().getAttribute("aui");
+		NewsDetailDto newsDetailDto = newsService.findNewsDetailById(id);
+		newsDetailDto.setUpdateId(aui.getUserId());
+		model.addAttribute("newsDetailDto",newsDetailDto);
+		List<NewsDetailDto> listNewsDetail = newsService.findAllNewsDetailByNewsCode(newsId);
+		model.addAttribute("newsDetailDto",listNewsDetail);
+		return "news/newsDetail/view";
+	}
+
+	@RequestMapping(value = "/newsdetail/{newsId}/edit/{id}", method = RequestMethod.POST)
+	public String saveEditNewsDetail(@ModelAttribute("newsDetailDto") NewsDetailDto newsDetailDto, @PathVariable long newsId, @PathVariable long id) throws ServerException {
+		newsService.updateNewsDetail(newsDetailDto);
+		return "redirect:/news/newsdetail/"+ newsId;
+	}
+
+	@RequestMapping(value = "/newsdetail/{newsId}/delete/{id}", method = RequestMethod.GET)
+	public String deleteNewsDetail(@PathVariable long newsId,@PathVariable long id, Model model, HttpServletRequest request)  throws ServerException{
+		newsService.deleteNewsDetailById(id);
+		return "redirect:/news/newsdetail/"+newsId;
 	}
 }

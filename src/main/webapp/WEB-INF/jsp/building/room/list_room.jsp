@@ -6,7 +6,7 @@
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Danh sách tòa nhà</h5>
+                <h5>Danh Sách Phòng</h5>
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
@@ -18,27 +18,25 @@
                     <table class="footable emp-sales table table-striped table-bordered table-hover dataTables-example" data-page-size="10">
                         <thead>
                             <tr>
-                                <th class="text-center">Tên tòa nhà </th>
-                                <th data-hide="phone,tablet" class="text-center">Tổng số tầng</th>
-                                <th data-hide="phone,tablet" class="text-center">Tổng số phòng</th>
-                                <th data-hide="phone,tablet" class="text-center">Mô tả</th>
+                                <th class="text-center">Tên Phòng </th>
+                                <th data-hide="phone,tablet" class="text-center">count</th>
+                                <th data-hide="phone,tablet" class="text-center">status</th>
                                 <th data-hide="phone,tablet" class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <div class="row m-b-sm">
                                 <%int count = 0;%>
-                                <c:forEach items="${buildingDtoList}" var="building">
+                                <c:forEach items="${roomDtoList}" var="room">
                                     <tr <c:if test = "${count%2 == 0}"><% count ++;%>class="gradeX"</c:if><c:if test = "${count%2 != 0}"><% count ++;%>class="gradeC"</c:if>   >
-                                        <td class="col-sm-2">${building.buildingName}</td>
-                                        <td data-hide="phone,tablet" class="col-sm-1">${building.totalFloor}</td>
-                                        <td data-hide="phone,tablet" class="col-sm-1">${building.totalRoom}</td>
-                                        <td data-hide="phone,tablet" class="col-sm-5">${building.description}</td>
-                                        <td data-hide="phone,tablet" class="col-sm-3 text-center">
+                                        <td class="col-sm-4">${room.roomAlias}</td>
+                                        <td data-hide="phone,tablet" class="col-sm-2">${room.count}</td>
+                                        <td data-hide="phone,tablet" class="col-sm-2">${room.status}</td>
+                                        <td data-hide="phone,tablet" class="col-sm-4 text-center">
                                             <div class="btn-group">
-                                                <a class="btn btn-success btn btn-xs" href="/building/edit/${building.buildingCode}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
-                                                <a class="btn btn-danger btn btn-xs" href="/building/delete/${building.buildingCode}">&nbsp;&nbsp;Delete&nbsp;&nbsp;</a>
-                                                <a class="btn btn-warning btn btn-xs" href="/building/floor/${building.buildingCode}">&nbsp;&nbsp;Add Floor&nbsp;&nbsp;</a>
+                                                <a class="btn btn-success btn btn-xs" href="/building/floor/room/${room.floorCode}/edit/${room.roomCode}">&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
+                                                <a class="btn btn-danger btn btn-xs" href="/building/floor/room/${room.floorCode}/delete/${room.roomCode}">&nbsp;&nbsp;Delete&nbsp;&nbsp;</a>
+                                                <a class="btn btn-warning btn btn-xs" href="/building/floor">&nbsp;&nbsp;Quay lại&nbsp;&nbsp;</a>
                                             </div>
                                         </td>
                                     </tr>

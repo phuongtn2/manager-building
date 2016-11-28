@@ -21,17 +21,44 @@
         <link href="${animateCss}" rel="stylesheet" type="text/css"/>
         <link href="${styleCss}" rel="stylesheet" type="text/css"/>
         <link href="${gritterCss}" rel="stylesheet" type="text/css"/>
+        <script>
+            function change(id) {
+                var listId = ["news", "complaint", "request", "building" , "service", "user"
+                    , "history", "asset", "complaint_history", "complaintUL", "complaintLi"];
+                for (i = 0; i <=  listId.length; i++) {
+                    if(id === listId[i]){
+                        $('#'+listId[i]).addClass( "active" );
+                    }else{
+                        $('#'+listId[i]).removeClass( "active" )
+                    }
+                }
+                if(id === "complaint"){
+                    $('#complaintUL').addClass( "in" );
+                    //if(id === "complaintLi"){
+                        $('#complaintLi').addClass( "active" );
+                    //}else{
+                        $('#complaint_history').removeClass( "active" );
+                    //}
+                    /*if(id === "complaint_history"){
+                        $('#complaint_history').addClass( "active" );
+                    }else{
+                        $('#complaintLi').removeClass( "active" );
+                    }*/
+                }else {
+                    $('#complaintUL').removeClass( "in" );
+                }
+            }
+        </script>
 
     </head>
 
-    <body>
+    <body onload="change('complaint')">
         <div id="wrapper">
             <%@include file="../template/navbar.jsp" %>
             <%@include file="../template/notify.jsp" %>
             <div id="page-wrapper" class="gray-bg">
                 <div class="wrapper wrapper-content animated fadeInRight">
-                    <%@include file="add.jsp" %>
-                    <%@include file="list_newsDetail.jsp" %>
+                    <%@include file="list_comment_history.jsp" %>
                 </div>
                 <%@include file="../template/footer.jsp" %>
             </div>

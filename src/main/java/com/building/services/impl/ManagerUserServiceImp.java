@@ -1,6 +1,8 @@
 package com.building.services.impl;
 
 import com.building.dto.UserDto;
+import com.building.dto.UserRoleGroupDto;
+import com.building.dto.UserRoomDto;
 import com.building.mapper.ManagerUserMapper;
 import com.building.services.ManagerUserService;
 import com.dropbox.core.ServerException;
@@ -19,7 +21,7 @@ public class ManagerUserServiceImp implements ManagerUserService {
     private ManagerUserMapper managerUserMapper;
 
     @Override
-    public long insertUser(UserDto userDto) throws ServerException {
+    public int insertUser(UserDto userDto) throws ServerException {
         return managerUserMapper.insertUser(userDto);
     }
 
@@ -41,5 +43,15 @@ public class ManagerUserServiceImp implements ManagerUserService {
     @Override
     public void deleteById(long id) throws ServerException {
         managerUserMapper.deleteById(id);
+    }
+
+    @Override
+    public int insertUserRoleGroup(UserRoleGroupDto userRoleGroupDto) throws ServerException {
+        return managerUserMapper.insertUserRoleGroup(userRoleGroupDto);
+    }
+
+    @Override
+    public long insertUserRoom(UserRoomDto userRoomDto) throws ServerException {
+        return managerUserMapper.insertUserRoom(userRoomDto);
     }
 }

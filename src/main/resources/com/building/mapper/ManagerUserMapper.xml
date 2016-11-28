@@ -6,8 +6,7 @@
 
     <insert id="insertUser" useGeneratedKeys="true" keyProperty="dto.userId">
         INSERT INTO T_USER(
-        empCode
-        , adId
+        adId
         , password
         , userStatus
         , fullName
@@ -27,8 +26,7 @@
         , createId
         , updateId
         )VALUES(
-        #{dto.empCode}
-        , #{dto.adId}
+        #{dto.adId}
         , #{dto.password}
         , #{dto.userStatus}
         , #{dto.fullName}
@@ -50,6 +48,38 @@
         )
     </insert>
 
+    <insert id="insertUserRoleGroup" useGeneratedKeys="true" keyProperty="dto.userRoleGroupId">
+        INSERT INTO T_USERROLEGROUP(
+        userId
+        , roleGroupId
+        , created
+        , lastUpdate
+        , createId
+        , updateId
+        )VALUES(
+        #{dto.userId}
+        , #{dto.roleGroupId}
+        ,NOW()
+        ,NOW()
+        ,#{dto.createId}
+        ,#{dto.updateId}
+        )
+    </insert>
+
+    <insert id="insertUserRoom" useGeneratedKeys="true" keyProperty="dto.userRoomId">
+        INSERT INTO T_USER_ROOM(
+        userId
+        , roomCode
+        , floorCode
+        , buildingCode
+        )VALUES(
+        #{dto.userId}
+        , #{dto.roomCode}
+        ,#{dto.floorCode}
+        ,#{dto.buildingCode}
+        )
+    </insert>
+
     <select id="findAll" resultType="user">
         SELECT * FROM T_USER ORDER BY created DESC
     </select>
@@ -60,8 +90,7 @@
 
     <update id="update">
         UPDATE T_USER SET
-         empCode = #{dto.empCode}
-        , adId = #{dto.adId}
+        adId = #{dto.adId}
         , password = "123456"
         , userStatus = #{dto.userStatus}
         , fullName = #{dto.fullName}
@@ -83,5 +112,6 @@
     <delete id="deleteById">
         DELETE FROM T_USER WHERE userId = #{id}
     </delete>
+
 
 </mapper>

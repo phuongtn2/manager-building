@@ -10,6 +10,8 @@ public class NewsDto extends DefaultObjectDto {
     private Byte newType;
     private String newHeader;
     private String newShorter;
+    private Long refNewCode;
+    private String newContent;
 
     public Long getNewCode() {
         return newCode;
@@ -41,5 +43,21 @@ public class NewsDto extends DefaultObjectDto {
 
     public void setNewShorter(String newShorter) {
         this.newShorter = newShorter;
+    }
+
+    public Long getRefNewCode() {
+        return refNewCode;
+    }
+
+    public void setRefNewCode(Long refNewCode) {
+        this.refNewCode = refNewCode;
+    }
+
+    public String getNewContent() {
+        return newContent;
+    }
+
+    public void setNewContent(String newContent) {
+        this.newContent = newContent;
     }
 }

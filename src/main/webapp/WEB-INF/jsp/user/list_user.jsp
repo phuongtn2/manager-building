@@ -51,7 +51,7 @@
                                 <c:if test="${user.gender==1}" >Nam</c:if>
                                 <c:if test="${user.gender==2}" >Nữ</c:if>
                             </td>
-                            <td data-hide="phone,tablet"><fmt:formatDate pattern="yyyy-MM-dd" value="${user.birthday}" /></td>
+                            <td data-hide="phone,tablet"><fmt:formatDate pattern="MM/dd/yyyy" value="${user.birthday}" /></td>
                             <td data-hide="phone,tablet">${user.idCard}</td>
                             <td data-hide="phone,tablet">${user.mail}</td>
                             <td data-hide="phone,tablet">${user.tel}</td>
@@ -61,8 +61,8 @@
                                 <c:if test="${user.userStatus==2}" > <span class="label label-danger">Deactive</span> </c:if>
                                 <c:if test="${user.userStatus==3}" > <span class="label label-primary">Pending</span> </c:if>
                             </td>
-                            <td data-hide="phone,tablet"><fmt:formatDate pattern="MM-dd-yyyy" value="${user.startDay}" /></td>
-                            <td data-hide="phone,tablet"><fmt:formatDate pattern="MM-dd-yyyy" value="${user.endDay}" /></td>
+                            <td data-hide="phone,tablet"><fmt:formatDate pattern="MM/dd/yyyy" value="${user.startDay}" /></td>
+                            <td data-hide="phone,tablet"><fmt:formatDate pattern="MM/dd/yyyy" value="${user.endDay}" /></td>
                             <td data-hide="phone,tablet">${user.memo}</td>
                             <td class="text-center">
                                 <div class="btn-group">

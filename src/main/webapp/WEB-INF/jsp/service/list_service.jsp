@@ -45,8 +45,8 @@
                                 <c:if test="${masterServices.serviceType==3}" >serviceType 3 </c:if>
                             </td>
                             <td data-hide="phone,tablet">${masterServices.servicePrice}</td>
-                            <td data-hide="phone,tablet"><fmt:formatDate pattern="yyyy-MM-dd" value="${masterServices.serviceStart}" /></td>
-                            <td data-hide="phone,tablet"><fmt:formatDate pattern="yyyy-MM-dd" value="${masterServices.serviceEnd}" /></td>
+                            <td data-hide="phone,tablet"><fmt:formatDate pattern="MM/dd/yyyy" value="${masterServices.serviceStart}" /></td>
+                            <td data-hide="phone,tablet"><fmt:formatDate pattern="MM/dd/yyyy" value="${masterServices.serviceEnd}" /></td>
                             <td class="text-center">
                                 <div class="btn-group">
                                     <a class="btn-success btn btn-xs" href="/service/edit/${masterServices.serviceCode}">Edit</a>

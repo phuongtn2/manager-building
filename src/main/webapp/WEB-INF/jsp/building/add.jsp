@@ -16,19 +16,20 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label class="control-label" for="fullName">Tên tòa nhà</label>
+                                <label class="control-label" >Tên tòa nhà</label>
+                                <input type="hidden" id="buildingCode" name="buildingCode" value="<c:if test="${buildingDto.buildingCode!= null}">${buildingDto.buildingCode}</c:if>" placeholder="Tên tòa nhà" class="form-control">
                                 <input type="text" id="buildingName" name="buildingName" value="<c:if test="${buildingDto.buildingName!= null}">${buildingDto.buildingName}</c:if>" placeholder="Tên tòa nhà" class="form-control">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label class="control-label" for="tel">Tổng số tầng</label>
+                                <label class="control-label" >Tổng số tầng</label>
                                 <input type="text" id="totalFloor" name="totalFloor" value="<c:if test="${buildingDto.totalFloor!= 0}">${buildingDto.totalFloor}</c:if>" placeholder="Tổng số tầng" class="form-control">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label class="control-label" for="address">Tổng số phòng</label>
+                                <label class="control-label">Tổng số phòng</label>
                                 <input type="text" id="totalRoom" name="totalRoom" value="<c:if test="${buildingDto.totalRoom!= 0}">${buildingDto.totalRoom}</c:if>" placeholder="Tổng số phòng" class="form-control">
                             </div>
                         </div>
@@ -36,15 +37,15 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <label class="control-label" for="description">Mô tả</label>
+                                <label class="control-label">Mô tả</label>
                                 <textarea type="text" rows="4" id="description" name="description" placeholder="Mô tả" class="form-control"><c:if test="${buildingDto.description!= null}">${buildingDto.description}</c:if></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="text-center">
-                            <button name="add" class="btn btn-primary " type="submit"><i class="fa fa-check"></i>&nbsp;Lưu</button>
-                            <button name="reset" class="btn btn-danger " type="button"><i class="fa fa-refresh"></i>&nbsp;Nhập lại</button>
+                            <button name="add" class="btn btn-primary" type="submit"><i class="fa fa-check"></i>&nbsp;Lưu</button>
+                            <button name="reset" class="btn btn-danger" type="button"><i class="fa fa-refresh"></i>&nbsp;Nhập lại</button>
                         </div>
                     </div>
                 </form:form>

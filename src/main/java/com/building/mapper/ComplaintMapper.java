@@ -1,5 +1,6 @@
 package com.building.mapper;
 
+import com.building.dto.AuthorizedUserInfo;
 import com.building.dto.ComplaintDto;
 import com.building.dto.TransferComplaintDto;
 import com.building.dto.TransferReplyDto;
@@ -18,4 +19,5 @@ public interface ComplaintMapper {
     List<TransferReplyDto> findAllTReply(@Param("parentComplaintCodes") List<Long> parentComplaintCode);
     void updateFollowStatus(@Param("dto") ComplaintDto complaintDto);
     ComplaintDto findById(@Param("id") long id);
+    List<ComplaintDto> findAllComplaintHistory(@Param("aui")AuthorizedUserInfo aui);
 }

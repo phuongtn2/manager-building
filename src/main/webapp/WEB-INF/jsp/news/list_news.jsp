@@ -18,7 +18,7 @@
                         <div class="row">
                             <div class="col-xs-3 date">
                                 <i class="fa fa-users"></i>
-                                <fmt:formatDate pattern="yyyy-MM-dd" value="${news.created}" />
+                                <fmt:formatDate pattern="MM/dd/yyyy" value="${news.created}" />
                                 <br/>
                                 <small class="text-navy">2 hour ago</small>
                             </div>
@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="btn-group">
-                                            <a class="btn btn-success btn btn-xs" href="/newsdetail" >&nbsp;&nbsp;View&nbsp;&nbsp;</a>
+                                            <a class="btn btn-success btn btn-xs" href="/news/newsdetail/${news.newCode}" >&nbsp;&nbsp;View&nbsp;&nbsp;</a>
                                             <a class="btn btn-success btn btn-xs" href="/news/edit/${news.newCode}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
                                             <a class="btn btn-danger btn btn-xs" href="/news/delete/${news.newCode}">&nbsp;&nbsp;Delete&nbsp;&nbsp;</a>
                                         </div>

@@ -30,7 +30,7 @@ public class ManagerMasterServicesController {
         private ManagerMasterServicesService managerMasterServicesService;
         @InitBinder
         public void initBinder(WebDataBinder binder) {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
             binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
         }
 

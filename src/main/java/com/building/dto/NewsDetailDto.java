@@ -3,10 +3,19 @@ package com.building.dto;
 /**
  * Created by Giang.DaoTu on 11/15/2016.
  */
-public class NewsDetailDto {
+public class NewsDetailDto extends DefaultObjectDto {
+    private Long newDetailCode;
     private Long newCode;
     private Long refNewCode;
     private String newContent;
+
+    public Long getNewDetailCode() {
+        return newDetailCode;
+    }
+
+    public void setNewDetailCode(Long newDetailCode) {
+        this.newDetailCode = newDetailCode;
+    }
 
     public Long getNewCode() {
         return newCode;
@@ -31,6 +40,4 @@ public class NewsDetailDto {
     public void setNewContent(String newContent) {
         this.newContent = newContent;
     }
-
-
 }

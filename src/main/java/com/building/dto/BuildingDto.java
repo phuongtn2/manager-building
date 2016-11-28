@@ -6,17 +6,17 @@ import java.util.Date;
  * Created by PhuongTN1 on 11/4/2016.
  */
 public class BuildingDto extends DefaultObjectDto{
-    private long buildingCode;
+    private Long buildingCode;
     private String buildingName;
-    private int totalFloor;
-    private int totalRoom;
+    private Integer totalFloor;
+    private Integer totalRoom;
     private String description;
 
-    public long getBuildingCode() {
+    public Long getBuildingCode() {
         return buildingCode;
     }
 
-    public void setBuildingCode(long buildingCode) {
+    public void setBuildingCode(Long buildingCode) {
         this.buildingCode = buildingCode;
     }
 
@@ -28,19 +28,19 @@ public class BuildingDto extends DefaultObjectDto{
         this.buildingName = buildingName;
     }
 
-    public int getTotalFloor() {
+    public Integer getTotalFloor() {
         return totalFloor;
     }
 
-    public void setTotalFloor(int totalFloor) {
+    public void setTotalFloor(Integer totalFloor) {
         this.totalFloor = totalFloor;
     }
 
-    public int getTotalRoom() {
+    public Integer getTotalRoom() {
         return totalRoom;
     }
 
-    public void setTotalRoom(int totalRoom) {
+    public void setTotalRoom(Integer totalRoom) {
         this.totalRoom = totalRoom;
     }
 

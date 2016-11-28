@@ -33,7 +33,7 @@
                 </ul>
             </li>
             <li id="request">
-                <a href="/request_bokking"><i class="fa fa-th-large"></i> <span class="nav-label">Yêu cầu </br> (Request/Booking)</span> <span class="fa arrow"></span></a>
+                <a href="/request_booking"><i class="fa fa-th-large"></i> <span class="nav-label">Yêu cầu </br> (Request/Booking)</span> <span class="fa arrow"></span></a>
             </li>
             <li id="building">
                 <a href="/building"><i class="fa fa-th-large"></i> <span class="nav-label">Tòa nhà </br> (Building)</span> <span class="fa arrow"></span></a>

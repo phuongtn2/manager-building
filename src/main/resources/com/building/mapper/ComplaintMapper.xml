@@ -28,6 +28,11 @@
 		SELECT * FROM M_COMPLAINT ORDER BY created
 	</select>
 
+	<select id="findAllComplaintHistory" resultType="complaint">
+		SELECT * FROM M_COMPLAINT <if test="!aui.getRoleSet().contains(Role.ADMIN)" >WHERE createId = #{aui.createId} </if>
+		ORDER BY created
+	</select>
+
 	<select id="findAllTComplaint" resultType="tComplaint">
 		SELECT * FROM T_COMPLAINT
 		WHERE

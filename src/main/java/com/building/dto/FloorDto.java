@@ -4,26 +4,26 @@ package com.building.dto;
  * Created by Giang.DaoTu on 11/15/2016.
  */
 public class FloorDto extends DefaultObjectDto{
-    private long floorCode;
-    private int floorSeq;
+    private Long floorCode;
+    private Integer floorSeq;
     private String floorAlias;
-    private byte floorType;
-    private long buildingCode;
-    private int totalRoom;
+    private Byte floorType;
+    private Long buildingCode;
+    private Integer totalRoom;
 
-    public long getFloorCode() {
+    public Long getFloorCode() {
         return floorCode;
     }
 
-    public void setFloorCode(long floorCode) {
+    public void setFloorCode(Long floorCode) {
         this.floorCode = floorCode;
     }
 
-    public int getFloorSeq() {
+    public Integer getFloorSeq() {
         return floorSeq;
     }
 
-    public void setFloorSeq(int floorSeq) {
+    public void setFloorSeq(Integer floorSeq) {
         this.floorSeq = floorSeq;
     }
 
@@ -35,27 +35,27 @@ public class FloorDto extends DefaultObjectDto{
         this.floorAlias = floorAlias;
     }
 
-    public byte getFloorType() {
+    public Byte getFloorType() {
         return floorType;
     }
 
-    public void setFloorType(byte floorType) {
+    public void setFloorType(Byte floorType) {
         this.floorType = floorType;
     }
 
-    public long getBuildingCode() {
+    public Long getBuildingCode() {
         return buildingCode;
     }
 
-    public void setBuildingCode(long buildingCode) {
+    public void setBuildingCode(Long buildingCode) {
         this.buildingCode = buildingCode;
     }
 
-    public int getTotalRoom() {
+    public Integer getTotalRoom() {
         return totalRoom;
     }
 
-    public void setTotalRoom(int totalRoom) {
+    public void setTotalRoom(Integer totalRoom) {
         this.totalRoom = totalRoom;
     }
 }

@@ -16,8 +16,8 @@
                     <p>Tin tức</p>
                     <div class="row">
                         <div class="form-group">
-                            <input name="newCode" type="hidden" placeholder="Tiêu đề" class="form-control" value="<c:if test="${newsDto.newCode!= null}">${newsDto.newCode}</c:if>">
-                            <div class="col-sm-5">
+                            <input name="newCode" type="hidden" class="form-control" value="<c:if test="${newsDto.newCode!= null}">${newsDto.newCode}</c:if>">
+                            <div class="col-sm-7">
                                 <label class="control-label">Tiêu đề</label>
                                 <input name="newHeader" type="text" placeholder="Tiêu đề" class="form-control" required=true value="<c:if test="${newsDto.newHeader!= null}">${newsDto.newHeader}</c:if>">
                             </div>
@@ -25,14 +25,31 @@
                                 <label class="control-label">NewsShorter</label>
                                 <input name="newShorter" type="text" placeholder="NewsShorter" class="form-control" required=true value="<c:if test="${newsDto.newShorter!= null}">${newsDto.newShorter}</c:if>">
                             </div>
-                            <div class="col-sm-2">
-                                <label class="control-label" for="newType">newType</label>
-                                <select class="form-control m-b"  name="newType">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-7">
+                                <label class="control-label">refNewCode</label>
+                                <input type="text" name="refNewCode" placeholder="RefNewCode" class="form-control" value="" >
+                            </div>
+                            <div class="col-sm-5">
+                                <label class="control-label">newType</label>
+                                <select class="form-control m-b" name="newType">
                                     <option <c:if test="${newsDto.newType==1}">selected</c:if> value="1">newsType 1</option>
                                     <option <c:if test="${newsDto.newType==2}">selected</c:if> value="2">newsType 2</option>
                                     <option <c:if test="${newsDto.newType==3}">selected</c:if> value="3">newsType 3</option>
                                     <option <c:if test="${newsDto.newType==4}">selected</c:if> value="4">newsType 4</option>
                                 </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label class=" control-label">Nội dung</label>
+                                <textarea  name="newContent" placeholder="Nội dung" class="form-control" rows="4" required=true ></textarea>
+                                    <%--<textarea  name="newContent" placeholder="Nội dung" class="form-control" rows="4" required=true ><c:if test="${newsDetailDto.newContent!= null}">${newsDetailDto.newContent}</c:if></textarea>--%>
                             </div>
                         </div>
                     </div>
