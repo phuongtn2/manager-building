@@ -4,33 +4,33 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
- <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
- <title>Building | Home</title>
- <spring:url value="/resources/css/bootstrap.min.css" var="bootsTrapCss"/>
- <spring:url value="/resources/css/plugins/toastr/toastr.min.css" var="toastrCss" />
- <spring:url value="/resources/font-awesome/css/font-awesome.css" var="awesomeFontCss" />
- <spring:url value="/resources/css/animate.css" var="animateCss" />
- <spring:url value="/resources/css/style.css" var="styleCss" />
- <spring:url value="/resources/js/plugins/gritter/jquery.gritter.css" var="gritterCss" />
- <spring:url value="/resources/css/plugins/dataTables/datatables.min.css" var="datatablesCss" />
- <spring:url value="/resources/css/plugins/datapicker/datepicker3.css" var="datepicker3Css"/>
- <spring:url value="/resources/css/plugins/footable/footable.core.css" var="footableCss" />
- <spring:url value="/resources/css/plugins/daterangepicker/daterangepicker-bs3.css" var="daterangepicker3Css"/>
+    <title>Building | Home</title>
+    <spring:url value="/resources/css/bootstrap.min.css" var="bootsTrapCss"/>
+    <spring:url value="/resources/css/plugins/toastr/toastr.min.css" var="toastrCss" />
+    <spring:url value="/resources/font-awesome/css/font-awesome.css" var="awesomeFontCss" />
+    <spring:url value="/resources/css/animate.css" var="animateCss" />
+    <spring:url value="/resources/css/style.css" var="styleCss" />
+    <spring:url value="/resources/js/plugins/gritter/jquery.gritter.css" var="gritterCss" />
+    <spring:url value="/resources/css/plugins/dataTables/datatables.min.css" var="datatablesCss" />
+    <spring:url value="/resources/css/plugins/datapicker/datepicker3.css" var="datepicker3Css"/>
+    <spring:url value="/resources/css/plugins/footable/footable.core.css" var="footableCss" />
+    <spring:url value="/resources/css/plugins/daterangepicker/daterangepicker-bs3.css" var="daterangepicker3Css"/>
 
- <link href="${daterangepicker3Css}" rel="stylesheet" type="text/css"/>
- <link href="${datatablesCss}" rel="stylesheet" type="text/css"/>
- <link href="${bootsTrapCss}" rel="stylesheet" type="text/css"/>
- <link href="${toastrCss}" rel="stylesheet" type="text/css"/>
- <link href="${awesomeFontCss}" rel="stylesheet" type="text/css"/>
- <link href="${animateCss}" rel="stylesheet" type="text/css"/>
- <link href="${styleCss}" rel="stylesheet" type="text/css"/>
- <link href="${gritterCss}" rel="stylesheet" type="text/css"/>
-  <link href="${datepicker3Css}" rel="stylesheet" type="text/css"/>
- <link href="${footableCss}" rel="stylesheet" type="text/css"/>
+    <link href="${daterangepicker3Css}" rel="stylesheet" type="text/css"/>
+    <link href="${datatablesCss}" rel="stylesheet" type="text/css"/>
+    <link href="${bootsTrapCss}" rel="stylesheet" type="text/css"/>
+    <link href="${toastrCss}" rel="stylesheet" type="text/css"/>
+    <link href="${awesomeFontCss}" rel="stylesheet" type="text/css"/>
+    <link href="${animateCss}" rel="stylesheet" type="text/css"/>
+    <link href="${styleCss}" rel="stylesheet" type="text/css"/>
+    <link href="${gritterCss}" rel="stylesheet" type="text/css"/>
+    <link href="${datepicker3Css}" rel="stylesheet" type="text/css"/>
+    <link href="${footableCss}" rel="stylesheet" type="text/css"/>
     <script>
-    function change(id) {
+        function change(id) {
             var listId = ["news", "complaint", "request", "building" , "service", "user"
                 , "history", "asset", "complaint_history", "complaintUL", "complaintLi"];
             for (i = 0; i <=  listId.length; i++) {
@@ -42,21 +42,19 @@
             }
         }
     </script>
-
-
 </head>
 
-<body onload="change('user')">
+<body onload="change('request')">
 <div id="wrapper">
- <%@include file="../template/navbar.jsp" %>
- <%@include file="../template/notify.jsp" %>
- <div id="page-wrapper" class="gray-bg">
-  <div class="wrapper wrapper-content animated fadeInRight ecommerce">
-   <%@include file="add.jsp" %>
-   <%@include file="list_user.jsp" %>
-  </div>
-  <%@include file="../template/footer.jsp" %>
- </div>
+    <%@include file="../template/navbar.jsp" %>
+    <%@include file="../template/notify.jsp" %>
+    <div id="page-wrapper" class="gray-bg">
+        <div class="wrapper wrapper-content animated fadeInRight ecommerce">
+            <%@include file="add.jsp" %>
+            <%@include file="list_request_booking.jsp" %>
+        </div>
+        <%@include file="../template/footer.jsp" %>
+    </div>
 </div>
 
 <!-- Mainly scripts -->
@@ -135,64 +133,31 @@
 
 <!-- Page-Level Scripts -->
 <script>
- $(document).ready(function() {
+    $(document).ready(function() {
 
-     $('.footable').footable();
-
-     $('#birthday').datepicker({
-         todayBtn: "linked",
-         keyboardNavigation: false,
-         forceParse: true,
-         calendarWeeks: true,
-         autoclose: true
-     });
-
-     $('#startDay').datepicker({
-         todayBtn: "linked",
-         keyboardNavigation: false,
-         forceParse: true,
-         calendarWeeks: true,
-         autoclose: true
-     });
-
-     $('#endDay').datepicker({
-         todayBtn: "linked",
-         keyboardNavigation: false,
-         forceParse: true,
-         calendarWeeks: true,
-         autoclose: true
-     });
- });
+        $('.footable').footable();
 
 
-</script>
+        $('#bookFrom').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: true,
+            calendarWeeks: true,
+            autoclose: true
+        });
 
-<!-- Modal -->
-<div class="modal fade" id="addButton" role="dialog">
-    <div class="modal-dialog">
+        $('#bookTo').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: true,
+            calendarWeeks: true,
+            autoclose: true
+        });
+    });
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title text-center">Xác nhận thêm</h4>
-            </div>
-            <div class="modal-body text-center">
-                <p>Bạn có muốn thêm</p>
-                <p>Chọn "Xác nhận" để thêm</p>
-                <p>Chọn "Hủy" để quay lại</p>
-            </div>
-            <div class="modal-header text-center">
-                <button onclick="submit()" name="addModel" class="btn btn-primary" type="submit">Xác nhận</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-            </div>
-        </div>
 
-    </div>
-</div>
-<script>
-    function submit(){
-        document.getElementById("userForm").submit();
-    }
+
+
 
 </script>
 

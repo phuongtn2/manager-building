@@ -3,32 +3,24 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Building | Home</title>
-    <spring:url value="/resources/css/bootstrap.min.css" var="bootsTrapCss"/>
-    <spring:url value="/resources/css/plugins/toastr/toastr.min.css" var="toastrCss" />
-    <spring:url value="/resources/font-awesome/css/font-awesome.css" var="awesomeFontCss" />
-    <spring:url value="/resources/css/animate.css" var="animateCss" />
-    <spring:url value="/resources/css/style.css" var="styleCss" />
-    <spring:url value="/resources/js/plugins/gritter/jquery.gritter.css" var="gritterCss" />
-    <spring:url value="/resources/css/plugins/dataTables/datatables.min.css" var="datatablesCss" />
-    <spring:url value="/resources/css/plugins/datapicker/datepicker3.css" var="datepicker3Css"/>
-    <spring:url value="/resources/css/plugins/footable/footable.core.css" var="footableCss" />
-    <spring:url value="/resources/css/plugins/daterangepicker/daterangepicker-bs3.css" var="daterangepicker3Css"/>
+        <title>Building | Home</title>
+        <spring:url value="/resources/css/bootstrap.min.css" var="bootsTrapCss"/>
+        <spring:url value="/resources/css/plugins/toastr/toastr.min.css" var="toastrCss" />
+        <spring:url value="/resources/font-awesome/css/font-awesome.css" var="awesomeFontCss" />
+        <spring:url value="/resources/css/animate.css" var="animateCss" />
+        <spring:url value="/resources/css/style.css" var="styleCss" />
+        <spring:url value="/resources/js/plugins/gritter/jquery.gritter.css" var="gritterCss" />
 
-    <link href="${daterangepicker3Css}" rel="stylesheet" type="text/css"/>
-    <link href="${datatablesCss}" rel="stylesheet" type="text/css"/>
-    <link href="${bootsTrapCss}" rel="stylesheet" type="text/css"/>
-    <link href="${toastrCss}" rel="stylesheet" type="text/css"/>
-    <link href="${awesomeFontCss}" rel="stylesheet" type="text/css"/>
-    <link href="${animateCss}" rel="stylesheet" type="text/css"/>
-    <link href="${styleCss}" rel="stylesheet" type="text/css"/>
-    <link href="${gritterCss}" rel="stylesheet" type="text/css"/>
-    <link href="${datepicker3Css}" rel="stylesheet" type="text/css"/>
-    <link href="${footableCss}" rel="stylesheet" type="text/css"/>
+        <link href="${bootsTrapCss}" rel="stylesheet" type="text/css"/>
+        <link href="${toastrCss}" rel="stylesheet" type="text/css"/>
+        <link href="${awesomeFontCss}" rel="stylesheet" type="text/css"/>
+        <link href="${animateCss}" rel="stylesheet" type="text/css"/>
+        <link href="${styleCss}" rel="stylesheet" type="text/css"/>
+        <link href="${gritterCss}" rel="stylesheet" type="text/css"/>
         <script>
             function change(id) {
                 var listId = ["news", "complaint", "request", "building" , "service", "user"
@@ -40,38 +32,21 @@
                         $('#'+listId[i]).removeClass( "active" )
                     }
                 }
-                if(id === "complaint"){
-                    $('#complaintUL').addClass( "in" );
-                    //if(id === "complaintLi"){
-                        $('#complaintLi').addClass( "active" );
-                    //}else{
-                        $('#complaint_history').removeClass( "active" );
-                    //}
-                    /*if(id === "complaint_history"){
-                        $('#complaint_history').addClass( "active" );
-                    }else{
-                        $('#complaintLi').removeClass( "active" );
-                    }*/
-                }else {
-                    $('#complaintUL').removeClass( "in" );
-                }
             }
         </script>
-
     </head>
 
-    <body onload="change('complaint')">
+    <body onload="change('news')">
         <div id="wrapper">
-            <%@include file="../template/navbar.jsp" %>
-            <%@include file="../template/notify.jsp" %>
+            <%@include file="../../template/navbar.jsp" %>
+            <%@include file="../../template/notify.jsp" %>
             <div id="page-wrapper" class="gray-bg">
                 <div class="wrapper wrapper-content animated fadeInRight">
-                    <%@include file="list_comment_history.jsp" %>
+                    <%@include file="news_detail.jsp" %>
                 </div>
-                <%@include file="../template/footer.jsp" %>
+                <%@include file="../../template/footer.jsp" %>
             </div>
         </div>
-
 
         <!-- Mainly scripts -->
         <spring:url value="/resources/js/jquery-2.1.1.js" var="jqueryJs" />
@@ -129,37 +104,5 @@
         <!-- Toastr -->
         <spring:url value="/resources/js/plugins/toastr/toastr.min.js" var="toastrJs" />
         <script src="${toastrJs}"></script>
-        <spring:url value="/resources/js/plugins/jeditable/jquery.jeditable.js" var="jeditableJs" />
-        <script src="${jeditableJs}"></script>
-        <spring:url value="/resources/js/plugins/dataTables/datatables.min.js" var="datatablesJs" />
-        <script src="${datatablesJs}"></script>
-        <!-- Page-Level Scripts -->
-        <!-- FooTable -->
-
-        <spring:url value="/resources/js/plugins/footable/footable.all.min.js" var="footableJs" />
-        <script src="${footableJs}"></script>
-
-
-        <!-- Data picker -->
-
-        <spring:url value="/resources/js/plugins/daterangepicker/daterangepicker.js" var="daterangepickerJs" />
-        <script src="${daterangepickerJs}"></script>
-        <spring:url value="/resources/js/plugins/datapicker/bootstrap-datepicker.js" var="datepickerJs" />
-        <script src="${datepickerJs}"></script>
-
-        <!-- Page-Level Scripts -->
-        <script>
-            $(document).ready(function() {
-
-                $('.footable').footable();
-
-            });
-
-
-
-
-
-        </script>
-
     </body>
 </html>

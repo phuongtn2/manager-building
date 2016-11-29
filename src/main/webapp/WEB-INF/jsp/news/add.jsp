@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <div class="col-sm-7">
                                 <label class="control-label">refNewCode</label>
-                                <input type="text" name="refNewCode" placeholder="RefNewCode" class="form-control" value="" >
+                                <input type="text" name="refNewCode" placeholder="RefNewCode" class="form-control" value="<c:if test="${newsDto.refNewCode!= null}">${newsDto.refNewCode}</c:if>" >
                             </div>
                             <div class="col-sm-5">
                                 <label class="control-label">newType</label>
@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <label class=" control-label">Nội dung</label>
-                                <textarea  name="newContent" placeholder="Nội dung" class="form-control" rows="4" required=true ></textarea>
+                                <textarea  name="newContent" placeholder="Nội dung" class="form-control" rows="4" required=true value="<c:if test="${newsDto.newContent!= null}">${newsDto.newContent}</c:if>"></textarea>
                                     <%--<textarea  name="newContent" placeholder="Nội dung" class="form-control" rows="4" required=true ><c:if test="${newsDetailDto.newContent!= null}">${newsDetailDto.newContent}</c:if></textarea>--%>
                             </div>
                         </div>

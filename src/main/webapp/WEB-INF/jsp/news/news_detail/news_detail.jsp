@@ -12,30 +12,32 @@
                     </a>
                 </div>
             </div>
-            <c:forEach items="${newsDtoList}" var="news">
-                <div class="ibox-content inspinia-timeline" onclick="edit(${news.newCode})">
+
+                <div class="ibox-content inspinia-timeline" onclick="edit(${newsDto.newCode})">
                     <div class="timeline-item">
                         <div class="row">
                             <div class="col-xs-3 date">
                                 <i class="fa fa-users"></i>
-                                <fmt:formatDate pattern="MM/dd/yyyy" value="${news.created}" />
+                                <fmt:formatDate pattern="MM/dd/yyyy" value="${newsDto.created}" />
                                 <br/>
                                 <small class="text-navy">2 hour ago</small>
                             </div>
                             <div class="col-xs-9 content no-top-border">
                                 <div class="row">
                                     <div class="col-lg-9">
-                                        <p class="m-b-xs" style="word-break: break-all"><strong>${news.newHeader}</strong></p>
-                                        <c:if test="${news.refNewCode!=null}">
-                                            <a style="word-break: break-all" href="/news/${news.refNewCode}">${news.refNewCode}</a>
+                                        <p class="m-b-xs" style="word-break: break-all"><strong>${newsDto.newHeader}</strong></p>
+                                        <p style="word-break: break-all">${newsDto.newType}</p>
+                                        <c:if test="${newsDto.refNewCode!=null}">
+                                            <a style="word-break: break-all" href="/news/${newsDto.refNewCode}">${newsDto.refNewCode}</a>
                                         </c:if>
-                                        <p style="word-break: break-all">${news.newShorter}</p>
+                                        <p style="word-break: break-all">${newsDto.newShorter}</p>
+                                        <p style="word-break: break-all">${newsDto.newContent}</p>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="btn-group">
-                                            <a class="btn btn-success btn btn-xs" href="/news/${news.newCode}" >&nbsp;&nbsp;View&nbsp;&nbsp;</a>
-                                            <a class="btn btn-success btn btn-xs" href="/news/edit/${news.newCode}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
-                                            <a class="btn btn-danger btn btn-xs" href="/news/delete/${news.newCode}">&nbsp;&nbsp;Delete&nbsp;&nbsp;</a>
+                                            <a class="btn btn-success btn btn-xs" href="/news" >&nbsp;&nbsp;Back&nbsp;&nbsp;</a>
+                                            <a class="btn btn-success btn btn-xs" href="/news/edit/${newsDto.newCode}" >&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
+                                            <a class="btn btn-danger btn btn-xs" href="/news/delete/${newsDto.newCode}">&nbsp;&nbsp;Delete&nbsp;&nbsp;</a>
                                         </div>
                                     </div>
                                 </div>
@@ -43,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-            </c:forEach>
+
         </div>
     </div>
 </div>

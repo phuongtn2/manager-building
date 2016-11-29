@@ -131,7 +131,8 @@ public class ComplaintController {
 	@RequestMapping(value = "/history", method = RequestMethod.GET)
 	public String listComplaintHistory(Model model, HttpServletRequest request) throws ServerException {
 		AuthorizedUserInfo aui = (AuthorizedUserInfo) request.getSession().getAttribute("aui");
-		List<ComplaintDto> listComplaintHistory = complaintService.findAllComplaintHistory(aui);
+		boolean per = aui.getRoleSet().contains(Role.ADMIN);
+		List<ComplaintDto> listComplaintHistory = complaintService.findAllComplaintHistory(aui,per);
 		/*if(aui.getRoleSet().contains(Role.ADMIN)){
 			listComplaintHistory = complaintService.findAllComplaint();
 		}else{
@@ -139,6 +140,6 @@ public class ComplaintController {
 		}*/
 
 		model.addAttribute("listComplaintHistory", listComplaintHistory);
-		return "redirect:/complaint";
+		return "complaint/view_history";
 	}
 }

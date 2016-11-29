@@ -1,106 +1,57 @@
 <%@page language="java" contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<spring:url value="/resources/img/building.jpg" var="building"/>
-<div class="row animated fadeInRight">
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<div class="row">
     <div class="col-lg-12">
-        <!--complaint-->
-        <c:forEach items="${tmComplaintList}" var="tmComplaint">
-            <div class="social-feed-box">
-                <div class="social-avatar">
-                    <a href="#" class="pull-left">
-                        <img alt="image" src="${building}">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Danh complaint</h5>
+
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
                     </a>
-                    <div class="media-body">
-                        <a href="#">
-                            ${tmComplaint.mComplaint.userName}
-                        </a>
-                        <small class="text-muted"><fmt:formatDate pattern="MM/dd/yyyy HH:mm:ss" value="${tmComplaint.mComplaint.created}" /></small>
-                    </div>
-                </div>
-                    <div class="social-body">
-                    <p>${tmComplaint.mComplaint.title}</p>
-                    <div class="btn-group">
-                        <form:form modelAttribute="complaintDto" method="post">
-                            <input name="followStatus" type="hidden" class="form-control" value="${tmComplaint.mComplaint.followStatus}">
-                            <input name="complaintCode" type="hidden" class="form-control" value="${tmComplaint.mComplaint.complaintCode}">
-                            <button name="follow" type="submit" id="follow_${tmComplaint.mComplaint.complaintCode}" class="btn btn-white btn-xs" <%--onclick="changeStyle('follow_${tmComplaint.mComplaint.complaintCode}', ${tmComplaint.mComplaint.followStatus}, 'nameButton_${tmComplaint.mComplaint.complaintCode}')"--%>>
-                                <i id="nameButton_${tmComplaint.mComplaint.complaintCode}" class="fa fa-thumbs-up"></i> <c:if test="${tmComplaint.mComplaint.followStatus == 0}">Follow</c:if> <c:if test="${tmComplaint.mComplaint.followStatus == 1}">UnFollow</c:if></button>
-                            <button class="btn btn-white btn-xs"><i class="fa fa-comments"></i> Comment</button>
-                        </form:form>
-                    </div>
-                </div>
-                    <!--comment -->
-                <div class="social-footer">
-                    <c:if test = "${tmComplaint.tComplaintList.size() > 0}">
-                        <c:forEach items="${tmComplaint.tComplaintList}" var="tComplaint">
-                            <%--<c:if test="${tComplaint.complaintCode == tmComplaint.complaintCode && tComplaint.tranSeq == 1} ">--%>
-                                <div class="social-comment">
-                                    <a href="#" class="pull-left">
-                                        <img alt="image" src="${building}">
-                                    </a>
-                                    <div class="media-body">
-                                        <a href="#">
-                                            ${tComplaint.userName}
-                                        </a>
-                                            ${tComplaint.message}
-                                        <br/>
-                                        <a href="#" class="small"><i class="fa"></i> Comment</a>
-                                        <!--reply-->
-                                        <c:forEach items="${tComplaint.tReplyDtoList}" var="tReply">
-                                            <%--<c:if test="${tComplaint.parentComplaintCode == tReply.parentComplaintCode && tComplaint.tranSeq == 2} ">--%>
-                                                <div class="social-comment">
-                                                    <a href="#" class="pull-left">
-                                                        <img alt="image" src="${building}">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <a href="#">
-                                                            ${tReply.userName}
-                                                        </a>
-                                                        ${tReply.message}
-                                                        <br/>
-                                                        <a href="#" class="small"><i class="fa"></i> Reply</a>
-                                                    </div>
-                                                </div>
-
-                                                <div id="reply" class="social-comment">
-                                                    <a href="#" class="pull-left">
-                                                        <img alt="image" src="${building}">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <textarea class="form-control" placeholder="Write reply..."></textarea>
-                                                    </div>
-                                                </div>
-                                            <%--</c:if>--%>
-                                        </c:forEach>
-                                    </div>
-                                </div>
-                            <%--</c:if>--%>
-                        </c:forEach>
-                    </c:if>
-                    <div id="comment" class="social-comment">
-                        <a href="#" class="pull-left">
-                            <img alt="image" src="${building}">
-                        </a>
-                        <div class="media-body">
-                            <textarea class="form-control" placeholder="Write comment..."></textarea>
-                        </div>
-
-                    </div>
                 </div>
             </div>
-        </c:forEach>
+            <div class="ibox-content">
+                <input type="text" class="form-control input-sm m-b-xs" id="filter" placeholder="Search in table">
+
+                <table class="footable emp-sales table table-stripped table-bordered table-hover dataTables-example" data-page-size="8" data-filter=#filter>
+                    <thead>
+                    <tr>
+                        <th>title</th>
+                        <th data-hide="phone,tablet">userName</th>
+                        <th data-hide="phone,tablet">serviceCode</th>
+                        <th data-hide="phone,tablet">followStatus</th>
+                        <th data-hide="phone,tablet">Ngày tạo</th>
+                        <th data-hide="phone,tablet" class="text-center">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${listComplaintHistory}" var="complaintDto">
+                        <tr class="gradeC" >
+                            <td>${complaintDto.title}</td>
+                            <td data-hide="phone,tablet">${complaintDto.userName}</td>
+                            <td data-hide="phone,tablet">${complaintDto.serviceCode}</td>
+                            <td data-hide="phone,tablet">${complaintDto.followStatus}</td>
+                            <td data-hide="phone,tablet"><fmt:formatDate pattern="MM/dd/yyyy HH:mm:ss" value="${complaintDto.created}"></fmt:formatDate></td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <a class="btn-success btn btn-xs" href="/complaint">View</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="13">
+                            <ul class="pagination pull-right"></ul>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
-<%--
-<script>
-    function changeStyle(id, status, name){
-        if(status === 1){
-            $( '#'+ id ).css( "color", "blue" );
-            $( '#'+ name).text('Follow');
-        }else{
-            $( '#'+ name).text( 'UnFollow');
-        }
-
-    }
-</script>--%>

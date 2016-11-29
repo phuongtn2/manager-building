@@ -20,7 +20,7 @@
 		<typeAlias alias="t_asset" type="com.building.dto.TransferAssetDto"/>
 		<typeAlias alias="user" type="com.building.dto.UserDto"/>
 		<typeAlias alias="service" type="com.building.dto.MasterServicesDto"/>
-		<typeAlias alias="book_service" type="com.building.dto.BookService"/>
+		<typeAlias alias="book_service" type="com.building.dto.BookServiceDto"/>
 		<typeAlias alias="complaint" type="com.building.dto.ComplaintDto"/>
 		<typeAlias alias="floor" type="com.building.dto.FloorDto"/>
 		<typeAlias alias="room" type="com.building.dto.RoomDto"/>

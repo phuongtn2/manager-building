@@ -51,8 +51,8 @@ public class ComplaintServiceImpl implements ComplaintService {
     }
 
     @Override
-    public List<ComplaintDto> findAllComplaintHistory(AuthorizedUserInfo aui) throws ServerException {
-        return complaintMapper.findAllComplaintHistory(aui);
+    public List<ComplaintDto> findAllComplaintHistory(AuthorizedUserInfo aui, boolean per) throws ServerException {
+        return complaintMapper.findAllComplaintHistory(aui,per);
     }
 
 

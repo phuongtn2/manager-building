@@ -1,6 +1,5 @@
 package com.building.services.impl;
 
-import com.building.dto.NewsDetailDto;
 import com.building.dto.NewsDto;
 import com.building.mapper.NewsMapper;
 import com.building.services.NewsService;
@@ -42,30 +41,5 @@ public class NewsServiceImpl implements NewsService {
         newsMapper.deleteById(id);
     }
 
-    //NewsDetail
 
-    @Override
-    public long insertNewsDetail(NewsDetailDto newsDetailDto) throws ServerException {
-        return newsMapper.insertNewsDetail(newsDetailDto);
-    }
-
-    @Override
-    public List<NewsDetailDto> findAllNewsDetailByNewsCode(long newsId) throws ServerException {
-        return newsMapper.findAllNewsDetailByNewsCode(newsId);
-    }
-
-    @Override
-    public NewsDetailDto findNewsDetailById(long id) throws ServerException {
-        return newsMapper.findNewsDetailById(id);
-    }
-
-    @Override
-    public void updateNewsDetail(NewsDetailDto newsDetailDto) throws ServerException {
-        newsMapper.updateNewsDetail(newsDetailDto);
-    }
-
-    @Override
-    public void deleteNewsDetailById(long id) throws ServerException {
-        newsMapper.deleteNewsDetailById(id);
-    }
 }

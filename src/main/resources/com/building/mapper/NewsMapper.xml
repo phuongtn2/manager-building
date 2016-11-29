@@ -9,6 +9,8 @@
 		newType
 		, newHeader
 		, newShorter
+		, newContent
+		, refNewCode
 		, created
 		, lastUpdate
 		, createId
@@ -17,6 +19,8 @@
 		#{dto.newType}
 		, #{dto.newHeader}
 		, #{dto.newShorter}
+		, #{dto.newContent}
+		, #{dto.refNewCode}
 		,  NOW()
 		,  NOW()
 		, #{dto.createId}
@@ -37,6 +41,8 @@
 		newType = #{dto.newType}
 		,newHeader = #{dto.newHeader}
 		,newShorter = #{dto.newShorter}
+		,newContent = #{dto.newContent}
+		,refNewCode = #{dto.refNewCode}
 		,updateId = #{dto.updateId}
 		,lastUpdate= NOW()
 		WHERE newCode= #{dto.newCode}
@@ -46,33 +52,4 @@
 	</delete>
 
 
-	<insert id="insertNewsDetail" useGeneratedKeys="true" keyProperty="dto.newDetailCode" >
-		INSERT INTO T_NEW_DETAIL(
-		newCode
-		, refNewCode
-		, newContent
-		)VALUES(
-		#{dto.newCode}
-		, #{dto.refNewCode}
-		, #{dto.newContent}
-		)
-	</insert>
-
-	<select id="findAllNewsDetailByNewsCode" resultType="news_detail">
-		SELECT * FROM T_NEW_DETAIL WHERE newCode=#{id} ORDER BY created
-	</select>
-
-	<select id="findNewsDetailById" resultType="news_detail">
-		SELECT * FROM T_NEW_DETAIL WHERE newDetailCode=#{id}
-	</select>
-
-	<update id="updateNewsDetail">
-		UPDATE T_NEW_DETAIL SET
-		refNewCode = #{dto.refNewCode}
-		,newContent = #{dto.newContent}
-		WHERE newContent= #{dto.newContent}
-	</update>
-	<delete id="deleteNewsDetailById">
-		DELETE FROM T_NEW_DETAIL WHERE newDetailCode = #{id}
-	</delete>
 </mapper>

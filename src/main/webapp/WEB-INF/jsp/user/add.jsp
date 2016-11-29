@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="ibox-content m-b-sm border-bottom">
-            <form:form  modelAttribute="userRoleRoomDto" method="post">
+            <form:form  modelAttribute="userRoleRoomDto" method="post" id="userForm">
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
@@ -174,11 +174,13 @@
                 <div class="row">
                     <div class="form-group">
                         <div class="text-center">
-                            <button name="add" class="btn btn-primary" type="submit"><i class="fa fa-check"></i>&nbsp;Submit</button>
+                            <input type="hidden" id="add" name="add">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addButton"><i class="fa fa-check"></i>&nbsp;Submit</button>
                             <input name="reset" class="btn btn-danger" placeholder="Nhập lại" type="reset">
                         </div>
                     </div>
                 </div>
+
             </form:form>
             </div>
         </div>

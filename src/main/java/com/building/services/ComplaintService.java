@@ -20,5 +20,5 @@ public interface ComplaintService {
     ComplaintDto findById(long id) throws ServerException;
    /* void update(NewsDto newsDto) throws ServerException;
     void deleteById(long id) throws ServerException;*/
-    List<ComplaintDto> findAllComplaintHistory(AuthorizedUserInfo aui) throws ServerException;
+    List<ComplaintDto> findAllComplaintHistory(AuthorizedUserInfo aui, boolean per) throws ServerException;
 }

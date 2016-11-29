@@ -1,8 +1,8 @@
 package com.building.services;
 
 import com.building.dto.NewsDto;
-import com.building.dto.NewsDetailDto;
 import com.dropbox.core.ServerException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -15,10 +15,4 @@ public interface NewsService {
     NewsDto findById(long id) throws ServerException;
     void update(NewsDto newsDto) throws ServerException;
     void deleteById(long id) throws ServerException;
-    //NewsDetail
-    long insertNewsDetail(NewsDetailDto newsDetailDto) throws ServerException;
-    List<NewsDetailDto> findAllNewsDetailByNewsCode(long newsId) throws ServerException;
-    NewsDetailDto findNewsDetailById(long id) throws ServerException;
-    void updateNewsDetail(NewsDetailDto newsDetailDto) throws ServerException;
-    void deleteNewsDetailById(long id) throws ServerException;
 }

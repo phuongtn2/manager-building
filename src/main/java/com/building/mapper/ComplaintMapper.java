@@ -19,5 +19,5 @@ public interface ComplaintMapper {
     List<TransferReplyDto> findAllTReply(@Param("parentComplaintCodes") List<Long> parentComplaintCode);
     void updateFollowStatus(@Param("dto") ComplaintDto complaintDto);
     ComplaintDto findById(@Param("id") long id);
-    List<ComplaintDto> findAllComplaintHistory(@Param("aui")AuthorizedUserInfo aui);
+    List<ComplaintDto> findAllComplaintHistory(@Param("aui")AuthorizedUserInfo aui, @Param("per") boolean per);
 }
