@@ -1,7 +1,7 @@
 package com.building.dto;
 
 /**
- * Created by Giang.DaoTu on 11/15/2016.
+ * Created by Giang.DaoTu on 12/15/2016.
  */
 public class RoomDto extends DefaultObjectDto{
     private Long roomCode;
