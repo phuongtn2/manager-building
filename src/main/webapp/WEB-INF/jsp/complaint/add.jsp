@@ -22,13 +22,12 @@
                                 <input name="title" type="text" placeholder="Tiêu đề" class="form-control" required=true value="<c:if test="${complaintDto.title!= null}">${complaintDto.title}</c:if>">
                             </div>
                             <div class="col-sm-2">
-                                <label class="control-label" for="serviceCode">Dich Vu</label>
+                                <label class="control-label">Dich Vu</label>
                                     <%--<input type="text" id="address" name="address" value="<c:if test="${memberDto.address!= null}">${memberDto.address}</c:if>" placeholder="Địa chỉ" class="form-control">--%>
                                 <select name="serviceCode" class="form-control m-b" >
-                                    <option value="1">Dv 1</option>
-                                    <option value="2">Dv 2</option>
-                                    <option value="3">Dv 3</option>
-                                    <option value="4">Dv 4</option>
+                                    <c:forEach items="${serviceDtoList}" var="service">
+                                        <option value="${service.serviceCode}">${service.serviceName}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
                         </div>

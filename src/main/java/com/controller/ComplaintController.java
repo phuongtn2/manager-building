@@ -2,6 +2,7 @@ package com.controller;
 
 import com.building.dto.*;
 import com.building.services.ComplaintService;
+import com.building.services.ManagerMasterServicesService;
 import com.building.services.Role;
 import com.dropbox.core.ServerException;
 import org.apache.commons.io.IOUtils;
@@ -32,6 +33,8 @@ import java.util.Map;
 public class ComplaintController {
 	@Autowired
 	private ComplaintService complaintService;
+	@Autowired
+	private ManagerMasterServicesService managerMasterServicesService;
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
@@ -162,5 +165,10 @@ public class ComplaintController {
 
 		model.addAttribute("listComplaintHistory", listComplaintHistory);
 		return "complaint/view_history";
+	}
+
+	@ModelAttribute("serviceDtoList")
+	public List<MasterServicesDto> populateServiceList() throws ServerException {
+		return managerMasterServicesService.findAll();
 	}
 }
