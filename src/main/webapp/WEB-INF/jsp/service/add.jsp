@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label class="control-label" for="serviceName">Tên dịch vụ</label>
+                                <label class="control-label">Tên dịch vụ</label>
                                 <input type="hidden" id="serviceCode" name="serviceCode" value="<c:if test="${masterServiceDto.serviceCode!= null}">${masterServiceDto.serviceCode}</c:if>"  class="form-control">
                                 <input type="text" id="serviceName" name="serviceName" value="<c:if test="${masterServiceDto.serviceName!= null}">${masterServiceDto.serviceName}</c:if>" placeholder="Tên dịch vụ" class="form-control">
                             </div>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label class="control-label" for="servicePrice">Giá dịch vụ</label>
+                                <label class="control-label"">Giá dịch vụ</label>
                                 <input  type="text" id="servicePrice" name="servicePrice" value="<c:if test="${masterServiceDto.servicePrice!= null}">${masterServiceDto.servicePrice}</c:if>" placeholder="Giá dịch vụ" class="form-control">
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label class="control-label" for="serviceStart">Bắt đầu</label>
+                                <label class="control-label">Bắt đầu</label>
                                 <div class="input-group date">
                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="serviceStart" name="serviceStart" type="text" class="form-control" value="<c:if test="${masterServiceDto.serviceStart!= null}"><fmt:formatDate pattern="MM/dd/yyyy" value="${masterServiceDto.serviceStart}" /></c:if>">
                                 </div>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label class="control-label" for="serviceEnd">Kết thúc</label>
+                                <label class="control-label">Kết thúc</label>
                                 <div class="input-group ">
                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="serviceEnd" name="serviceEnd" type="text" class="form-control"  value="<c:if test="${masterServiceDto.serviceEnd!= null}"><fmt:formatDate pattern="MM/dd/yyyy" value="${masterServiceDto.serviceEnd}" /></c:if>">
                                 </div>

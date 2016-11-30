@@ -15,6 +15,11 @@
     <spring:url value="/resources/css/style.css" var="styleCss" />
     <spring:url value="/resources/js/plugins/gritter/jquery.gritter.css" var="gritterCss" />
     <spring:url value="/resources/css/plugins/dataTables/datatables.min.css" var="datatablesCss" />
+    <spring:url value="/resources/css/plugins/datapicker/datepicker3.css" var="datepicker3Css"/>
+    <spring:url value="/resources/css/plugins/footable/footable.core.css" var="footableCss" />
+    <spring:url value="/resources/css/plugins/daterangepicker/daterangepicker-bs3.css" var="daterangepicker3Css"/>
+
+    <link href="${daterangepicker3Css}" rel="stylesheet" type="text/css"/>
     <link href="${datatablesCss}" rel="stylesheet" type="text/css"/>
     <link href="${bootsTrapCss}" rel="stylesheet" type="text/css"/>
     <link href="${toastrCss}" rel="stylesheet" type="text/css"/>
@@ -22,6 +27,8 @@
     <link href="${animateCss}" rel="stylesheet" type="text/css"/>
     <link href="${styleCss}" rel="stylesheet" type="text/css"/>
     <link href="${gritterCss}" rel="stylesheet" type="text/css"/>
+    <link href="${datepicker3Css}" rel="stylesheet" type="text/css"/>
+    <link href="${footableCss}" rel="stylesheet" type="text/css"/>
     <script>
         function change(id) {
             var listId = ["news", "complaint", "request", "building" , "service", "user"
@@ -35,7 +42,6 @@
             }
         }
     </script>
-
 </head>
 
 <body onload="change('asset')">
@@ -43,7 +49,7 @@
     <%@include file="../template/navbar.jsp" %>
     <%@include file="../template/notify.jsp" %>
     <div id="page-wrapper" class="gray-bg">
-        <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="wrapper wrapper-content animated fadeInRight ecommerce">
             <%@include file="add.jsp" %>
             <%@include file="list_asset.jsp" %>
         </div>
@@ -112,36 +118,46 @@
 <spring:url value="/resources/js/plugins/dataTables/datatables.min.js" var="datatablesJs" />
 <script src="${datatablesJs}"></script>
 <!-- Page-Level Scripts -->
+<!-- FooTable -->
+
+<spring:url value="/resources/js/plugins/footable/footable.all.min.js" var="footableJs" />
+<script src="${footableJs}"></script>
+
+
+<!-- Data picker -->
+
+<spring:url value="/resources/js/plugins/daterangepicker/daterangepicker.js" var="daterangepickerJs" />
+<script src="${daterangepickerJs}"></script>
+<spring:url value="/resources/js/plugins/datapicker/bootstrap-datepicker.js" var="datepickerJs" />
+<script src="${datepickerJs}"></script>
+
+<!-- Page-Level Scripts -->
 <script>
-    $(document).ready(function(){
-        $('.dataTables-example').DataTable({
-            dom: '<"html5buttons"B>lTfgitp',
-            buttons: [
-            ]
+    $(document).ready(function() {
+
+        $('.footable').footable();
+
+
+        $('#dateFrom').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: true,
+            calendarWeeks: true,
+            autoclose: true
         });
 
-        /* Init DataTables */
-        var oTable = $('#editable').DataTable();
-
-        /* Apply the jEditable handlers to the table */
-        oTable.$('td').editable( 'http://localhost:8080/building', {
-            "callback": function( sValue, y ) {
-                var aPos = oTable.fnGetPosition( this );
-                oTable.fnUpdate( sValue, aPos[0], aPos[1] );
-            },
-            "submitdata": function ( value, settings ) {
-                return {
-                    "row_id": this.parentNode.getAttribute('id'),
-                    "column": oTable.fnGetPosition( this )[2]
-                };
-            },
-
-            "width": "90%",
-            "height": "100%"
-        } );
-
-
+        $('#dateTo').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: true,
+            calendarWeeks: true,
+            autoclose: true
+        });
     });
+
+
+
+
 
 </script>
 
