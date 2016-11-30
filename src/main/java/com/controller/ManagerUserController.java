@@ -15,6 +15,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -43,8 +44,8 @@ public class ManagerUserController {
     }
 
     @ModelAttribute("userDtoList")
-        public List<UserDto> populateUserList() throws ServerException {
-        return managerUserService.findAll();
+    public List<UserDto> populateUserList() throws ServerException {
+        return managerUserService.findAllUser();
     }
     @RequestMapping(method = RequestMethod.POST)
     public String processSubmit(
@@ -88,21 +89,45 @@ public class ManagerUserController {
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String getEdit(@PathVariable long id, Model model, HttpServletRequest request)  throws ServerException{
         AuthorizedUserInfo aui = (AuthorizedUserInfo) request.getSession().getAttribute("aui");
-        UserDto userDto = managerUserService.findById(id);
-        userDto.setUpdateId(aui.getUserId());
-        model.addAttribute("userDto",userDto);
+        UserRoleRoomDto userRoleRoomDto = new UserRoleRoomDto();
+
+        userRoleRoomDto.setUserDto(managerUserService.findUserById(id));
+        userRoleRoomDto.setUserRoleGroupDto(managerUserService.findUserRoleGroupById(id));
+        userRoleRoomDto.setUserRoomDto(managerUserService.findUserRoomById(id));
+        userRoleRoomDto.setUpdateId(aui.getUserId());
+        model.addAttribute("userRoleRoomDto",userRoleRoomDto);
         return "user/view";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String saveEdit(@ModelAttribute("userDto") UserDto userDto, @PathVariable long id) throws ServerException {
-        managerUserService.update(userDto);
+    public String saveEdit(@ModelAttribute("userRoleRoomDto") UserRoleRoomDto userRoleRoomDto, @PathVariable long id) throws ServerException {
+        //update user room
+        managerUserService.updateUserRoom(userRoleRoomDto.getUserRoomDto());
+        //update user role
+        managerUserService.updateUserRoleGroup(userRoleRoomDto.getUserRoleGroupDto());
+        //update user
+        managerUserService.updateUser(userRoleRoomDto.getUserDto());
         return "redirect:/user";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable long id, Model model, HttpServletRequest request)  throws ServerException{
-        managerUserService.deleteById(id);
+        //delete user room
+        managerUserService.deleteUserRoomById(id);
+        //delete user role
+        managerUserService.deleteUserRoleGroupById(id);
+        //delete user
+        managerUserService.deleteUserById(id);
         return "redirect:/user";
     }
+
+
+    @RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
+    public String viewUserRoleRoomDetail(@PathVariable long id, Model model, HttpServletRequest request) throws ServerException{
+        managerUserService.findUserById(id);
+        managerUserService.findUserRoomByUserId(id);
+
+        return "user/view_detail";
+    }
+
 }

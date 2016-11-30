@@ -13,6 +13,7 @@
 		<typeAlias alias="empAuth" type="com.building.dto.AuthorizedUserInfo" />
 		<typeAlias alias="roleGroup" type="com.building.dto.RoleGroupDto" />
 		<typeAlias alias="userRoleGroup" type="com.building.dto.UserRoleGroupDto" />
+		<typeAlias alias="userRoom" type="com.building.dto.UserRoomDto" />
 		<typeAlias alias="building" type="com.building.dto.BuildingDto"/>
 		<typeAlias alias="news" type="com.building.dto.NewsDto"/>
 		<typeAlias alias="news_detail" type="com.building.dto.NewsDetailDto"/>

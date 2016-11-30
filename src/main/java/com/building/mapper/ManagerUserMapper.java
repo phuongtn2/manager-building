@@ -12,10 +12,23 @@ import java.util.List;
  */
 public interface ManagerUserMapper {
     int insertUser(@Param("dto") UserDto userDto);
-    List<UserDto> findAll();
-    UserDto findById(@Param("id") long id);
-    void update(@Param("dto") UserDto userDto);
-    void deleteById(@Param("id") long id);
+    List<UserDto> findAllUser();
+    UserDto findUserById(@Param("id") long id);
+    void updateUser(@Param("dto") UserDto userDto);
+    void deleteUserById(@Param("id") long id);
+
+
     int insertUserRoleGroup(@Param("dto") UserRoleGroupDto userRoleGroupDto );
+    List<UserRoleGroupDto> findAllUserRoleGroup();
+    UserRoleGroupDto findUserRoleGroupById(@Param("id") long id);
+    void updateUserRoleGroup(@Param("dto") UserRoleGroupDto userRoleGroupDto);
+    void deleteUserRoleGroupById(@Param("id") long id);
+
+
     long insertUserRoom(@Param("dto") UserRoomDto userRoomDto);
+    List<UserRoomDto> findAllUserRoom();
+    List<UserRoomDto> findUserRoomByUserId(@Param("id") long id);
+    UserRoomDto findUserRoomById(@Param("id") long id);
+    void updateUserRoom(@Param("dto") UserRoomDto userRoomDto);
+    void deleteUserRoomById(@Param("id") long id);
 }

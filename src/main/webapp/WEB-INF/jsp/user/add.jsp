@@ -167,7 +167,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label class="control-label">Ghi chú</label>
-                            <textarea type="text" rows="4" id="memo" name="userDto.memo" value="<c:if test="${userRoleRoomDto.userDto.mail!= null}">${userRoleRoomDto.userDto.mail}</c:if>" placeholder="Ghi chú" class="form-control"></textarea>
+                            <textarea type="text" rows="4" id="memo" name="userRoleGroupDto.memo" value="<c:if test="${userRoleRoomDto.userRoleGroupDto.memo!= null}">${userRoleRoomDto.userRoleGroupDto.memo}</c:if>" placeholder="Ghi chú" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>

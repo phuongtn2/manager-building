@@ -6,78 +6,46 @@ import java.util.Date;
 public class UserRoleGroupDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private int userRoleGroupId;
-	private int userId;
-	private int roleGroupId;
+	private Integer userRoleGroupId;
+	private Integer userId;
+	private Integer roleGroupId;
 	private Date startDay;
 	private Date endDay;
-	private int divisionId;
-	private int managerId;
-	private int centerManagerId;
+	private Integer divisionId;
+	private Integer managerId;
+	private Integer centerManagerId;
 	private String memo;
 	private Date created;
-	private int createId;
+	private Integer createId;
 	private Date lastUpdate;
-	private int updateId;
+	private Integer updateId;
 
 	public static long getSerialVersionUID() {
 		return serialVersionUID;
 	}
 
-	public int getRoleGroupId() {
-		return roleGroupId;
-	}
-
-	public void setRoleGroupId(int roleGroupId) {
-		this.roleGroupId = roleGroupId;
-	}
-
-	public int getDivisionId() {
-		return divisionId;
-	}
-
-	public void setDivisionId(int divisionId) {
-		this.divisionId = divisionId;
-	}
-
-	public int getManagerId() {
-		return managerId;
-	}
-
-	public void setManagerId(int managerId) {
-		this.managerId = managerId;
-	}
-
-	public int getCenterManagerId() {
-		return centerManagerId;
-	}
-
-	public void setCenterManagerId(int centerManagerId) {
-		this.centerManagerId = centerManagerId;
-	}
-
-	public int getUpdateId() {
-		return updateId;
-	}
-
-	public void setUpdateId(int updateId) {
-		this.updateId = updateId;
-	}
-
-	public int getUserRoleGroupId() {
+	public Integer getUserRoleGroupId() {
 		return userRoleGroupId;
 	}
 
-	public void setUserRoleGroupId(int userRoleGroupId) {
+	public void setUserRoleGroupId(Integer userRoleGroupId) {
 		this.userRoleGroupId = userRoleGroupId;
 	}
 
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
+	}
+
+	public Integer getRoleGroupId() {
+		return roleGroupId;
+	}
+
+	public void setRoleGroupId(Integer roleGroupId) {
+		this.roleGroupId = roleGroupId;
 	}
 
 	public Date getStartDay() {
@@ -96,6 +64,30 @@ public class UserRoleGroupDto implements Serializable {
 		this.endDay = endDay;
 	}
 
+	public Integer getDivisionId() {
+		return divisionId;
+	}
+
+	public void setDivisionId(Integer divisionId) {
+		this.divisionId = divisionId;
+	}
+
+	public Integer getManagerId() {
+		return managerId;
+	}
+
+	public void setManagerId(Integer managerId) {
+		this.managerId = managerId;
+	}
+
+	public Integer getCenterManagerId() {
+		return centerManagerId;
+	}
+
+	public void setCenterManagerId(Integer centerManagerId) {
+		this.centerManagerId = centerManagerId;
+	}
+
 	public String getMemo() {
 		return memo;
 	}
@@ -112,11 +104,11 @@ public class UserRoleGroupDto implements Serializable {
 		this.created = created;
 	}
 
-	public int getCreateId() {
+	public Integer getCreateId() {
 		return createId;
 	}
 
-	public void setCreateId(int createId) {
+	public void setCreateId(Integer createId) {
 		this.createId = createId;
 	}
 
@@ -126,5 +118,13 @@ public class UserRoleGroupDto implements Serializable {
 
 	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
+	}
+
+	public Integer getUpdateId() {
+		return updateId;
+	}
+
+	public void setUpdateId(Integer updateId) {
+		this.updateId = updateId;
 	}
 }

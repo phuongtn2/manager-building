@@ -29,6 +29,12 @@
                     <tr>
                         <th>Họ Tên</th>
                         <th data-hide="phone,tablet">adId</th>
+                        <th data-hide="phone,tablet">Giới tính</th>
+                        <th data-hide="phone,tablet">Ngày sinh</th>
+                        <th data-hide="phone,tablet">Chứng minh thư</th>
+                        <th data-hide="phone,tablet">Mail</th>
+                        <th data-hide="phone,tablet">Điện Thoại</th>
+                        <th data-hide="phone,tablet">Địa chỉ</th>
                         <th data-hide="phone,tablet">Trạng thái</th>
                         <th data-hide="phone,tablet">startDay</th>
                         <th data-hide="phone,tablet">endDay</th>
@@ -42,6 +48,15 @@
                             <td>${user.fullName}</td>
                             <td data-hide="phone,tablet">${user.adId}</td>
                             <td data-hide="phone,tablet">
+                                <c:if test="${user.gender==1}" >Nam</c:if>
+                                <c:if test="${user.gender==2}" >Nữ</c:if>
+                            </td>
+                            <td data-hide="phone,tablet"><fmt:formatDate pattern="MM/dd/yyyy" value="${user.birthday}" /></td>
+                            <td data-hide="phone,tablet">${user.idCard}</td>
+                            <td data-hide="phone,tablet">${user.mail}</td>
+                            <td data-hide="phone,tablet">${user.tel}</td>
+                            <td data-hide="phone,tablet">${user.address}</td>
+                            <td data-hide="phone,tablet">
                                 <c:if test="${user.userStatus==1}" > <span class="label label-success">Active</span> </c:if>
                                 <c:if test="${user.userStatus==2}" > <span class="label label-danger">Deactive</span> </c:if>
                                 <c:if test="${user.userStatus==3}" > <span class="label label-primary">Pending</span> </c:if>
@@ -51,7 +66,7 @@
                             <td data-hide="phone,tablet">${user.memo}</td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a class="btn-success btn btn-xs" href="/user/view/${user.userId}">Edit</a>
+                                    <a class="btn-success btn btn-xs" href="/user/edit/${user.userId}">Edit</a>
                                     <a type="button" data-toggle="modal" data-target="#deleteButton" class="btn-danger btn btn-xs" onclick="setUrl('/user/delete/${user.userId}')">Delete</a>
                                 </div>
                             </td>

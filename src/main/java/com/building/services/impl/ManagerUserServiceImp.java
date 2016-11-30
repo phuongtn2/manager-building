@@ -26,23 +26,23 @@ public class ManagerUserServiceImp implements ManagerUserService {
     }
 
     @Override
-    public List<UserDto> findAll() throws ServerException {
-        return managerUserMapper.findAll();
+    public List<UserDto> findAllUser() throws ServerException {
+        return managerUserMapper.findAllUser();
     }
 
     @Override
-    public UserDto findById(long id) throws ServerException {
-        return managerUserMapper.findById(id);
+    public UserDto findUserById(long id) throws ServerException {
+        return managerUserMapper.findUserById(id);
     }
 
     @Override
-    public void update(UserDto userDto) throws ServerException {
-        managerUserMapper.update(userDto);
+    public void updateUser(UserDto userDto) throws ServerException {
+        managerUserMapper.updateUser(userDto);
     }
 
     @Override
-    public void deleteById(long id) throws ServerException {
-        managerUserMapper.deleteById(id);
+    public void deleteUserById(long id) throws ServerException {
+        managerUserMapper.deleteUserById(id);
     }
 
     @Override
@@ -51,7 +51,52 @@ public class ManagerUserServiceImp implements ManagerUserService {
     }
 
     @Override
+    public List<UserRoleGroupDto> findAllUserRoleGroup() throws ServerException {
+        return managerUserMapper.findAllUserRoleGroup();
+    }
+
+    @Override
+    public UserRoleGroupDto findUserRoleGroupById(long id) throws ServerException {
+        return managerUserMapper.findUserRoleGroupById(id);
+    }
+
+    @Override
+    public void updateUserRoleGroup(UserRoleGroupDto userRoleGroupDto) throws ServerException {
+        managerUserMapper.updateUserRoleGroup(userRoleGroupDto);
+    }
+
+    @Override
+    public void deleteUserRoleGroupById(long id) throws ServerException {
+        managerUserMapper.deleteUserRoleGroupById(id);
+    }
+
+    @Override
     public long insertUserRoom(UserRoomDto userRoomDto) throws ServerException {
         return managerUserMapper.insertUserRoom(userRoomDto);
+    }
+
+    @Override
+    public void deleteUserRoomById(long id) throws ServerException {
+        managerUserMapper.deleteUserRoomById(id);
+    }
+
+    @Override
+    public List<UserRoomDto> findAllUserRoom() throws ServerException {
+        return managerUserMapper.findAllUserRoom();
+    }
+
+    @Override
+    public List<UserRoomDto> findUserRoomByUserId(long id)throws ServerException {
+        return managerUserMapper.findUserRoomByUserId(id);
+    }
+
+    @Override
+    public UserRoomDto findUserRoomById(long id) throws ServerException {
+        return managerUserMapper.findUserRoomById(id);
+    }
+
+    @Override
+    public void updateUserRoom(UserRoomDto userRoomDto) throws ServerException {
+        managerUserMapper.updateUserRoom(userRoomDto);
     }
 }

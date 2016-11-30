@@ -52,8 +52,7 @@
  <%@include file="../template/notify.jsp" %>
  <div id="page-wrapper" class="gray-bg">
   <div class="wrapper wrapper-content animated fadeInRight ecommerce">
-   <%@include file="add.jsp" %>
-   <%@include file="list_user.jsp" %>
+   <%@include file="list_user_detail.jsp" %>
   </div>
   <%@include file="../template/footer.jsp" %>
  </div>
