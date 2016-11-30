@@ -16,6 +16,7 @@ public class LoginBean implements Filter{
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) servletRequest;
+		req.setCharacterEncoding("UTF-8");
 		HttpSession session = req.getSession();
 		AuthorizedUserInfo aui = (AuthorizedUserInfo) session.getAttribute("aui");
 		if (aui == null && !req.getRequestURI().contains("/login")){

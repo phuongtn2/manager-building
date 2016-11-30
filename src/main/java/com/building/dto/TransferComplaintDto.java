@@ -6,6 +6,7 @@ import java.util.List;
  * Created by phuongtn2 on 11/15/2016.
  */
 public class TransferComplaintDto {
+    private long tComplaintCode;
     private long complaintCode;
     private long parentComplaintCode;
     private int userId;
@@ -13,6 +14,14 @@ public class TransferComplaintDto {
     private String message;
     List<TransferReplyDto> tReplyDtoList;
     private String userName;
+
+    public long gettComplaintCode() {
+        return tComplaintCode;
+    }
+
+    public void settComplaintCode(long tComplaintCode) {
+        this.tComplaintCode = tComplaintCode;
+    }
 
     public long getComplaintCode() {
         return complaintCode;

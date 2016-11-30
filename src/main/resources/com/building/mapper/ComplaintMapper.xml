@@ -24,6 +24,24 @@
 		)
 	</insert>
 
+	<insert id="insertTComplaint" useGeneratedKeys="true" keyProperty="dto.complaintCode">
+		INSERT INTO T_COMPLAINT(
+		complaintCode
+		, userId
+		, tranSeq
+		, message
+		, parentComplaintCode
+		, userName
+		)VALUES(
+		#{dto.complaintCode}
+		, #{dto.userId}
+		, #{dto.tranSeq}
+		, #{dto.message}
+		, #{dto.parentComplaintCode}
+		, #{dto.userName}
+		)
+	</insert>
+
 	<select id="findAllComplaint" resultType="complaint">
 		SELECT * FROM M_COMPLAINT ORDER BY created
 	</select>

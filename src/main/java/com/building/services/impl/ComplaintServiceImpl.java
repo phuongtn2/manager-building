@@ -55,8 +55,12 @@ public class ComplaintServiceImpl implements ComplaintService {
         return complaintMapper.findAllComplaintHistory(aui,per);
     }
 
+    @Override
+    public long insertTComplaint(TransferComplaintDto transferComplaintDto) throws ServerException {
+        return complaintMapper.insertTComplaint(transferComplaintDto);
+    }
 
-    /*@Override
+/*@Override
     public void update(NewsDto newsDto) throws ServerException {
         newsMapper.update(newsDto);
     }

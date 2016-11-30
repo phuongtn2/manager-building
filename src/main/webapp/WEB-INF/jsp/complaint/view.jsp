@@ -121,5 +121,85 @@
         <!-- Toastr -->
         <spring:url value="/resources/js/plugins/toastr/toastr.min.js" var="toastrJs" />
         <script src="${toastrJs}"></script>
+
+        <script>
+            function onEnter(type,complaintCode, parentComplaintCode) {
+                var key = window.event.keyCode;
+                if (key === 13) {
+                    var data = {};
+                    data["complaintCode"] = complaintCode;
+                    data["message"] = ""
+                    if(type === "comment") {
+                        data["tranSeq"] = 1;
+                        data["message"] = $('#comment_' + complaintCode).val();
+                    }
+                    else {
+                        data["tranSeq"] = 2;
+                        data["message"] = $('#reply_'+ complaintCode +'_' + parentComplaintCode).val();
+                    }
+
+                    data["parentComplaintCode"] = parentComplaintCode;
+                    if(data["message"] != ""){
+                        $.ajax({
+                            type: "POST",
+                            contentType: "application/json",
+                            url: "/complaint/comment",
+                            data: JSON.stringify(data),
+                            dataType: 'json',
+                            timeout: 600000,
+                            success: function (data) {
+                                if(type === "comment"){
+                                    $('#appendComment_'+complaintCode).append(
+                                            '<div class="social-comment">' +
+                                            '<a href="#" class="pull-left">' +
+                                            '<img alt="image" src="${building}">' +
+                                            '</a>' +
+                                            '<div class="media-body">' +
+                                            '<a href="#">' + data["userName"] + '</a>' + data["message"] +
+                                            '<br/>' +
+                                            '<a href="#" class="small"><i class="fa"></i> Comment</a>' +
+                                            '</div>' +
+                                            '</div>'
+                                            /*'<div class="social-comment">' +
+                                             '<a href="#" class="pull-left">' +
+                                             '<img alt="image" src="${building}">' +
+                 '</a>' +
+                 '<div class="media-body">' +
+                 '<textarea onkeypress="onEnter("reply"' + ',' + data["complaintCode"] + ','+ data["parentComplaintCode"] + ');" ' +
+                 'class="form-control" placeholder="Write reply..." id="reply_'+ data["complaintCode"] +'_' + data["parentComplaintCode"] + '" ></textarea>' +
+                 '</div>' +
+                 '</div>' +*/
+                                    );
+                                    $('#comment_' + complaintCode).val("");
+                                }else{
+                                    $('#appendReply_'+ complaintCode + '_' + parentComplaintCode).append('<div class="social-comment">' +
+                                            '<a href="#" class="pull-left">' +
+                                            '<img alt="image" src="${building}">' +
+                                            '</a>' +
+                                            '<div class="media-body">' +
+                                            ' <a href="#">' + data["userName"]+
+                                            '</a>' + data["message"] +
+                                            '<br/>' +
+                                            '<a href="#" class="small"><i class="fa"></i> Reply</a>' +
+                                            '</div>' +
+                                            '</div>');
+                                    $('#reply_'+ complaintCode + '_' + parentComplaintCode).val("");
+                                }
+
+                            },
+                            error: function (e) {
+                                alert(e);
+                                $('#reply_'+ complaintCode + '_' + parentComplaintCode).val("");
+                            }
+                        });
+                        //window.location = "http://localhost:8080//complaint";
+                }
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+        </script>
     </body>
 </html>

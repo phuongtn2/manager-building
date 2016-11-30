@@ -21,4 +21,5 @@ public interface ComplaintService {
    /* void update(NewsDto newsDto) throws ServerException;
     void deleteById(long id) throws ServerException;*/
     List<ComplaintDto> findAllComplaintHistory(AuthorizedUserInfo aui, boolean per) throws ServerException;
+    long insertTComplaint(TransferComplaintDto transferComplaintDto) throws ServerException;
 }

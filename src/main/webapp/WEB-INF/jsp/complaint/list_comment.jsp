@@ -34,6 +34,7 @@
                 <div class="social-footer">
                     <c:if test = "${tmComplaint.tComplaintList.size() > 0}">
                         <c:forEach items="${tmComplaint.tComplaintList}" var="tComplaint">
+                            <%int count = 1;%>
                             <%--<c:if test="${tComplaint.complaintCode == tmComplaint.complaintCode && tComplaint.tranSeq == 1} ">--%>
                                 <div class="social-comment">
                                     <a href="#" class="pull-left">
@@ -62,28 +63,34 @@
                                                         <a href="#" class="small"><i class="fa"></i> Reply</a>
                                                     </div>
                                                 </div>
-
-                                                <div id="reply" class="social-comment">
-                                                    <a href="#" class="pull-left">
-                                                        <img alt="image" src="${building}">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <textarea class="form-control" placeholder="Write reply..."></textarea>
-                                                    </div>
-                                                </div>
                                             <%--</c:if>--%>
                                         </c:forEach>
+                                        <div id="appendReply_${tmComplaint.mComplaint.complaintCode}_${tComplaint.parentComplaintCode}">
+
+                                        </div>
+                                        <div class="social-comment">
+                                            <a href="#" class="pull-left">
+                                                <img alt="image" src="${building}">
+                                            </a>
+                                            <div class="media-body">
+                                                <textarea onkeypress="onEnter('reply', ${tmComplaint.mComplaint.complaintCode}, ${tComplaint.parentComplaintCode});" class="form-control" placeholder="Write reply..." id="reply_${tmComplaint.mComplaint.complaintCode}_${tComplaint.parentComplaintCode}"></textarea>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             <%--</c:if>--%>
+                            <% count ++;%>
                         </c:forEach>
                     </c:if>
+                    <div id="appendComment_${tmComplaint.mComplaint.complaintCode}">
+
+                    </div>
                     <div id="comment" class="social-comment">
                         <a href="#" class="pull-left">
                             <img alt="image" src="${building}">
                         </a>
                         <div class="media-body">
-                            <textarea class="form-control" placeholder="Write comment..."></textarea>
+                            <textarea onkeypress="onEnter('comment',${tmComplaint.mComplaint.complaintCode},${tmComplaint.mComplaint.complaintCode} + ${tmComplaint.tComplaintList.size()} + 1);"class="form-control" placeholder="Write comment..." id="comment_${tmComplaint.mComplaint.complaintCode}"></textarea>
                         </div>
 
                     </div>
@@ -92,15 +99,3 @@
         </c:forEach>
     </div>
 </div>
-<%--
-<script>
-    function changeStyle(id, status, name){
-        if(status === 1){
-            $( '#'+ id ).css( "color", "blue" );
-            $( '#'+ name).text('Follow');
-        }else{
-            $( '#'+ name).text( 'UnFollow');
-        }
-
-    }
-</script>--%>

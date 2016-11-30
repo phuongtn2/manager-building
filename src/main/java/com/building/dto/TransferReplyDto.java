@@ -4,12 +4,21 @@ package com.building.dto;
  * Created by phuongtn2 on 11/15/2016.
  */
 public class TransferReplyDto {
+    private long tComplaintCode;
     private long complaintCode;
     private long parentComplaintCode;
     private int userId;
     private int tranSeq;
     private String message;
     private String userName;
+
+    public long gettComplaintCode() {
+        return tComplaintCode;
+    }
+
+    public void settComplaintCode(long tComplaintCode) {
+        this.tComplaintCode = tComplaintCode;
+    }
 
     public long getComplaintCode() {
         return complaintCode;

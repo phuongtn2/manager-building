@@ -4,24 +4,28 @@ import com.building.dto.*;
 import com.building.services.ComplaintService;
 import com.building.services.Role;
 import com.dropbox.core.ServerException;
+import org.apache.commons.io.IOUtils;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/complaint")
@@ -104,11 +108,28 @@ public class ComplaintController {
 		return "redirect:/complaint";
 	}
 
-	@RequestMapping(method = RequestMethod.POST, params = "comment")
-	public String addTComplaint(@ModelAttribute("complaintDto") ComplaintDto complaintDto) throws ServerException {
-		complaintService.insertComplaint(complaintDto);
-		return "redirect:/complaint";
+	@RequestMapping(value = "/comment",method = RequestMethod.POST, headers = "Accept=application/json", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public TransferComplaintDto addTComplaint( HttpServletRequest request) throws ServerException, JSONException {
+		try {
+			String inputJson = IOUtils.toString(request.getReader());
+			JSONObject jsonObj = new JSONObject(inputJson);
+			TransferComplaintDto transferComplaintDto = new TransferComplaintDto();
+			transferComplaintDto.setComplaintCode(Long.parseLong(jsonObj.getString("complaintCode")));
+			transferComplaintDto.setTranSeq(Integer.parseInt(jsonObj.getString("tranSeq")));
+			transferComplaintDto.setMessage(jsonObj.getString("message"));
+			transferComplaintDto.setParentComplaintCode(Long.parseLong(jsonObj.getString("parentComplaintCode")));
+			AuthorizedUserInfo aui = (AuthorizedUserInfo) request.getSession().getAttribute("aui");
+			transferComplaintDto.setUserId(aui.getUserId());
+			transferComplaintDto.setUserName(aui.getFullName());
+			complaintService.insertTComplaint(transferComplaintDto);
+			return transferComplaintDto;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
+
 
 	@RequestMapping(method = RequestMethod.POST, params = "reply")
 	public String addTReply(@ModelAttribute("complaintDto") ComplaintDto complaintDto) throws ServerException {
