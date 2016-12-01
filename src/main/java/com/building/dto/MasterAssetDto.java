@@ -6,34 +6,34 @@ import java.util.Date;
  * Created by phuongtn2 on 11/14/2016.
  */
 public class MasterAssetDto extends DefaultObjectDto{
-    private long buildingCode;
-    private long assetCode;
-    private byte assetType;
+    private Long buildingCode;
+    private Long assetCode;
+    private Byte assetType;
     private String assetName;
     private Date dateFrom;
     private Date dateTo;
 
-    public long getBuildingCode() {
+    public Long getBuildingCode() {
         return buildingCode;
     }
 
-    public void setBuildingCode(long buildingCode) {
+    public void setBuildingCode(Long buildingCode) {
         this.buildingCode = buildingCode;
     }
 
-    public long getAssetCode() {
+    public Long getAssetCode() {
         return assetCode;
     }
 
-    public void setAssetCode(long assetCode) {
+    public void setAssetCode(Long assetCode) {
         this.assetCode = assetCode;
     }
 
-    public byte getAssetType() {
+    public Byte getAssetType() {
         return assetType;
     }
 
-    public void setAssetType(byte assetType) {
+    public void setAssetType(Byte assetType) {
         this.assetType = assetType;
     }
 

@@ -40,7 +40,7 @@ public class MasterAssetController {
 		return "asset/view";
 	}
 
-	@ModelAttribute("MasterAssetDtoList")
+	@ModelAttribute("masterAssetDtoList")
 	public List<MasterAssetDto> populateMasterAssetList() throws ServerException {
 		return masterAssetService.findAll();
 	}

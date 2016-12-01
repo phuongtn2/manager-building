@@ -4,7 +4,7 @@
 
 <mapper namespace="com.building.mapper.MasterAssetMapper">
 
-	<insert id="insertAsset" useGeneratedKeys="true" keyProperty="dto.assetCode">
+	<insert id="insertMasterAsset" useGeneratedKeys="true" keyProperty="dto.assetCode">
 		INSERT INTO M_ASSET(
 		buildingCode
 		, assetType

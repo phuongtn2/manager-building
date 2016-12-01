@@ -14,8 +14,7 @@
                 </div>
             </div>
             <div class="ibox-content">
-                <input type="text" class="form-control input-sm m-b-xs" id="filter"
-                       placeholder="Tìm kiếm">
+                <input type="text" class="form-control input-sm m-b-xs" id="filter" placeholder="Tìm kiếm">
 
                 <table class="footable emp-sales table table-stripped table-bordered table-hover dataTables-example" data-page-size="8" data-filter=#filter>
                     <thead>
@@ -42,8 +41,8 @@
                             <td data-hide="phone,tablet"><fmt:formatDate pattern="MM/dd/yyyy" value="${masterAsset.dateTo}" /></td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a class="btn-success btn btn-xs" href="/service/edit/${masterAsset.assetCode}">Edit</a>
-                                    <a class="btn-danger btn btn-xs" href="/service/delete/${masterAsset.assetCode}">Delete</a>
+                                    <a class="btn-success btn btn-xs" href="/asset/edit/${masterAsset.assetCode}">Edit</a>
+                                    <a class="btn-danger btn btn-xs" href="/asset/delete/${masterAsset.assetCode}">Delete</a>
                                 </div>
                             </td>
                         </tr>

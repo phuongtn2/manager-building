@@ -13,11 +13,11 @@
                 </div>
             </div>
             <div class="ibox-content">
-                <form:form modelAttribute="masterServiceDto" method="post">
+                <form:form modelAttribute="masterAssetDto" method="post">
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label class="control-label" >Tên dịch vụ</label>
+                                <label class="control-label" >Tên tài sản</label>
                                 <input type="hidden" id="assetCode" name="assetCode" value="<c:if test="${masterAssetDto.assetCode!= null}">${masterAssetDto.assetCode}</c:if>"  class="form-control">
                                 <input type="text" id="assetName" name="assetName" value="<c:if test="${masterAssetDto.assetName!= null}">${masterAssetDto.assetName}</c:if>" placeholder="Tên dịch vụ" class="form-control">
                             </div>
@@ -25,7 +25,7 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label class="control-label">Loại tài sản</label>
-                                <select name="serviceType" class="form-control m-b">
+                                <select name="assetType" class="form-control m-b">
                                     <option <c:if test="${masterAssetDto.assetType==1}" >selected</c:if> value="1">assetType 1</option>
                                     <option <c:if test="${masterAssetDto.assetType==2}" >selected</c:if> value="2">assetType 2</option>
                                     <option <c:if test="${masterAssetDto.assetType==3}" >selected</c:if> value="3">assetType 3</option>
