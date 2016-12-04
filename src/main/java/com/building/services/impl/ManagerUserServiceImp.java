@@ -71,6 +71,11 @@ public class ManagerUserServiceImp implements ManagerUserService {
     }
 
     @Override
+    public List<UserRoleGroupDto> findUserRoleGroupByUserId(long id) {
+        return managerUserMapper.findUserRoleGroupByUserId(id);
+    }
+
+    @Override
     public long insertUserRoom(UserRoomDto userRoomDto) throws ServerException {
         return managerUserMapper.insertUserRoom(userRoomDto);
     }

@@ -143,7 +143,7 @@ public class ManagerBuildingController {
 
 	// Room
 	@RequestMapping(value = "/floor/room/{id}", method = RequestMethod.GET)
-	public String addRoom(@PathVariable long id, Model model, HttpServletRequest request)  throws ServerException{
+	public String getListRoom(@PathVariable long id, Model model, HttpServletRequest request)  throws ServerException{
 		List<RoomDto> listRoom = managerBuildingService.findAllRoomByFloorId(id);
 		model.addAttribute("roomDtoList",listRoom);
 		return "building/room/view";

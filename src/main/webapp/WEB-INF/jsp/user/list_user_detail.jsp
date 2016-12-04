@@ -27,47 +27,26 @@
                 <table class="footable emp-sales table table-stripped table-bordered table-hover dataTables-example" data-page-size="8" data-filter=#filter>
                     <thead>
                     <tr>
-                        <th>Họ Tên</th>
-                        <th data-hide="phone,tablet">adId</th>
-                        <th data-hide="phone,tablet">Giới tính</th>
-                        <th data-hide="phone,tablet">Ngày sinh</th>
-                        <th data-hide="phone,tablet">Chứng minh thư</th>
-                        <th data-hide="phone,tablet">Mail</th>
-                        <th data-hide="phone,tablet">Điện Thoại</th>
-                        <th data-hide="phone,tablet">Địa chỉ</th>
-                        <th data-hide="phone,tablet">Trạng thái</th>
-                        <th data-hide="phone,tablet">startDay</th>
-                        <th data-hide="phone,tablet">endDay</th>
-                        <th data-hide="phone,tablet">memo</th>
-                        <th  data-hide="phone,tablet" class="text-center">Action</th>
+                        <th>Building</th>
+                        <th data-hide="phone,tablet">Floor</th>
+                        <th data-hide="phone,tablet">Room</th>
+                        <th data-hide="phone,tablet">Bắt đầu</th>
+                        <th data-hide="phone,tablet">Kết thúc</th>
+                        <th data-hide="phone,tablet" class="text-center">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${userDtoList}" var="user">
+                    <c:forEach items="${userRomDtoDetailsList}" var="userRomDtoDetails">
                         <tr class="gradeC" >
-                            <td>${user.fullName}</td>
-                            <td data-hide="phone,tablet">${user.adId}</td>
-                            <td data-hide="phone,tablet">
-                                <c:if test="${user.gender==1}" >Nam</c:if>
-                                <c:if test="${user.gender==2}" >Nữ</c:if>
-                            </td>
-                            <td data-hide="phone,tablet"><fmt:formatDate pattern="MM/dd/yyyy" value="${user.birthday}" /></td>
-                            <td data-hide="phone,tablet">${user.idCard}</td>
-                            <td data-hide="phone,tablet">${user.mail}</td>
-                            <td data-hide="phone,tablet">${user.tel}</td>
-                            <td data-hide="phone,tablet">${user.address}</td>
-                            <td data-hide="phone,tablet">
-                                <c:if test="${user.userStatus==1}" > <span class="label label-success">Active</span> </c:if>
-                                <c:if test="${user.userStatus==2}" > <span class="label label-danger">Deactive</span> </c:if>
-                                <c:if test="${user.userStatus==3}" > <span class="label label-primary">Pending</span> </c:if>
-                            </td>
-                            <td data-hide="phone,tablet"><fmt:formatDate pattern="MM/dd/yyyy" value="${user.startDay}" /></td>
-                            <td data-hide="phone,tablet"><fmt:formatDate pattern="MM/dd/yyyy" value="${user.endDay}" /></td>
-                            <td data-hide="phone,tablet">${user.memo}</td>
+                            <td>${userRomDtoDetails.buildingCode}</td>
+                            <td data-hide="phone,tablet">${userRomDtoDetails.floorCode}</td>
+                            <td data-hide="phone,tablet">${userRomDtoDetails.roomCode}</td>
+                            <td data-hide="phone,tablet"><fmt:formatDate pattern="MM/dd/yyyy" value="12/10/2016"/></td>
+                            <td data-hide="phone,tablet"><fmt:formatDate pattern="MM/dd/yyyy" value="12/10/2016"/></td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a class="btn-success btn btn-xs" href="/user/edit/${user.userId}">Edit</a>
-                                    <a type="button" data-toggle="modal" data-target="#deleteButton" class="btn-danger btn btn-xs" onclick="setUrl('/user/delete/${user.userId}')">Delete</a>
+                                    <a class="btn-success btn btn-xs" href="/user/edit/${userRomDtoDetails.userId}">Edit</a>
+                                    <a type="button" data-toggle="modal" data-target="#deleteButton" class="btn-danger btn btn-xs" onclick="setUrl('/user/delete/${userRomDtoDetails.userId}')">Delete</a>
                                 </div>
                             </td>
                         </tr>

@@ -23,7 +23,7 @@ public interface ManagerUserMapper {
     UserRoleGroupDto findUserRoleGroupById(@Param("id") long id);
     void updateUserRoleGroup(@Param("dto") UserRoleGroupDto userRoleGroupDto);
     void deleteUserRoleGroupById(@Param("id") long id);
-
+    List<UserRoleGroupDto> findUserRoleGroupByUserId(@Param("id") long id);
 
     long insertUserRoom(@Param("dto") UserRoomDto userRoomDto);
     List<UserRoomDto> findAllUserRoom();

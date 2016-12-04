@@ -93,16 +93,19 @@
     <select id="findUserById" resultType="user">
         SELECT * FROM T_USER WHERE userId=#{id}
     </select>
-    <select id="findUserRoleGroupById" resultType="userRoleGroup">
-        SELECT * FROM T_USERROLEGROUP WHERE userId=#{id}
-    </select>
+
     <select id="findUserRoomById" resultType="userRoom">
-        SELECT * FROM T_USER_ROOM WHERE userId=#{id}
+        SELECT * FROM T_USER_ROOM WHERE userRoomId=#{id}
     </select>
     <select id="findUserRoomByUserId" resultType="userRoom">
         SELECT * FROM T_USER_ROOM WHERE userId=#{id}
     </select>
-
+    <select id="findUserRoleGroupById" resultType="userRoleGroup">
+        SELECT * FROM T_USERROLEGROUP WHERE userRoleGroupId=#{id}
+    </select>
+    <select id="findUserRoleGroupByUserId" resultType="userRoleGroup">
+        SELECT * FROM T_USERROLEGROUP WHERE userId=#{id}
+    </select>
     <update id="updateUser">
         UPDATE T_USER SET
         adId = #{dto.adId}
@@ -150,7 +153,6 @@
     <delete id="deleteUserRoomById">
         DELETE FROM T_USER_ROOM WHERE userId = #{id}
     </delete>
-
     <delete id="deleteUserRoleGroupByUserRoleGroupId">
         DELETE FROM T_USERROLEGROUP WHERE userRoleGroupId = #{id}
     </delete>
