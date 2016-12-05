@@ -94,10 +94,13 @@
         SELECT * FROM T_USER WHERE userId=#{id}
     </select>
     <select id="findUserRoleGroupById" resultType="userRoleGroup">
+        SELECT * FROM T_USERROLEGROUP WHERE userRoleGroupId=#{id}
+    </select>
+    <select id="findUserRoleGroupByUserId" resultType="userRoleGroup">
         SELECT * FROM T_USERROLEGROUP WHERE userId=#{id}
     </select>
     <select id="findUserRoomById" resultType="userRoom">
-        SELECT * FROM T_USER_ROOM WHERE userId=#{id}
+        SELECT * FROM T_USER_ROOM WHERE userRoomId=#{id}
     </select>
     <select id="findUserRoomByUserId" resultType="userRoom">
         SELECT * FROM T_USER_ROOM WHERE userId=#{id}
@@ -125,8 +128,7 @@
     </update>
     <update id="updateUserRoleGroup">
         UPDATE T_USERROLEGROUP SET
-        userId
-        , roleGroupId
+         roleGroupId
         , updateId = #{dto.updateId}
         , lastUpdate= NOW()
         WHERE userRoleGroupId= #{dto.userRoleGroupId}
@@ -134,8 +136,7 @@
 
     <update id="updateUserRoom">
         UPDATE  T_USER_ROOM SET
-        userId
-        , roomCode
+         roomCode
         , floorCode
         , buildingCode
         WHERE userRoomId= #{dto.userRoomId}
@@ -144,17 +145,17 @@
     <delete id="deleteUserById">
         DELETE FROM T_USER WHERE userId = #{id}
     </delete>
-    <delete id="deleteUserRoleGroupById">
+    <delete id="deleteUserRoleGroupByUserId">
         DELETE FROM T_USERROLEGROUP WHERE userId = #{id}
     </delete>
-    <delete id="deleteUserRoomById">
+    <delete id="deleteUserRoomByUserId">
         DELETE FROM T_USER_ROOM WHERE userId = #{id}
     </delete>
 
-    <delete id="deleteUserRoleGroupByUserRoleGroupId">
+    <delete id="deleteUserRoleGroupById">
         DELETE FROM T_USERROLEGROUP WHERE userRoleGroupId = #{id}
     </delete>
-    <delete id="deleteUserRoomByUserRoomId">
+    <delete id="deleteUserRoomById">
         DELETE FROM T_USER_ROOM WHERE userRoomId = #{id}
     </delete>
 

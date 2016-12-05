@@ -20,8 +20,10 @@ public interface ManagerUserService {
     int insertUserRoleGroup(UserRoleGroupDto userRoleGroupDto) throws ServerException;
     List<UserRoleGroupDto> findAllUserRoleGroup() throws ServerException;
     UserRoleGroupDto findUserRoleGroupById(long id) throws ServerException;
+    UserRoleGroupDto findUserRoleGroupByUserId(long id) throws ServerException;
     void updateUserRoleGroup(UserRoleGroupDto userRoleGroupDto) throws ServerException;
     void deleteUserRoleGroupById(long id) throws ServerException;
+    void deleteUserRoleGroupByUserId(long id) throws ServerException;
 
     long insertUserRoom(UserRoomDto userRoomDto) throws ServerException;
     List<UserRoomDto> findAllUserRoom() throws ServerException;
@@ -29,4 +31,5 @@ public interface ManagerUserService {
     UserRoomDto findUserRoomById(long id) throws ServerException;
     void updateUserRoom(UserRoomDto userRoomDto) throws ServerException;
     void deleteUserRoomById(long id) throws ServerException;
+    void deleteUserRoomByUserId(long id) throws ServerException;
 }

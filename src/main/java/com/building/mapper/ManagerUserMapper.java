@@ -21,8 +21,10 @@ public interface ManagerUserMapper {
     int insertUserRoleGroup(@Param("dto") UserRoleGroupDto userRoleGroupDto );
     List<UserRoleGroupDto> findAllUserRoleGroup();
     UserRoleGroupDto findUserRoleGroupById(@Param("id") long id);
+    UserRoleGroupDto findUserRoleGroupByUserId(@Param("id") long id);
     void updateUserRoleGroup(@Param("dto") UserRoleGroupDto userRoleGroupDto);
     void deleteUserRoleGroupById(@Param("id") long id);
+    void deleteUserRoleGroupByUserId(@Param("id") long id);
 
 
     long insertUserRoom(@Param("dto") UserRoomDto userRoomDto);
@@ -31,4 +33,5 @@ public interface ManagerUserMapper {
     UserRoomDto findUserRoomById(@Param("id") long id);
     void updateUserRoom(@Param("dto") UserRoomDto userRoomDto);
     void deleteUserRoomById(@Param("id") long id);
+    void deleteUserRoomByUserId(@Param("id") long id);
 }

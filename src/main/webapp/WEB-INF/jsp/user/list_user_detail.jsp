@@ -28,7 +28,7 @@
                     <thead>
                     <tr>
                         <th>Họ Tên</th>
-                        <th data-hide="phone,tablet">adId</th>
+                        <th data-hide="phone,tablet"><adId</th>
                         <th data-hide="phone,tablet">Giới tính</th>
                         <th data-hide="phone,tablet">Ngày sinh</th>
                         <th data-hide="phone,tablet">Chứng minh thư</th>

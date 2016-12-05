@@ -12,6 +12,24 @@ public class UserRoleRoomDto extends DefaultObjectDto implements Serializable{
 	private UserDto userDto;
 	private UserRoomDto userRoomDto;
 	private UserRoleGroupDto userRoleGroupDto;
+	private Date startDay;
+	private Date endDay;
+
+	public Date getStartDay() {
+		return startDay;
+	}
+
+	public void setStartDay(Date startDay) {
+		this.startDay = startDay;
+	}
+
+	public Date getEndDay() {
+		return endDay;
+	}
+
+	public void setEndDay(Date endDay) {
+		this.endDay = endDay;
+	}
 
 	public static long getSerialVersionUID() {
 		return serialVersionUID;

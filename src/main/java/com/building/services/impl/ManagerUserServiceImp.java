@@ -61,6 +61,11 @@ public class ManagerUserServiceImp implements ManagerUserService {
     }
 
     @Override
+    public UserRoleGroupDto findUserRoleGroupByUserId(long id) throws ServerException {
+        return managerUserMapper.findUserRoleGroupByUserId(id);
+    }
+
+    @Override
     public void updateUserRoleGroup(UserRoleGroupDto userRoleGroupDto) throws ServerException {
         managerUserMapper.updateUserRoleGroup(userRoleGroupDto);
     }
@@ -68,6 +73,11 @@ public class ManagerUserServiceImp implements ManagerUserService {
     @Override
     public void deleteUserRoleGroupById(long id) throws ServerException {
         managerUserMapper.deleteUserRoleGroupById(id);
+    }
+
+    @Override
+    public void deleteUserRoleGroupByUserId(long id) throws ServerException {
+        managerUserMapper.deleteUserRoleGroupByUserId(id);
     }
 
     @Override
@@ -98,5 +108,10 @@ public class ManagerUserServiceImp implements ManagerUserService {
     @Override
     public void updateUserRoom(UserRoomDto userRoomDto) throws ServerException {
         managerUserMapper.updateUserRoom(userRoomDto);
+    }
+
+    @Override
+    public void deleteUserRoomByUserId(long id) throws ServerException {
+        managerUserMapper.deleteUserRoomByUserId(id);
     }
 }
