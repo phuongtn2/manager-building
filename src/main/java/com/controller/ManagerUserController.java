@@ -79,10 +79,10 @@ public class ManagerUserController {
         userRoleGroupDto.setCreateId(aui.getUserId());
         userRoleGroupDto.setUpdateId(aui.getUserId());
         managerUserService.insertUserRoleGroup(userRoleGroupDto);
-        //get user room
-        UserRoomDto userRoomDto = userRoleRoomDto.getUserRoomDto();
-        userRoomDto.setUserId(userDto.getUserId());
-        managerUserService.insertUserRoom(userRoomDto);
+//        //get user room
+//        UserRoomDto userRoomDto = userRoleRoomDto.getUserRoomDto();
+//        userRoomDto.setUserId(userDto.getUserId());
+//        managerUserService.insertUserRoom(userRoomDto);
         return "redirect:/user";
     }
 
@@ -90,32 +90,37 @@ public class ManagerUserController {
     public String getEdit(@PathVariable long id, Model model, HttpServletRequest request)  throws ServerException{
         AuthorizedUserInfo aui = (AuthorizedUserInfo) request.getSession().getAttribute("aui");
         UserRoleRoomDto userRoleRoomDto = new UserRoleRoomDto();
+        UserDto userDto = managerUserService.findUserById(id);
+        userDto.setUpdateId(aui.getUserId());
+        userRoleRoomDto.setUserDto(userDto);
 
-        userRoleRoomDto.setUserDto(managerUserService.findUserById(id));
-        userRoleRoomDto.setUserRoleGroupDto(managerUserService.findUserRoleGroupById(id));
-        userRoleRoomDto.setUserRoomDto(managerUserService.findUserRoomById(id));
-        userRoleRoomDto.setUpdateId(aui.getUserId());
+        UserRoleGroupDto userRoleGroupDto = managerUserService.findUserRoleGroupByUserId(id);
+        userRoleGroupDto.setUpdateId(aui.getUserId());
+        userRoleRoomDto.setUserRoleGroupDto(userRoleGroupDto);
+//        userRoleRoomDto.setUserRoomDto(managerUserService.findUserRoomById(id));
         model.addAttribute("userRoleRoomDto",userRoleRoomDto);
         return "user/view";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String saveEdit(@ModelAttribute("userRoleRoomDto") UserRoleRoomDto userRoleRoomDto, @PathVariable long id) throws ServerException {
-        //update user room
-        managerUserService.updateUserRoom(userRoleRoomDto.getUserRoomDto());
-        //update user role
-        managerUserService.updateUserRoleGroup(userRoleRoomDto.getUserRoleGroupDto());
+    public String saveEdit(@ModelAttribute("userRoleRoomDto") UserRoleRoomDto userRoleRoomDto, @PathVariable long id, HttpServletRequest request) throws ServerException {
+//        //update user room
+//        managerUserService.updateUserRoom(userRoleRoomDto.getUserRoomDto());
+
         //update user
         managerUserService.updateUser(userRoleRoomDto.getUserDto());
+        //update user role
+        managerUserService.updateUserRoleGroup(userRoleRoomDto.getUserRoleGroupDto());
+
         return "redirect:/user";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable long id, Model model, HttpServletRequest request)  throws ServerException{
         //delete user room
-        managerUserService.deleteUserRoomById(id);
+        managerUserService.deleteUserRoomByUserId(id);
         //delete user role
-        managerUserService.deleteUserRoleGroupById(id);
+        managerUserService.deleteUserRoleGroupByUserId(id);
         //delete user
         managerUserService.deleteUserById(id);
         return "redirect:/user";
@@ -124,8 +129,9 @@ public class ManagerUserController {
 
     @RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
     public String viewUserRoleRoomDetail(@PathVariable long id, Model model, HttpServletRequest request) throws ServerException{
-        managerUserService.findUserById(id);
-        managerUserService.findUserRoomByUserId(id);
+        model.addAttribute("userDto",managerUserService.findUserById(id));
+        model.addAttribute("userRoleGroupDto",managerUserService.findUserRoleGroupById(id));
+        model.addAttribute("userRoomDto",managerUserService.findUserRoomByUserId(id));
 
         return "user/view_detail";
     }

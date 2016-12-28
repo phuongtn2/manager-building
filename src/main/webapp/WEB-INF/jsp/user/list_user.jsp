@@ -51,8 +51,9 @@
                             <td data-hide="phone,tablet">${user.memo}</td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a class="btn-success btn btn-xs" href="/user/view/${user.userId}">Edit</a>
+                                    <a class="btn-success btn btn-xs" href="/user/edit/${user.userId}">Edit</a>
                                     <a type="button" data-toggle="modal" data-target="#deleteButton" class="btn-danger btn btn-xs" onclick="setUrl('/user/delete/${user.userId}')">Delete</a>
+                                    <a class="btn-success btn btn-xs" href="/user/view/${user.userId}">View</a>
                                 </div>
                             </td>
                         </tr>
